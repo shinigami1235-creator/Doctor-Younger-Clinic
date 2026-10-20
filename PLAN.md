@@ -6,7 +6,7 @@ This is the plan for rebuilding doctoryounger.com, which was built in 2017. Thai
 
 - Design direction: Quiet luxury, with the skin layer diagram on laser and RF pages.
 - Logo: the Instagram serif wordmark. A vector file is still needed from the clinic.
-- Empty pages (Promotion, Q&A, Tips, News, Products) are hidden until they have content.
+- Promotion and Q&A are empty and hidden. Products, Reviews, News and Tips load their lists by script on the old site, which the first crawl missed; they are now imported in full (9 products, 21 reviews, 3 news posts, 85 Tips articles).
 - Thai text is kept as written except misspelled English words, which are corrected.
 
 ## 1. What the current site has
@@ -21,8 +21,11 @@ This is the plan for rebuilding doctoryounger.com, which was built in 2017. Thai
 | Doctor's Profile | 7 doctors, each with a detail page |
 | Beauty's Talk | 2 presenter interviews (คุณไก่ สุปราณี เจริญผล, คุณหยาดทิพย์ ราชปาล) |
 | Services | 6 categories, 30 treatments, each with a detail page |
-| Products | One intro line and a single product page with empty fields |
-| Q&A, Review list, News & Event, Tips | Empty |
+| Products | 9 products, each with size, price and how to use (loaded by script) |
+| Q&A | Empty |
+| Review list | 23 entries, 21 real reviews (loaded by script) |
+| News & Event | 3 posts and 1 test post (loaded by script) |
+| Tips | 85 articles, every one credited to another publisher such as Sanook or Kapook (loaded by script) |
 | Review detail | 3 reviews (Rattanaporn, ต้อม ภาวนา, Apple) |
 | Contact us | Both branches with address, phones and a map image |
 | Booking | Form: name, phone, email, branch, service type |
@@ -88,7 +91,7 @@ The call centre number 02-261-3697-8 sits in the header and at the end of every 
 1. Sukhumvit 23 has three phone numbers in use (02-665-7057-8, 02-261-3697-8, 081-4245008).
 2. The register form still lists เทอมินอล 21 as a branch.
 3. Google Maps has a separate "Doctor Younger Clinic" walk-in clinic at 309/26-27 Phatthanakan Road, Prawet, phone 02 722 0708.
-4. Five pages are empty and one product page has empty fields.
+4. Promotion and Q&A are empty.
 5. Each Beauty's Talk interview repeats the first question twice with slightly different answers.
 6. English inside the Thai pages has misspellings: RECCOMMEND, Paris-Frace, Dermatoloyg, Anerican Boavd, Cutaneans, KERAROSIS, LENTIGENES.
 
