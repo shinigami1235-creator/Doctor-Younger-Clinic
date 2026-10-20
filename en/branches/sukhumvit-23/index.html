@@ -111,6 +111,8 @@
 }</script></head>
 <body class="page-branch">
 <a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true" data-progress></div>
+<div class="cursor" aria-hidden="true" data-cursor><span></span></div>
 
 
 <header class="site-header" data-header>
@@ -119,13 +121,85 @@
       <span class="wordmark__top">DOCTOR</span><span class="wordmark__bottom">YOUNGER</span>
     </a>
     <nav class="nav" aria-label="Main" data-nav>
-      <ul>
-        <li><a href="/Doctor-Younger-Clinic/en/">HOME</a></li>
-        <li><a href="/Doctor-Younger-Clinic/en/#services">SERVICES</a></li>
-        <li><a href="/Doctor-Younger-Clinic/en/#doctors">DOCTOR&#39;S PROFILE</a></li>
-        <li><a href="/Doctor-Younger-Clinic/en/#beauty-talk">Beauty&#39;s Talk</a></li>
-        <li><a href="/Doctor-Younger-Clinic/en/#reviews">REVIEW</a></li>
-        <li><a href="/Doctor-Younger-Clinic/en/branches/sukhumvit-23/">CONTACT US</a></li>
+      <ul class="nav__list">
+        <li class="nav__item has-mega">
+          <a href="/Doctor-Younger-Clinic/en/services/">SERVICES</a>
+          <div class="mega" data-mega>
+            <div class="mega__inner">
+              <div class="mega__col">
+                <a class="mega__cat" href="/Doctor-Younger-Clinic/en/services/laser-rf/">LASER &amp; RF</a>
+                <ul>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/laser-rf/co2-laser/">CO2 LASER</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/laser-rf/fractional-laser/">FRACTIONAL LASER</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/laser-rf/aramis-laser/">ARAMIS LASER</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/laser-rf/pigment-laser/">PIGMENT LASER</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/laser-rf/active-bright/">ACTIVE BRIGHT</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/laser-rf/ultra-deep-lifting/">ULTRA DEEP LIFTING</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/laser-rf/aura-bright/">AURA BRIGHT</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/laser-rf/monopolar-rf/">MONOPOLAR RF</a></li>
+                </ul>
+              </div>
+              <div class="mega__col">
+                <a class="mega__cat" href="/Doctor-Younger-Clinic/en/services/facial-design/">FACIAL DESIGN</a>
+                <ul>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/facial-design/vital-lift/">VITAL LIFT</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/facial-design/ha/">HA</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/facial-design/v-touch/">V-TOUCH</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/facial-design/diamond-toxin/">DIAMOND TOXIN</a></li>
+                </ul>
+              </div>
+              <div class="mega__col">
+                <a class="mega__cat" href="/Doctor-Younger-Clinic/en/services/facial-treatment/">FACIAL TREATMENT</a>
+                <ul>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/facial-treatment/acne-clear-light/">ACNE CLEAR LIGHT</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/facial-treatment/phonophoresis/">PHONOPHORESIS</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/facial-treatment/synergica/">SYNERGICA</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/facial-treatment/blue-mate/">BLUE MATE</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/facial-treatment/dermalift/">DERMALIFT</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/facial-treatment/grey-mate/">GREY MATE</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/facial-treatment/cry-o-lift/">CRY-O LIFT</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/facial-treatment/dermalift-and-mask/">DERMALIFT &amp; MASK</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/facial-treatment/ruby-mate/">RUBY MATE</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/facial-treatment/oxy-plus/">OXY PLUS</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/facial-treatment/iontophoresis/">IONTOPHORESIS</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/facial-treatment/new-a-peel/">NEW A PEEL</a></li>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/facial-treatment/peeling-treatment/">PEELING TREATMENT</a></li>
+                </ul>
+              </div>
+              <div class="mega__col">
+                <a class="mega__cat" href="/Doctor-Younger-Clinic/en/services/body-treatment/">BODY TREATMENT</a>
+                <ul>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/body-treatment/endermologie/">ENDERMOLOGIE®</a></li>
+                </ul>
+              </div>
+              <div class="mega__col">
+                <a class="mega__cat" href="/Doctor-Younger-Clinic/en/services/hair-removal/">HAIR REMOVAL</a>
+                <ul>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/hair-removal/tks-laser/">TKS LASER</a></li>
+                </ul>
+              </div>
+              <div class="mega__col">
+                <a class="mega__cat" href="/Doctor-Younger-Clinic/en/services/others/">OTHERS</a>
+                <ul>
+                  <li><a href="/Doctor-Younger-Clinic/en/services/others/vita-bright/">VITA BRIGHT</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="nav__item">
+          <a href="/Doctor-Younger-Clinic/en/products/">PRODUCTS</a>
+        </li>
+        <li class="nav__item">
+          <a href="/Doctor-Younger-Clinic/en/doctors/">DOCTOR&#39;S PROFILE</a>
+        </li>
+        <li class="nav__item">
+          <a href="/Doctor-Younger-Clinic/en/beauty-talk/">Beauty&#39;s Talk</a>
+        </li>
+        <li class="nav__item">
+          <a href="/Doctor-Younger-Clinic/en/reviews/">REVIEW</a>
+        </li>
+        <li class="nav__item"><a href="/Doctor-Younger-Clinic/en/branches/sukhumvit-23/" aria-current="page">CONTACT US</a></li>
       </ul>
       <div class="nav__meta">
         <span>Call center <a href="tel:+6622613697">02-261-3697-8</a></span>
@@ -134,7 +208,7 @@
     </nav>
     <div class="site-header__actions">
       <a class="lang" href="/Doctor-Younger-Clinic/branches/sukhumvit-23/" hreflang="th">ไทย</a>
-      <a class="btn btn--small" href="http://line.me/ti/p/~@DoctorYounger" target="_blank" rel="noopener">BOOK NOW</a>
+      <a class="btn btn--small" href="http://line.me/ti/p/~@DoctorYounger" target="_blank" rel="noopener" data-magnetic>BOOK NOW</a>
       <button class="menu-toggle" type="button" aria-expanded="false" data-menu-toggle>
         <span class="menu-toggle__label" data-open="Menu" data-close="Close">Menu</span>
         <span class="menu-toggle__lines" aria-hidden="true"><i></i><i></i></span>
@@ -183,70 +257,91 @@
   </header>
   <div class="doctor-list">
     <article class="doctor doctor--row" data-reveal style="--d: 0ms">
-      <div class="arch arch--doctor"><img src="https://www.doctoryounger.com/upload/profile/big/profile20170406100432.jpg" alt="Dr. Wilai Thanasarnaksorn" loading="lazy" width="400" height="500"></div>
+      <a href="/Doctor-Younger-Clinic/en/doctors/wilai-thanasarnaksorn/"><div class="frame frame--doc" style="--ratio: 4/5" data-frame>
+  <img src="/Doctor-Younger-Clinic/static/media/upload/profile/big/profile20170406100432.jpg" alt="Dr. Wilai Thanasarnaksorn" loading="lazy" style="object-position: center 18%">
+</div>
+</a>
       <div>
         <p class="doctor__title">Dr.</p>
-        <h3 class="doctor__name">Wilai Thanasarnaksorn</h3>
+        <h3 class="doctor__name"><a href="/Doctor-Younger-Clinic/en/doctors/wilai-thanasarnaksorn/">Wilai Thanasarnaksorn</a></h3>
         <p class="eyebrow">Schedule</p>
         <ul class="doctor__shifts">
 <li>Wed 13.00 - 16.00</li><li>Sat (week 3) 13.00 - 16.00</li>        </ul>
       </div>
     </article>
     <article class="doctor doctor--row" data-reveal style="--d: 70ms">
-      <div class="arch arch--doctor"><img src="https://www.doctoryounger.com/upload/profile/big/profile20230517133141.jpg" alt="Dr. Nopadol Amornpinyokiat" loading="lazy" width="400" height="500"></div>
+      <a href="/Doctor-Younger-Clinic/en/doctors/nopadol-amornpinyokiat/"><div class="frame frame--doc" style="--ratio: 4/5" data-frame>
+  <img src="/Doctor-Younger-Clinic/static/media/upload/profile/big/profile20230517133141.jpg" alt="Dr. Nopadol Amornpinyokiat" loading="lazy" style="object-position: center 18%">
+</div>
+</a>
       <div>
         <p class="doctor__title">Dr.</p>
-        <h3 class="doctor__name">Nopadol Amornpinyokiat</h3>
+        <h3 class="doctor__name"><a href="/Doctor-Younger-Clinic/en/doctors/nopadol-amornpinyokiat/">Nopadol Amornpinyokiat</a></h3>
 <p class="doctor__nick">Dr. Boy</p>        <p class="eyebrow">Schedule</p>
         <ul class="doctor__shifts">
 <li>Sun, Mon 12.00 - 17.00</li>        </ul>
       </div>
     </article>
     <article class="doctor doctor--row" data-reveal style="--d: 140ms">
-      <div class="arch arch--doctor"><img src="https://www.doctoryounger.com/upload/profile/big/profile20230517132927.jpg" alt="Dr. Patcharaporn Wachiranuntasin" loading="lazy" width="400" height="500"></div>
+      <a href="/Doctor-Younger-Clinic/en/doctors/patcharaporn-wachiranuntasin/"><div class="frame frame--doc" style="--ratio: 4/5" data-frame>
+  <img src="/Doctor-Younger-Clinic/static/media/upload/profile/big/profile20230517132927.jpg" alt="Dr. Patcharaporn Wachiranuntasin" loading="lazy" style="object-position: center 18%">
+</div>
+</a>
       <div>
         <p class="doctor__title">Dr.</p>
-        <h3 class="doctor__name">Patcharaporn Wachiranuntasin</h3>
+        <h3 class="doctor__name"><a href="/Doctor-Younger-Clinic/en/doctors/patcharaporn-wachiranuntasin/">Patcharaporn Wachiranuntasin</a></h3>
 <p class="doctor__nick">Dr. Bee</p>        <p class="eyebrow">Schedule</p>
         <ul class="doctor__shifts">
 <li>Tue, Thu, Sat 12.00 - 18.00</li>        </ul>
       </div>
     </article>
     <article class="doctor doctor--row" data-reveal style="--d: 210ms">
-      <div class="arch arch--doctor"><img src="https://www.doctoryounger.com/upload/profile/big/profile20230517144735.jpg" alt="Dr. Manika Napharat" loading="lazy" width="400" height="500"></div>
+      <a href="/Doctor-Younger-Clinic/en/doctors/manika-napharat/"><div class="frame frame--doc" style="--ratio: 4/5" data-frame>
+  <img src="/Doctor-Younger-Clinic/static/media/upload/profile/big/profile20230517144735.jpg" alt="Dr. Manika Napharat" loading="lazy" style="object-position: center 18%">
+</div>
+</a>
       <div>
         <p class="doctor__title">Dr.</p>
-        <h3 class="doctor__name">Manika Napharat</h3>
+        <h3 class="doctor__name"><a href="/Doctor-Younger-Clinic/en/doctors/manika-napharat/">Manika Napharat</a></h3>
 <p class="doctor__nick">Dr. Palm</p>        <p class="eyebrow">Schedule</p>
         <ul class="doctor__shifts">
 <li>Fri (week 1, 3) 12.00 - 18.00</li>        </ul>
       </div>
     </article>
     <article class="doctor doctor--row" data-reveal style="--d: 280ms">
-      <div class="arch arch--doctor"><img src="https://www.doctoryounger.com/upload/profile/big/profile20230517143649.jpg" alt="Dr. Nattawan Limcharoenwiriyakul" loading="lazy" width="400" height="500"></div>
+      <a href="/Doctor-Younger-Clinic/en/doctors/nattawan-limcharoenwiriyakul/"><div class="frame frame--doc" style="--ratio: 4/5" data-frame>
+  <img src="/Doctor-Younger-Clinic/static/media/upload/profile/big/profile20230517143649.jpg" alt="Dr. Nattawan Limcharoenwiriyakul" loading="lazy" style="object-position: center 18%">
+</div>
+</a>
       <div>
         <p class="doctor__title">Dr.</p>
-        <h3 class="doctor__name">Nattawan Limcharoenwiriyakul</h3>
+        <h3 class="doctor__name"><a href="/Doctor-Younger-Clinic/en/doctors/nattawan-limcharoenwiriyakul/">Nattawan Limcharoenwiriyakul</a></h3>
 <p class="doctor__nick">Dr. Maprang</p>        <p class="eyebrow">Schedule</p>
         <ul class="doctor__shifts">
 <li>Sat (week 1, 2, 4) 12.00 - 15.00</li>        </ul>
       </div>
     </article>
     <article class="doctor doctor--row" data-reveal style="--d: 350ms">
-      <div class="arch arch--doctor"><img src="https://www.doctoryounger.com/upload/profile/big/profile20230517142720.jpg" alt="Dr. Puntharika Apinoraset" loading="lazy" width="400" height="500"></div>
+      <a href="/Doctor-Younger-Clinic/en/doctors/puntharika-apinoraset/"><div class="frame frame--doc" style="--ratio: 4/5" data-frame>
+  <img src="/Doctor-Younger-Clinic/static/media/upload/profile/big/profile20230517142720.jpg" alt="Dr. Puntharika Apinoraset" loading="lazy" style="object-position: center 18%">
+</div>
+</a>
       <div>
         <p class="doctor__title">Dr.</p>
-        <h3 class="doctor__name">Puntharika Apinoraset</h3>
+        <h3 class="doctor__name"><a href="/Doctor-Younger-Clinic/en/doctors/puntharika-apinoraset/">Puntharika Apinoraset</a></h3>
 <p class="doctor__nick">Dr. Pink</p>        <p class="eyebrow">Schedule</p>
         <ul class="doctor__shifts">
 <li>Tue 14.00 - 18.00</li>        </ul>
       </div>
     </article>
     <article class="doctor doctor--row" data-reveal style="--d: 420ms">
-      <div class="arch arch--doctor"><img src="https://www.doctoryounger.com/upload/profile/big/profile20230517135421.jpg" alt="Dr. Urairak Sapsarn" loading="lazy" width="400" height="500"></div>
+      <a href="/Doctor-Younger-Clinic/en/doctors/urairak-sapsarn/"><div class="frame frame--doc" style="--ratio: 4/5" data-frame>
+  <img src="/Doctor-Younger-Clinic/static/media/upload/profile/big/profile20230517135421.jpg" alt="Dr. Urairak Sapsarn" loading="lazy" style="object-position: center 18%">
+</div>
+</a>
       <div>
         <p class="doctor__title">Dr.</p>
-        <h3 class="doctor__name">Urairak Sapsarn</h3>
+        <h3 class="doctor__name"><a href="/Doctor-Younger-Clinic/en/doctors/urairak-sapsarn/">Urairak Sapsarn</a></h3>
 <p class="doctor__nick">Dr. Toey</p>        <p class="eyebrow">Schedule</p>
         <ul class="doctor__shifts">
 <li>Tue, Wed 12.00 - 18.00</li><li>Sun 15.00 - 18.00</li>        </ul>
@@ -321,11 +416,24 @@
       </ul>
     </div>
   </div>
+  <nav class="site-footer__links" aria-label="Footer">
+    <a href="/Doctor-Younger-Clinic/en/services/">SERVICES</a>
+    <a href="/Doctor-Younger-Clinic/en/products/">PRODUCTS</a>
+    <a href="/Doctor-Younger-Clinic/en/doctors/">DOCTOR&#39;S PROFILE</a>
+    <a href="/Doctor-Younger-Clinic/en/beauty-talk/">Beauty&#39;s Talk</a>
+    <a href="/Doctor-Younger-Clinic/en/reviews/">REVIEW</a>
+    <a href="/Doctor-Younger-Clinic/en/news/">NEWS &amp; EVENT</a>
+  </nav>
   <div class="site-footer__bottom">
     <span>© 2026 Doctor Younger Clinic</span>
     <a href="https://www.doctoryounger.com/privacy-policy.php">Privacy policy</a>
   </div>
 </footer>
+
+<a class="line-float" href="http://line.me/ti/p/~@DoctorYounger" target="_blank" rel="noopener" aria-label="LINE @DoctorYounger" data-magnetic>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6 1.2-1.5 1.8-3 1.8-4.9 0-4.4-4.5-8-10-8z"/></svg>
+  <span>Book on LINE</span>
+</a>
 
 <nav class="action-bar" aria-label="BOOK NOW">
   <a href="tel:+6622613697"><span class="action-bar__icon" aria-hidden="true">
@@ -345,6 +453,6 @@
 </div>
 
 <script>window.DY = {ga4: null};</script>
-<script type="application/json" id="duty-data">{"doctors": [{"name": "Dr. Wilai Thanasarnaksorn", "nickname": "", "photo": "https://www.doctoryounger.com/upload/profile/big/profile20170406100432.jpg", "shifts": [{"branch": "sukhumvit-23", "days": [2], "except": null, "from": "13:00", "to": "16:00", "weeks": null}, {"branch": "sukhumvit-23", "days": [5], "except": null, "from": "13:00", "to": "16:00", "weeks": [3]}, {"branch": "thanya-park-srinakarin", "days": [5], "except": [3], "from": "13:00", "to": "16:00", "weeks": null}]}, {"name": "Dr. Nopadol Amornpinyokiat", "nickname": "Dr. Boy", "photo": "https://www.doctoryounger.com/upload/profile/big/profile20230517133141.jpg", "shifts": [{"branch": "sukhumvit-23", "days": [6, 0], "except": null, "from": "12:00", "to": "17:00", "weeks": null}, {"branch": "thanya-park-srinakarin", "days": [1], "except": null, "from": "13:00", "to": "15:00", "weeks": null}]}, {"name": "Dr. Patcharaporn Wachiranuntasin", "nickname": "Dr. Bee", "photo": "https://www.doctoryounger.com/upload/profile/big/profile20230517132927.jpg", "shifts": [{"branch": "sukhumvit-23", "days": [1, 3, 5], "except": null, "from": "12:00", "to": "18:00", "weeks": null}, {"branch": "thanya-park-srinakarin", "days": [0, 2], "except": null, "from": "12:00", "to": "18:00", "weeks": null}, {"branch": "thanya-park-srinakarin", "days": [4], "except": null, "from": "12:00", "to": "16:00", "weeks": null}]}, {"name": "Dr. Manika Napharat", "nickname": "Dr. Palm", "photo": "https://www.doctoryounger.com/upload/profile/big/profile20230517144735.jpg", "shifts": [{"branch": "sukhumvit-23", "days": [4], "except": null, "from": "12:00", "to": "18:00", "weeks": [1, 3]}, {"branch": "thanya-park-srinakarin", "days": [5], "except": null, "from": "12:00", "to": "18:00", "weeks": null}]}, {"name": "Dr. Nattawan Limcharoenwiriyakul", "nickname": "Dr. Maprang", "photo": "https://www.doctoryounger.com/upload/profile/big/profile20230517143649.jpg", "shifts": [{"branch": "sukhumvit-23", "days": [5], "except": null, "from": "12:00", "to": "15:00", "weeks": [1, 2, 4]}, {"branch": "thanya-park-srinakarin", "days": [5], "except": null, "from": "11:00", "to": "15:00", "weeks": [3]}]}, {"name": "Dr. Puntharika Apinoraset", "nickname": "Dr. Pink", "photo": "https://www.doctoryounger.com/upload/profile/big/profile20230517142720.jpg", "shifts": [{"branch": "sukhumvit-23", "days": [1], "except": null, "from": "14:00", "to": "18:00", "weeks": null}]}, {"name": "Dr. Urairak Sapsarn", "nickname": "Dr. Toey", "photo": "https://www.doctoryounger.com/upload/profile/big/profile20230517135421.jpg", "shifts": [{"branch": "sukhumvit-23", "days": [1, 2], "except": null, "from": "12:00", "to": "18:00", "weeks": null}, {"branch": "sukhumvit-23", "days": [6], "except": null, "from": "15:00", "to": "18:00", "weeks": null}]}], "suffix": "", "weekdays": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]}</script><script src="/Doctor-Younger-Clinic/static/js/site.js" defer></script>
+<script type="application/json" id="duty-data">{"doctors": [{"name": "Dr. Wilai Thanasarnaksorn", "nickname": "", "photo": "/Doctor-Younger-Clinic/static/media/upload/profile/big/profile20170406100432.jpg", "shifts": [{"branch": "sukhumvit-23", "days": [2], "except": null, "from": "13:00", "to": "16:00", "weeks": null}, {"branch": "sukhumvit-23", "days": [5], "except": null, "from": "13:00", "to": "16:00", "weeks": [3]}, {"branch": "thanya-park-srinakarin", "days": [5], "except": [3], "from": "13:00", "to": "16:00", "weeks": null}], "url": "/Doctor-Younger-Clinic/en/doctors/wilai-thanasarnaksorn/"}, {"name": "Dr. Nopadol Amornpinyokiat", "nickname": "Dr. Boy", "photo": "/Doctor-Younger-Clinic/static/media/upload/profile/big/profile20230517133141.jpg", "shifts": [{"branch": "sukhumvit-23", "days": [6, 0], "except": null, "from": "12:00", "to": "17:00", "weeks": null}, {"branch": "thanya-park-srinakarin", "days": [1], "except": null, "from": "13:00", "to": "15:00", "weeks": null}], "url": "/Doctor-Younger-Clinic/en/doctors/nopadol-amornpinyokiat/"}, {"name": "Dr. Patcharaporn Wachiranuntasin", "nickname": "Dr. Bee", "photo": "/Doctor-Younger-Clinic/static/media/upload/profile/big/profile20230517132927.jpg", "shifts": [{"branch": "sukhumvit-23", "days": [1, 3, 5], "except": null, "from": "12:00", "to": "18:00", "weeks": null}, {"branch": "thanya-park-srinakarin", "days": [0, 2], "except": null, "from": "12:00", "to": "18:00", "weeks": null}, {"branch": "thanya-park-srinakarin", "days": [4], "except": null, "from": "12:00", "to": "16:00", "weeks": null}], "url": "/Doctor-Younger-Clinic/en/doctors/patcharaporn-wachiranuntasin/"}, {"name": "Dr. Manika Napharat", "nickname": "Dr. Palm", "photo": "/Doctor-Younger-Clinic/static/media/upload/profile/big/profile20230517144735.jpg", "shifts": [{"branch": "sukhumvit-23", "days": [4], "except": null, "from": "12:00", "to": "18:00", "weeks": [1, 3]}, {"branch": "thanya-park-srinakarin", "days": [5], "except": null, "from": "12:00", "to": "18:00", "weeks": null}], "url": "/Doctor-Younger-Clinic/en/doctors/manika-napharat/"}, {"name": "Dr. Nattawan Limcharoenwiriyakul", "nickname": "Dr. Maprang", "photo": "/Doctor-Younger-Clinic/static/media/upload/profile/big/profile20230517143649.jpg", "shifts": [{"branch": "sukhumvit-23", "days": [5], "except": null, "from": "12:00", "to": "15:00", "weeks": [1, 2, 4]}, {"branch": "thanya-park-srinakarin", "days": [5], "except": null, "from": "11:00", "to": "15:00", "weeks": [3]}], "url": "/Doctor-Younger-Clinic/en/doctors/nattawan-limcharoenwiriyakul/"}, {"name": "Dr. Puntharika Apinoraset", "nickname": "Dr. Pink", "photo": "/Doctor-Younger-Clinic/static/media/upload/profile/big/profile20230517142720.jpg", "shifts": [{"branch": "sukhumvit-23", "days": [1], "except": null, "from": "14:00", "to": "18:00", "weeks": null}], "url": "/Doctor-Younger-Clinic/en/doctors/puntharika-apinoraset/"}, {"name": "Dr. Urairak Sapsarn", "nickname": "Dr. Toey", "photo": "/Doctor-Younger-Clinic/static/media/upload/profile/big/profile20230517135421.jpg", "shifts": [{"branch": "sukhumvit-23", "days": [1, 2], "except": null, "from": "12:00", "to": "18:00", "weeks": null}, {"branch": "sukhumvit-23", "days": [6], "except": null, "from": "15:00", "to": "18:00", "weeks": null}], "url": "/Doctor-Younger-Clinic/en/doctors/urairak-sapsarn/"}], "suffix": "", "weekdays": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]}</script><script src="/Doctor-Younger-Clinic/static/js/site.js" defer></script>
 </body>
 </html>

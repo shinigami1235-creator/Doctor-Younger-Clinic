@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta name="google-site-verification" content="WIUSxj9yyPtK4yEOqJygOJ1GkvxMVEUojYLygnF6zA4" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Doctor Younger | Always Younger</title>
+<meta name="description" content="คลีนิกเสริมความงาม ทั้งเลเซอร์ โบท็อกซ์ ฟิลเลอร์ ร้อยไหม และทรีทเม้นท์บำรุงผิวหน้า เพื่อผิวหน้าเรียว กระชับ ขาวกระจ่างใส ด้วยทีมแพทย์ผิวหนังที่มีประสบการณ์ เทคนิค และความเชี่ยวชาญ Clinic ให้บริการด้วยโปรแกรมผิวพรรณที่หลากหลายและครอบคลุมทุกด้าน ความงาม ซึ่งทางคลินิกได้มุ่งเน้นในการคัดสรรเทคโนโลยีและนวัตกรรมที่มีประสิทธิภาพสูงสุดมาให้บริการ">
+<meta name="keywords" content="คลีนิกเสริมความงาม, เลเซอร์,โบท็อกซ์, ฟิลเลอร์ ,ร้อยไหม,ทรีทเม้นท์บำรุงผิวหน้า,หน้าเรียว,กระชับ,ขาวกระจ่างใส,แพทย์ผิวหนัง">
+<meta name="publisher" content="Doctor Younger">
+<link rel="stylesheet" type="text/css" href="style/style_main.css" />
+<link rel="stylesheet" type="text/css" href="style/style_responsive.css" />
+<link rel="stylesheet" type="text/css" href="style/font-awesome.min.css">
+
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script src="scripts/jquery-1.9.1.min.js"></script>
+
+<!--slide-->
+<script src="bxslider/jquery.bxslider.min.js"></script>
+<link href="bxslider/jquery.bxslider.css" rel="stylesheet" />
+
+<script src="scripts/all.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#bxslider1_desktop').bxSlider({auto: true, mode: 'fade',controls: true,});
+	$('#bxslider1').bxSlider({auto: true, mode: 'fade',controls: true,});
+});
+</script>
+
+<!--fancybox-->
+<link rel="stylesheet" href="fancybox/jquery.fancybox-buttons.css">
+<link rel="stylesheet" href="fancybox/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="fancybox/jquery.fancybox.css">
+<script type="text/javascript" src="fancybox/jquery.fancybox.js?v=2.1.5"></script>
+<link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+<script type="text/javascript">
+   
+	$(document).ready(function() {
+$(".video").click(function() {
+		$.fancybox({
+			'padding'		: 0,
+			'autoScale'		: false,
+			'transitionIn'	: 'none',
+			'transitionOut'	: 'none',
+			'title'			: this.title,
+			'width'			: 640,
+			'height'		: 385,
+			'href'			: this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
+			'type'			: 'swf',
+			'swf'			: {
+			'wmode'				: 'transparent',
+			'allowfullscreen'	: 'true'
+			}
+		});
+
+		return false;
+	});
+    });
+	
+</script>
+	
+</head>
+<body>
+<div class="overlay">
+	<div class="wrap">
+        <div id="containerMenuRes">
+            <!--<div class="top"></div>-->
+            <div id="hamburger"><a class="btn-close" href="#"></a></div>
+            <div class="middle">
+                <div id="container">
+                    <ul>
+                      <li onClick="window.location.href='index.php'" class='selected' title="Doctor Younger">HOME</li>
+                      <li onClick="window.location.href='about-us.php'"  title="Doctor Younger About">About us</li>
+                      <li onClick="window.location.href='promotion.php'"  title="Doctor Younger Promotion">Promotion</li>
+                      <li onClick="window.location.href='doctor-profile.php'" title="Doctor Younger Profile">DOCTOR'S PROFILE</li>
+                      <li onclick="window.location.href='beauty-talk.php'" title="Doctor Younger Talk">Beauty's Talk</li>
+                      <li onClick="window.location.href='services.php'"  title="Doctor Younger Services">SERVICES</li>
+                      <li onClick="window.location.href='products.php'"  title="Doctor Younger Products">PRODUCTS</li>
+                      <li onclick="window.location.href='faq.php'"  title="Doctor Younger Q&A">Q&A</li>
+                      <li onclick="window.location.href='review.php'"  title="Doctor Younger Review">REVIEW</li>
+                      <li onclick="window.location.href='news-events.php'" title="Doctor Younger News&Event">NEWS & EVENT</li>
+                      <li onclick="window.location.href='tips.php'" title="Doctor Younger Tips">TIPS</li>
+                      <li onclick="window.location.href='contact-us.php'"  title="Contact Doctor Younger">CONTACT US</li>
+                   </ul>
+                </div>
+            </div>
+            <!--<div class="bottom"></div>-->
+            
+        </div>
+	</div>
+</div>
+
+<div id="containerBody">
+		  <script>
+  $(document).ready(function() {
+		jQuery(".various_a").fancybox({
+		  maxWidth	: 480,
+		  maxHeight	: 480,
+		  fitToView : false,
+		  width		: '100%',
+		  height	: '100%',
+		  autoSize	: false,
+		  type : 'iframe',
+		  padding : 0,
+		  scrolling :  'no'
+		});
+  });
+  </script>
+	<div id="containerHead">
+      <div id="containerHeadTop">
+          <div id="containerMainBody">
+          	<div class="b-left">
+            	<a href="https://www.facebook.com/DoctorYoungerFan/" target="_blank"><img src="images/shared/icon-top1.png" class="img_hover"/></a> <a href="https://www.instagram.com/doctor_younger/" target="_blank"><img src="images/shared/icon-top2.png" class="img_hover"/></a> <a href="http://line.me/ti/p/~@DoctorYounger" target="_blank"><img src="images/shared/icon-top3.png" class="img_hover"/></a>
+            </div>
+            <div class="b-right">10.00 - 20.00  Mon - SUN  / <span><a href="register.php">REGISTER</a></span></div>
+          </div>
+      </div>
+      <div id="containerHeadTop2">
+      	<div id="containerMainBody">
+      		<div class="b-left"><a href="index.php"><img src="images/shared/logo.png"/></a></div>
+        	<div class="b-right">
+        		<div class="icon"><img src="images/shared/icon_phone.png"/></div>
+            	<div class="text"><h1>Call center </h1><h2>02-261-3697-8</h2></div>
+        	</div>
+         </div>
+      </div>
+      <div id="containerMenu">
+      	<div id="mainmenu">
+            <ul>
+                <li onClick="window.location.href='index.php'" class='selected' title="Doctor Younger">HOME</li>
+                <li onClick="window.location.href='about-us.php'"  title="Doctor Younger About">About us</li>
+                <li onClick="window.location.href='promotion.php'"  title="Doctor Younger Promotion">Promotion</li>
+                <li onClick="window.location.href='doctor-profile.php'" title="Doctor Younger Profile">DOCTOR'S PROFILE</li>
+                <li onclick="window.location.href='beauty-talk.php'" title="Doctor Younger Talk">Beauty's Talk</li>
+                <li onClick="window.location.href='services.php'"  title="Doctor Younger Services">SERVICES</li>
+                <li onClick="window.location.href='products.php'"  title="Doctor Younger Products">PRODUCTS</li>
+                <li onclick="window.location.href='faq.php'"  title="Doctor Younger Q&A">Q&A</li>
+                <li onclick="window.location.href='review.php'"  title="Doctor Younger Review">REVIEW</li>
+                <li onclick="window.location.href='contact-us.php'"  title="Contact Doctor Younger">CONTACT US</li>
+             </ul>
+         </li>
+      </div>
+    </div>
+  </div> 
+  
+  <div id="containerHeadMobile">
+  	<div class="b-left"><a href="index.php"><img src="images/shared/logo.png"/></a></div>
+    <div class="b-right">
+    	<!--<a href="booking.php">
+    	<div id="mbooking">
+        	<div class="icon"><img src="images/shared/icon_m1.png"/></div>
+            <div class="text"><h1>Book Now</h2></div>
+        </div>
+        </a>
+        <div class="line_sp"></div>-->
+        <div id="mcontact">
+        	<div class="icon"><img src="images/shared/icon_m2.png"/></div>
+            <div class="text"><h1>02-261-3697-8</h2></div>
+        </div>
+        <div id="hamburger2"><a class="btn-open" href="#" onclick="openNav()"></a></div>
+    </div>
+  </div>
+              
+    
+  <div id="containerMain">
+  	<div id="banner" align="center">
+		    	<ul class="bxslider" id="bxslider1_desktop">
+                </ul>
+        <ul class="bxslider" id="bxslider1">
+                </ul>
+    </div>
+      <div id="tab-social">
+ 	<div id="containerMainBody">
+          <ul>
+              <li onclick="window.open('https://www.facebook.com/DoctorYoungerFan/','_blank');">
+                  <div class="icon"><img src="images/shared/icon_s1.png"/></div>
+                  <div class="text">DoctorYoungerFan</div>
+              </li>
+              <li onclick="window.open('http://line.me/ti/p/~@DoctorYounger','_blank');">
+                  <div class="icon"><img src="images/shared/icon_s2.png"/></div>
+                  <div class="text">@Doctoryounger</div>
+              </li>
+              <li onclick="window.location.href ='booking.php'">
+                  <div class="icon"><img src="images/shared/icon_s3.png"/></div>
+                  <div class="text">Booking Now</div>
+              </li>
+              <li onclick="window.location.href='news-events.php'">
+                  <div class="icon"><img src="images/shared/icon_s4.png"/></div>
+                  <div class="text">News & Event</div>
+              </li>
+          </ul><br clear="all">
+  </div>
+</div>   <div id="containerMainBody">
+    <div id="home1">
+		    	<div id="mhome1">
+        	<div class="headline">YOUNGER REVIEWS</div>
+            <div class="text">Doctor Younger คลินิกผิวหนังและเลเซอร์ ที่ให้บริการดูแลผิวพรรณและเรือนร่าง ตลอดจนให้คำปรึกษาด้านความงามและสุขภาพ</div>
+            <div class="btn"><a href="review.php"><button>ดูทั้งหมด</button></a></div>
+        </div>
+    	<ul>
+        	<li class="bg_gold">
+            	<div class="headline">YOUNGER REVIEWS</div>
+                <div class="icon"><img src="images/home/icon_review.png"/></div>
+                <div class="text">Doctor Younger คลินิกผิวหนังและเลเซอร์ ที่ให้บริการดูแลผิวพรรณและเรือนร่าง ตลอดจนให้คำปรึกษาด้านความงามและสุขภาพ</div>
+                <div class="btn"><a href="review.php"><button>ดูทั้งหมด</button></a></div>
+            </li>
+                        <li onClick="window.location.href='review-detail.php?review=42'">
+            	<div class="img"><img src="upload/review/thumb/review20180207143201.jpg"/></div>
+                <div class="cover">รีวิวจากคุณRattanaporn</div>
+            </li>
+                        <li onClick="window.location.href='review-detail.php?review=38'">
+            	<div class="img"><img src="upload/review/thumb/review20180207133002.jpg"/></div>
+                <div class="cover">รีวิวจากคุณต้อม ภาวนา</div>
+            </li>
+                        <li onClick="window.location.href='review-detail.php?review=37'">
+            	<div class="img"><img src="upload/review/thumb/review20171121132253.jpg"/></div>
+                <div class="cover">รีวิวจากคุณApple</div>
+            </li>
+                        <!--<li>
+            	<div class="img"><img src="upload/review/thumb/2.jpg"/></div>
+                <div class="cover">รีวิวจากคุณแต๋ว</div>
+            </li>
+            <li>
+            	<div class="img"><img src="upload/review/thumb/3.jpg"/></div>
+                <div class="cover">รีวิวจากคุณบี</div>
+            </li>-->
+        </ul><br clear="all">
+    </div>
+    
+    <div id="home2">
+    	<div class="headline">FEATURED</div>
+        <div class="content">
+        	<ul>
+                        	<li  onClick="window.open('https://www.facebook.com/DoctorYoungerFan/videos/1254285904617213/', '_blank')" >
+                    <div style="background-image:url(upload/feature/feature20170410165618.jpg);" class="image image_cover">
+                      <div class="middle cover1">
+                          <div class="text font_white">YOUNGER VDO</div>
+                      </div>
+                    </div>
+                </li>
+                        	<li  onClick="window.location.href='http://www.doctoryounger.com/services-detail.php?category=1&s=9'" >
+                    <div style="background-image:url(upload/feature/feature20170410165410.jpg);" class="image image_cover">
+                      <div class="middle cover2">
+                          <div class="text font_white">RECCOMMEND</div>
+                      </div>
+                    </div>
+                </li>
+                        	<li  onClick="window.location.href='http://www.doctoryounger.com/products-detail.php?pd=3'" >
+                    <div style="background-image:url(upload/feature/feature20170411121634.jpg);" class="image image_cover">
+                      <div class="middle cover3">
+                          <div class="text font_white">BEST SELLERS</div>
+                      </div>
+                    </div>
+                </li>
+                        	<li  onClick="window.open('https://www.facebook.com/Olivie-297793640617914/?ref=bookmarks', '_blank')" >
+                    <div style="background-image:url(upload/feature/feature20170411124254.jpg);" class="image image_cover">
+                      <div class="middle cover3">
+                          <div class="text font_white">OTHER PRODUCT</div>
+                      </div>
+                    </div>
+                </li>
+                        	<li  onClick="window.open('https://www.youtube.com/watch?v=A-tc_Z76B4c', '_blank')" >
+                    <div style="background-image:url(upload/feature/feature20170411134428.jpg);" class="image image_cover">
+                      <div class="middle cover3">
+                          <div class="text font_white">KNOWLEDGE</div>
+                      </div>
+                    </div>
+                </li>
+                        	<li  onClick="window.open('https://www.facebook.com/WakamonoFanPage', '_blank')" >
+                    <div style="background-image:url(upload/feature/feature20170410180528.jpg);" class="image image_cover">
+                      <div class="middle cover3">
+                          <div class="text font_white">WAKAMONO</div>
+                      </div>
+                    </div>
+                </li>
+                        	<li  onClick="window.location.href='beauty-talk.php'" >
+                    <div style="background-image:url(upload/feature/feature20170405231822.jpg);" class="image image_cover">
+                      <div class="middle cover4">
+                          <div class="text font_white">BEAUTY'S TALK</div>
+                      </div>
+                    </div>
+                </li>
+                        	<li  onClick="window.location.href='tips.php'" >
+                    <div style="background-image:url(upload/feature/feature20170411133810.jpg);" class="image image_cover">
+                      <div class="middle ">
+                          <div class="text font_white">BEAUTY TIPS</div>
+                      </div>
+                    </div>
+                </li>
+            <!--                <li onClick="window.location.href='services.php'">
+                    <div style="background-image:url(upload/recommend/thumb/1.jpg);" class="image image_cover">
+                      <div class="middle cover2">
+                          <div class="text font_white">SERVICES</div>
+                      </div>
+                    </div>
+                </li>
+                <li onClick="window.location.href='products.php'">
+                    <div style="background-image:url(upload/product/thumb/1.jpg);" class="image image_product">
+                      <div class="middle">
+                          <div class="text font_grey">BEST SELLERS</div>
+                      </div>
+                    </div>
+                </li>
+                <li onClick="window.location.href='products.php'">
+                    <div style="background-image:url(upload/product/thumb/2.jpg);" class="image image_product">
+                      <div class="middle">
+                          <div class="text font_grey">BEST SELLERS</div>
+                      </div>
+                    </div>
+                </li>
+                <li>
+                    <div style="background-image:url(upload/knowledge/thumb/1.jpg);" class="image image_cover">
+                      <div class="middle cover3">
+                          <div class="text font_white">KNOWLEDGE</div>
+                      </div>
+                    </div>
+                </li>
+                <li>
+                    <div style="background-image:url(upload/knowledge/thumb/2.jpg);" class="image image_cover">
+                      <div class="middle cover3">
+                          <div class="text font_white">KNOWLEDGE</div>
+                      </div>
+                    </div>
+                </li>
+                <li onClick="window.location.href='beauty-talk.php'">
+                    <div style="background-image:url(upload/beauty/thumb/1.jpg);" class="image image_cover">
+                      <div class="middle cover4">
+                          <div class="text font_white">BEAUTY'S TALK</div>
+                      </div>
+                    </div>
+                </li>
+                <li>
+                    <div style="background-image:url(upload/tip/thumb/1.jpg);" class="image image_cover">
+                      <div class="middle">
+                          <div class="text font_white">TIPS</div>
+                      </div>
+                    </div>
+                </li>-->
+            </ul><br clear="all">
+        </div>
+    </div>
+  </div>  
+    <div id="footer">
+    <div id="containerMainBody">
+        <div class="footer_branch">
+        	<ul>
+            	<!--<li>
+                	<div class="icon"><img src="images/shared/icon_footer1.png"/></div>
+                    <div class="text"><h1 class="font_gold2">เทอร์มินอล 21</h1><h2 class="font_grey">02-108-0750-1</h2></div>
+                </li>-->
+                <li>
+                	<div class="icon"><img src="images/shared/icon_footer2.png"/></div>
+                    <div class="text"><h1 class="font_gold2">สุขุมวิท 23</h1><h2 class="font_grey">02-665-7057-8</h2></div>
+                </li>
+                <li>
+                	<div class="icon"><img src="images/shared/icon_footer3.png"/></div>
+                    <div class="text"><h1 class="font_gold2">ธัญญาพาร์ค ศรีนครินทร์</h1><h2 class="font_grey">02-108-6168-9</h2></div>
+                </li>
+            </ul><br clear="all">
+        </div>
+       </div>
+      <div class="footer_line"></div>
+      <div id="containerMainBody">
+        <div class="footer_saving">
+        	<ul>
+            	<li>
+                	<div class="icon"><img src="images/shared/icon_dfooter1.png"/></div>
+                    <div class="text"><h1 class="font_gold2">มั่นใจปลอดภัยด้วย<br>เทคโนโลยีที่คัดสรรแล้ว</h1></div>
+                </li>
+                <li>
+                	<div class="icon"><img src="images/shared/icon_dfooter2.png"/></div>
+                    <div class="text"><h1 class="font_gold2">ดูแลโดยแพทย์<br>ผู้เชี่ยวชาญ</h1></div>
+                </li>
+                <li>
+                	<div class="icon"><img src="images/shared/icon_dfooter3.png"/></div>
+                    <div class="text"><h1 class="font_gold2">บริการด้วยมาตรฐาน<br>ระดับสากล</h1></div>
+                </li>
+            </ul><br clear="all">
+        </div>
+      </div>
+      <div class="footer_copyright">
+          <div id="containerMainBody">
+            <div class="f-left font_white">© 2017 Doctoryounger</div>
+            <div class="f-right"><a href="https://www.facebook.com/DoctorYoungerFan/" target="_blank"><img src="images/shared/icon-f1.png" class="img_hover"/></a><a href="https://www.instagram.com/doctor_younger/" target="_blank"><img src="images/shared/icon-f2.png" class="img_hover"/></a><a href="http://line.me/ti/p/~@DoctorYounger" target="_blank"><img src="images/shared/icon-f3.png" class="img_hover"/></a></div>
+          </div>
+      </div>
+</div>
+<div id="footer_mobile">
+	<div><a href="register.php"><i class="fa fa-user-circle"></i> Register</a> <span>|</span><a href="booking.php"><i class="fa fa-pencil"></i> Book now</a></div>
+</div>
+
+<div id="footer_consent">
+	<div class="consent-container">
+    	เมื่อคลิก “อนุญาตคุกกี้ทั้งหมด” หมายความว่าผู้ใช้งานยอมรับที่จะเปิดการใช้งานคุกกี้เพื่อวัตถุประสงค์ต่างๆ ดังต่อไปนี้ เพื่อให้เว็บไซต์สามารถทำงานได้อย่างถูกต้องและเต็มประสิทธิภาพ เพื่อเปิดใช้คุณสมบัติของโซเชียลมีเดีย และเพื่อวิเคราะห์การเข้าใช้งานเพื่อนำข้อมูลไปใช้ในการทำการตลาดและการโฆษณา รวมถึงการแบ่งปันข้อมูลการใช้งานกับพาร์ทเนอร์โซเชียลมีเดีย
+    </div>
+    <div class="consent-container-btn">
+    	<a href="#" id="cn-accept-cookie" data-cookie-set="accept" aria-label="อนุญาตคุกกี้ทั้งหมด"><button>อนุญาตคุกกี้ทั้งหมด</button></a>
+        <a href="#" id="cn-refuse-cookie" data-cookie-set="refuse" aria-label="ไม่"><button>ไม่</button></a>
+        <a href="privacy-policy.php" id="cn-more-info" aria-label="Privacy policy"><button>Privacy policy</button></a>
+    </div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-98356046-1', 'auto');
+  ga('send', 'pageview'); 	
+
+</script>    
+  </div>
+  
+</div>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"790b6388c33641558eef72c3d58cd900","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
