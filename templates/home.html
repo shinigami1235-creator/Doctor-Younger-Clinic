@@ -37,7 +37,8 @@
     {{ m.frame(page.hero.image, page.hero.image_alt, '4/5', 'frame--hero', eager=true, pos='70% 30%') }}
     <svg class="hero__badge" viewBox="0 0 200 200" aria-hidden="true">
       <defs><path id="badge-path" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
-      <text><textPath href="#badge-path">ALWAYS YOUNGER · DOCTOR YOUNGER · ALWAYS YOUNGER · DOCTOR YOUNGER · </textPath></text>
+      <circle class="hero__badge-bg" cx="100" cy="100" r="96"/>
+      <text><textPath href="#badge-path" textLength="458" lengthAdjust="spacing">ALWAYS YOUNGER · DOCTOR YOUNGER ·</textPath></text>
       <circle cx="100" cy="100" r="3.5"/>
     </svg>
     <span class="hero__credit">{{ page.hero.credit }}</span>
