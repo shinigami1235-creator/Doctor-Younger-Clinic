@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import re
 import shutil
@@ -36,6 +37,10 @@ PREVIEW_BASE = "/Doctor-Younger-Clinic"   # GitHub Pages serves the preview from
 LEGACY = "https://www.doctoryounger.com/"
 
 WEEKDAY_KEYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+
+# Short fingerprint of the CSS and JS, added to their links so a new build is never served stale
+ASSET_VERSION = hashlib.sha1(b"".join(p.read_bytes() for p in sorted((ROOT / "static").glob("*/*"))
+                                      if p.suffix in (".css", ".js"))).hexdigest()[:8]
 
 # Product order on the current products page.
 PRODUCT_ORDER = ["ageless-essence", "sunscreen-360", "cleansing-mousse", "deep-cleansing-water",
@@ -119,6 +124,9 @@ class Paths:
         return f"{self.origin}{prefix}{path}"
 
     def static(self, path: str) -> str:
+        # CSS and JS carry a version so browsers fetch the new file after each change
+        if path.endswith((".css", ".js")):
+            return f"{self.base}/static/{path}?v={ASSET_VERSION}"
         return f"{self.base}/static/{path}"
 
 
