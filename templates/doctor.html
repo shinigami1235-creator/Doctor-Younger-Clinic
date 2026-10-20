@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
 {% set full = doctor.title[lang] ~ ('' if lang == 'th' else ' ') ~ doctor.name[lang] %}
-{% block title %}{{ full }}{% if doctor.nickname[lang] %} ({{ doctor.nickname[lang] }}){% endif %} | {{ site.name }}{% endblock %}
+{% block title %}{{ full }}{% if doctor.nickname[lang] %} ({{ doctor.nickname[lang] }}){% endif %} | {{ ui.title_suffix }}{% endblock %}
 {% block description %}{{ doctor.summary[lang] }}{% endblock %}
 {% block body_class %}page-doctor{% endblock %}
 {% block main %}

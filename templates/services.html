@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
-{% block title %}{{ ui.nav.services }} | {{ site.name }}{% endblock %}
+{% block title %}{{ ui.nav.services }} | {{ ui.title_suffix }}{% endblock %}
 {% block description %}{{ page.meta.description }}{% endblock %}
 {% block body_class %}page-services{% endblock %}
 {% block main %}
@@ -21,7 +21,7 @@
     </li>
     {% endfor %}
   </ol>
-  <div class="hover-preview" aria-hidden="true" data-preview-box><img alt=""></div>
+  <div class="hover-preview" aria-hidden="true" data-preview-box><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt=""></div>
 </section>
 
 {% with start = 'all', heading = '' %}{% include "partials/finder.html" %}{% endwith %}

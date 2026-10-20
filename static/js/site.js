@@ -164,7 +164,7 @@
     /* Floating picture that follows the cursor over list rows */
     $$("[data-hover-preview], .news-list").forEach(function (list) {
       var box = list.querySelector("[data-preview-box]");
-      if (!box) { box = document.createElement("div"); box.className = "hover-preview"; box.innerHTML = '<img alt="">'; list.appendChild(box); }
+      if (!box) { box = document.createElement("div"); box.className = "hover-preview"; box.innerHTML = '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">'; list.appendChild(box); }
       var img = box.querySelector("img");
       list.addEventListener("mousemove", function (e) {
         box.style.left = e.clientX + 24 + "px"; box.style.top = e.clientY + "px";

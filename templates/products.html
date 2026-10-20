@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
-{% block title %}{{ ui.nav.products }} | {{ site.name }}{% endblock %}
+{% block title %}{{ ui.nav.products }} | {{ ui.title_suffix }}{% endblock %}
 {% block description %}{{ ui.products_intro }}{% endblock %}
 {% block body_class %}page-products{% endblock %}
 {% block main %}

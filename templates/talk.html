@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
-{% block title %}{{ ui.nav.beauty_talk }}: {{ page.name }} | {{ site.name }}{% endblock %}
+{% block title %}{{ ui.nav.beauty_talk }}: {{ page.name }} | {{ ui.title_suffix }}{% endblock %}
 {% block description %}{{ page.qa[0].a if page.qa else '' }}{% endblock %}
 {% block body_class %}page-interview{% endblock %}
 {% block main %}

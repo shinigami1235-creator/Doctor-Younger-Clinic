@@ -690,3 +690,11 @@ html[lang="th"] .stat__label { letter-spacing: .02em; font-size: 18px; text-tran
   .pager__link--next { text-align: left; }
   .doctor--row { grid-template-columns: 110px 1fr; gap: 20px; }
 }
+/* Long single-word treatment names (PHONOPHORESIS, ENDERMOLOGIE®) must fit a phone screen */
+@media (max-width: 600px) {
+  .page-head__title, .svc-hero__title, .prod-hero__title, .doc-hero__name, .branch-hero__title { font-size: min(9.4vw, 46px); }
+}
+.page-head__title, .svc-hero__title, .prod-hero__title, .article__title { overflow-wrap: break-word; }
+.cat-big > *, .cat-row a > *, .news-row > * { min-width: 0; }
+.cat-big__name, .cat-row__name { overflow-wrap: break-word; }
+@media (max-width: 600px) { .cat-big__name { font-size: min(8vw, 30px); } }

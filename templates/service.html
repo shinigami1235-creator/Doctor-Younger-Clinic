@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% import "partials/macros.html" as m with context %}
-{% block title %}{{ page.name }} {{ page.tagline }} | {{ site.name }}{% endblock %}
+{% block title %}{{ page.name }} {{ page.tagline }} | {{ ui.title_suffix }}{% endblock %}
 {% block description %}{{ page.tagline }} {{ page.body | plain(130) }}{% endblock %}
 {% block body_class %}page-service{% endblock %}
 
