@@ -48,9 +48,9 @@ function start() {
   renderer.domElement.setAttribute("aria-hidden", "true");
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(32, 1, 0.1, 100);
-  camera.position.set(0, 1.9, 10.6);
-  camera.lookAt(0, 0.9, 0);
+  const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
+  camera.position.set(0, 2.6, 14);
+  camera.lookAt(0, 1.0, 0);
 
   scene.add(new THREE.HemisphereLight(0xfff8ee, 0xd9c9a3, 1.15));
   const key = new THREE.DirectionalLight(0xffffff, 1.4);
@@ -90,15 +90,15 @@ function start() {
     const shadow = new THREE.Mesh(new THREE.PlaneGeometry(2.4, 2.4), new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, depthWrite: false }));
     shadow.rotation.x = -Math.PI / 2;
     shadow.position.y = 0.005;
-    const pedestal = new THREE.Mesh(new THREE.CylinderGeometry(0.78, 0.86, 0.5, 64), pedestalMat);
-    pedestal.position.y = 0.25;
-    const rim = new THREE.Mesh(new THREE.TorusGeometry(0.78, 0.018, 12, 80), rimMat);
+    const pedestal = new THREE.Mesh(new THREE.CylinderGeometry(0.62, 0.68, 0.42, 64), pedestalMat);
+    pedestal.position.y = 0.21;
+    const rim = new THREE.Mesh(new THREE.TorusGeometry(0.62, 0.016, 12, 80), rimMat);
     rim.rotation.x = Math.PI / 2;
-    rim.position.y = 0.5;
+    rim.position.y = 0.42;
 
     const mat = new THREE.MeshBasicMaterial({ transparent: true, alphaMap: vignette, opacity: 1, depthWrite: false });
-    const photo = new THREE.Mesh(new THREE.PlaneGeometry(2.1, 2.1), mat);
-    photo.position.y = 1.5;
+    const photo = new THREE.Mesh(new THREE.PlaneGeometry(1.7, 1.7), mat);
+    photo.position.y = 1.32;
     loader.load(item.img, (tex) => {
       tex.colorSpace = THREE.SRGBColorSpace;
       tex.anisotropy = 4;
@@ -206,7 +206,7 @@ function start() {
     const w = stage.clientWidth, h = stage.clientHeight;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
-    camera.position.z = w / h < 1 ? 13 : 10.6;
+    camera.position.z = w / h < 1 ? 18 : 14;
     camera.updateProjectionMatrix();
   }
   window.addEventListener("resize", resize);
@@ -234,7 +234,7 @@ function start() {
       const s = 0.7 + 0.45 * Math.pow(front, 3);
       g.scale.setScalar(s);
       p.material.opacity = 0.35 + 0.65 * front;
-      p.position.y = 1.5 + (front > 0.98 ? Math.sin(t / 700) * 0.06 : 0);
+      p.position.y = 1.32 + (front > 0.98 ? Math.sin(t / 700) * 0.05 : 0);
     });
     renderer.render(scene, camera);
   }
