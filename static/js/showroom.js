@@ -98,7 +98,7 @@ function start() {
 
     const mat = new THREE.MeshBasicMaterial({ transparent: true, alphaMap: vignette, opacity: 1, depthWrite: false });
     const photo = new THREE.Mesh(new THREE.PlaneGeometry(1.7, 1.7), mat);
-    photo.position.y = 1.32;
+    photo.position.y = 1.1;   // photo bottom rests on the pedestal top
     loader.load(item.img, (tex) => {
       tex.colorSpace = THREE.SRGBColorSpace;
       tex.anisotropy = 4;
@@ -234,7 +234,7 @@ function start() {
       const s = 0.7 + 0.45 * Math.pow(front, 3);
       g.scale.setScalar(s);
       p.material.opacity = 0.35 + 0.65 * front;
-      p.position.y = 1.32 + (front > 0.98 ? Math.sin(t / 700) * 0.05 : 0);
+      p.position.y = 1.1 + (front > 0.98 ? Math.sin(t / 700) * 0.05 : 0);
     });
     renderer.render(scene, camera);
   }
