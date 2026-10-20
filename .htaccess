@@ -1,0 +1,97 @@
+RewriteEngine On
+ErrorDocument 404 /404.html
+
+RewriteRule ^index[.]php$ /? [R=301,L]
+RewriteRule ^about-us[.]php$ /about/? [R=301,L]
+RewriteRule ^doctor-profile[.]php$ /doctors/? [R=301,L]
+RewriteRule ^beauty-talk[.]php$ /beauty-talk/? [R=301,L]
+RewriteRule ^services[.]php$ /services/? [R=301,L]
+RewriteRule ^review[.]php$ /reviews/? [R=301,L]
+RewriteRule ^contact-us[.]php$ /branches/sukhumvit-23/? [R=301,L]
+RewriteRule ^booking[.]php$ /booking/? [R=301,L]
+RewriteRule ^privacy-policy[.]php$ /privacy-policy/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=1$
+RewriteRule ^services-detail[.]php$ /services/laser-rf/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=1&s=2$
+RewriteRule ^services-detail[.]php$ /services/laser-rf/co2-laser/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=1&s=3$
+RewriteRule ^services-detail[.]php$ /services/laser-rf/fractional-laser/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=1&s=1$
+RewriteRule ^services-detail[.]php$ /services/laser-rf/aramis-laser/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=1&s=5$
+RewriteRule ^services-detail[.]php$ /services/laser-rf/pigment-laser/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=1&s=7$
+RewriteRule ^services-detail[.]php$ /services/laser-rf/active-bright/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=1&s=9$
+RewriteRule ^services-detail[.]php$ /services/laser-rf/ultra-deep-lifting/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=1&s=4$
+RewriteRule ^services-detail[.]php$ /services/laser-rf/aura-bright/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=1&s=6$
+RewriteRule ^services-detail[.]php$ /services/laser-rf/monopolar-rf/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=2$
+RewriteRule ^services-detail[.]php$ /services/facial-design/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=2&s=51$
+RewriteRule ^services-detail[.]php$ /services/facial-design/vital-lift/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=2&s=10$
+RewriteRule ^services-detail[.]php$ /services/facial-design/ha/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=2&s=14$
+RewriteRule ^services-detail[.]php$ /services/facial-design/v-touch/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=2&s=11$
+RewriteRule ^services-detail[.]php$ /services/facial-design/diamond-toxin/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=3$
+RewriteRule ^services-detail[.]php$ /services/facial-treatment/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=3&s=27$
+RewriteRule ^services-detail[.]php$ /services/facial-treatment/acne-clear-light/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=3&s=25$
+RewriteRule ^services-detail[.]php$ /services/facial-treatment/phonophoresis/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=3&s=19$
+RewriteRule ^services-detail[.]php$ /services/facial-treatment/synergica/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=3&s=20$
+RewriteRule ^services-detail[.]php$ /services/facial-treatment/blue-mate/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=3&s=16$
+RewriteRule ^services-detail[.]php$ /services/facial-treatment/dermalift/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=3&s=23$
+RewriteRule ^services-detail[.]php$ /services/facial-treatment/grey-mate/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=3&s=17$
+RewriteRule ^services-detail[.]php$ /services/facial-treatment/cry-o-lift/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=3&s=53$
+RewriteRule ^services-detail[.]php$ /services/facial-treatment/dermalift-and-mask/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=3&s=18$
+RewriteRule ^services-detail[.]php$ /services/facial-treatment/ruby-mate/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=3&s=21$
+RewriteRule ^services-detail[.]php$ /services/facial-treatment/oxy-plus/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=3&s=22$
+RewriteRule ^services-detail[.]php$ /services/facial-treatment/iontophoresis/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=3&s=26$
+RewriteRule ^services-detail[.]php$ /services/facial-treatment/new-a-peel/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=3&s=24$
+RewriteRule ^services-detail[.]php$ /services/facial-treatment/peeling-treatment/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=4$
+RewriteRule ^services-detail[.]php$ /services/body-treatment/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=4&s=28$
+RewriteRule ^services-detail[.]php$ /services/body-treatment/endermologie/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=5$
+RewriteRule ^services-detail[.]php$ /services/hair-removal/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=5&s=31$
+RewriteRule ^services-detail[.]php$ /services/hair-removal/tks-laser/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=6$
+RewriteRule ^services-detail[.]php$ /services/others/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^category=6&s=54$
+RewriteRule ^services-detail[.]php$ /services/others/vita-bright/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^doctor=1$
+RewriteRule ^doctor-profile-detail[.]php$ /doctors/wilai-thanasarnaksorn/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^doctor=3$
+RewriteRule ^doctor-profile-detail[.]php$ /doctors/nopadol-amornpinyokiat/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^doctor=5$
+RewriteRule ^doctor-profile-detail[.]php$ /doctors/patcharaporn-wachiranuntasin/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^doctor=12$
+RewriteRule ^doctor-profile-detail[.]php$ /doctors/manika-napharat/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^doctor=11$
+RewriteRule ^doctor-profile-detail[.]php$ /doctors/nattawan-limcharoenwiriyakul/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^doctor=10$
+RewriteRule ^doctor-profile-detail[.]php$ /doctors/puntharika-apinoraset/? [R=301,L]
+RewriteCond %{QUERY_STRING} ^doctor=9$
+RewriteRule ^doctor-profile-detail[.]php$ /doctors/urairak-sapsarn/? [R=301,L]
+
+# The 2017 demo copy of the site
+RewriteRule ^demo2017/ / [R=301,L]
