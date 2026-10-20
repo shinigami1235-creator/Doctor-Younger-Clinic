@@ -1,0 +1,77 @@
+{# Shared building blocks. Import with {% import "partials/macros.html" as m with context %} #}
+
+{# Page title block used at the top of inner pages #}
+{% macro page_head(eyebrow, title, intro='', crumbs=[]) %}
+<section class="page-head">
+  {% if crumbs %}
+  <nav class="crumbs" aria-label="Breadcrumb" data-reveal>
+    <a href="{{ url('/') }}">{{ ui.nav.home }}</a>
+    {% for label, href in crumbs %}<span>/</span>{% if href %}<a href="{{ href }}">{{ label }}</a>{% else %}<span>{{ label }}</span>{% endif %}{% endfor %}
+  </nav>
+  {% endif %}
+  {% if eyebrow %}<p class="eyebrow{{ eyebrow|th }}" data-reveal>{{ eyebrow }}</p>{% endif %}
+  <h1 class="page-head__title" data-split>{{ title }}</h1>
+  {% if intro %}<p class="page-head__intro" data-reveal>{{ intro }}</p>{% endif %}
+</section>
+{% endmacro %}
+
+{# Picture with the offset bronze frame and wipe reveal #}
+{% macro frame(src, alt='', ratio='4/5', cls='', eager=false, pos='center') %}
+<div class="frame {{ cls }}" style="--ratio: {{ ratio }}" data-frame>
+  <img src="{{ src }}" alt="{{ alt }}" {% if not eager %}loading="lazy"{% else %}fetchpriority="high"{% endif %} style="object-position: {{ pos }}">
+</div>
+{% endmacro %}
+
+{# Treatment card #}
+{% macro service_card(slug, i=0) %}
+{% set cat = cat_of[slug] %}
+{% set s = c.services[slug] %}
+<a class="svc-card" href="{{ url(service_path(cat.id, slug)) }}" data-reveal style="--d: {{ (i % 6) * 60 }}ms" data-tilt>
+  <span class="svc-card__cat">{{ cat.name }}</span>
+  <span class="svc-card__name">{{ s.name }}</span>
+  <span class="svc-card__tag">{{ s.tagline }}</span>
+  {% if s.images %}<span class="svc-card__img"><img src="{{ s.images[0] | media }}" alt="" loading="lazy"></span>{% endif %}
+  <span class="svc-card__arrow" aria-hidden="true"></span>
+</a>
+{% endmacro %}
+
+{# Review card #}
+{% macro review_card(rid, i=0) %}
+{% set r = c.reviews[rid] %}
+<a class="review-card" href="{{ url('/reviews/' ~ rid ~ '/') }}" data-reveal style="--d: {{ (i % 3) * 90 }}ms">
+  <span class="review-card__img">{% if r.thumb or r.images %}<img src="{{ (r.thumb or r.images[0]) | media }}" alt="" loading="lazy">{% endif %}</span>
+  <span class="review-card__title">{{ r.title }}</span>
+  <span class="review-card__by{{ r.by|th }}">{{ r.by }}</span>
+</a>
+{% endmacro %}
+
+{# Doctor card #}
+{% macro doctor_card(d, i=0) %}
+<a class="doc-card" href="{{ url('/doctors/' ~ d.id ~ '/') }}" data-reveal style="--d: {{ (i % 4) * 70 }}ms">
+  {{ frame(d.photo | media, d.title[lang] ~ ('' if lang == 'th' else ' ') ~ d.name[lang], '4/5', 'frame--doc', pos='center 18%') }}
+  <span class="doc-card__title{{ d.title[lang]|th }}">{{ d.title[lang] }}</span>
+  <span class="doc-card__name">{{ d.name[lang] }}</span>
+  {% if d.nickname[lang] %}<span class="doc-card__nick">{{ d.nickname[lang] }}</span>{% endif %}
+</a>
+{% endmacro %}
+
+{# Product card #}
+{% macro product_card(slug, i=0) %}
+{% set p = c.products[slug] %}
+<a class="prod-card" href="{{ url('/products/' ~ slug ~ '/') }}" data-reveal style="--d: {{ (i % 3) * 80 }}ms" data-tilt>
+  <span class="prod-card__img"><img src="{{ p.images[0] | media }}" alt="{{ p.name }}" loading="lazy"></span>
+  <span class="prod-card__name">{{ p.name }}</span>
+  {% if p.price %}<span class="prod-card__price">{{ p.price }}</span>{% endif %}
+</a>
+{% endmacro %}
+
+{# Call to action band #}
+{% macro cta_band(text) %}
+<section class="cta-band" data-reveal>
+  <p class="cta-band__text">{{ text }}</p>
+  <div class="cta-band__actions">
+    <a class="btn btn--light" href="{{ site.line_url }}" target="_blank" rel="noopener" data-magnetic>{{ ui.book_line }}</a>
+    <a class="link-arrow link-arrow--light" href="tel:{{ site.call_center_tel }}">{{ site.call_center }}</a>
+  </div>
+</section>
+{% endmacro %}

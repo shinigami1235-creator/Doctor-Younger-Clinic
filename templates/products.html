@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block title %}{{ ui.nav.products }} | {{ site.name }}{% endblock %}
+{% block description %}{{ ui.products_intro }}{% endblock %}
+{% block body_class %}page-products{% endblock %}
+{% block main %}
+{{ m.page_head(site.name, ui.nav.products, ui.products_intro, [(ui.nav.products, '')]) }}
+
+<section class="showroom" data-showroom aria-roledescription="carousel" aria-label="{{ ui.nav.products }}">
+  <div class="showroom__stage" data-showroom-stage>
+    <p class="showroom__hint">{{ ui.drag_hint }}</p>
+  </div>
+  <div class="showroom__card" aria-live="polite" data-showroom-card>
+    <p class="eyebrow"><span data-sr-index>01</span> / {{ '%02d' % (product_order | length) }}</p>
+    <h2 class="showroom__name" data-sr-name></h2>
+    <p class="showroom__short" data-sr-short></p>
+    <dl class="showroom__facts">
+      <div data-sr-size-row><dt>{{ ui.size }}</dt><dd data-sr-size></dd></div>
+      <div data-sr-price-row><dt>{{ ui.price }}</dt><dd data-sr-price></dd></div>
+    </dl>
+    <a class="btn" href="#" data-sr-link data-magnetic>{{ ui.view_details }}</a>
+  </div>
+  <div class="showroom__controls">
+    <button type="button" class="round-btn" data-sr-prev aria-label="{{ ui.prev }}"><span aria-hidden="true">←</span></button>
+    <div class="showroom__dots" data-sr-dots></div>
+    <button type="button" class="round-btn" data-sr-next aria-label="{{ ui.next }}"><span aria-hidden="true">→</span></button>
+  </div>
+</section>
+
+<section class="prod-grid-wrap">
+  <div class="prod-grid">
+    {% for slug in product_order %}{{ m.product_card(slug, loop.index0) }}{% endfor %}
+  </div>
+</section>
+{% endblock %}
+
+{% block data %}
+<script type="application/json" id="showroom-items">[
+{% for slug in product_order %}{% set p = c.products[slug] %}
+{{ {'name': p.name, 'short': p.short or p.tagline, 'size': p.size or '', 'price': p.price or '', 'url': url('/products/' ~ slug ~ '/'), 'img': p.images[0] | media} | tojson }}{% if not loop.last %},{% endif %}
+{% endfor %}
+]</script>
+{% endblock %}
+
+{% block scripts %}
+<script type="importmap">{"imports": {"three": "{{ paths.static('vendor/three.module.min.js') }}"}}</script>
+<script type="module" src="{{ paths.static('js/showroom.js') }}"></script>
+{% endblock %}

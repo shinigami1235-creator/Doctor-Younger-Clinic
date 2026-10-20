@@ -1,0 +1,38 @@
+# Treatment finder. Each concern lists the treatments whose own text on the
+# current site names that problem. Concern labels are new. CONFIRM them with the clinic.
+
+- id: acne
+  label: {th: สิวและรอยสิว, en: Acne and acne marks}
+  treatments: [acne-clear-light, fractional-laser, v-touch, aura-bright, new-a-peel, peeling-treatment, aramis-laser]
+
+- id: pigment
+  label: {th: ฝ้า กระ จุดด่างดำ, en: Melasma, freckles and dark spots}
+  treatments: [pigment-laser, aura-bright, grey-mate, v-touch, phonophoresis, active-bright]
+
+- id: wrinkles
+  label: {th: ริ้วรอยและผิวหย่อนคล้อย, en: Wrinkles and sagging skin}
+  treatments: [ultra-deep-lifting, monopolar-rf, vital-lift, diamond-toxin, ha, ruby-mate, dermalift, cry-o-lift, synergica, dermalift-and-mask, v-touch]
+
+- id: bright
+  label: {th: ผิวขาวกระจ่างใส, en: Brighter, clearer skin}
+  treatments: [aura-bright, active-bright, vita-bright, oxy-plus, iontophoresis, blue-mate, phonophoresis, synergica, cry-o-lift]
+
+- id: pores
+  label: {th: รูขุมขนและแผลเป็น, en: Pores and scars}
+  treatments: [aramis-laser, fractional-laser, v-touch]
+
+- id: contour
+  label: {th: ปรับรูปหน้า, en: Face contouring}
+  treatments: [diamond-toxin, ha, vital-lift, ultra-deep-lifting]
+
+- id: lesions
+  label: {th: ไฝ หูด ติ่งเนื้อ, en: Moles, warts and skin tags}
+  treatments: [co2-laser]
+
+- id: hair
+  label: {th: กำจัดขน, en: Hair removal}
+  treatments: [tks-laser]
+
+- id: body
+  label: {th: กระชับสัดส่วน, en: Body contouring}
+  treatments: [endermologie]

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block title %}{{ ui.nav.services }} | {{ site.name }}{% endblock %}
+{% block description %}{{ page.meta.description }}{% endblock %}
+{% block body_class %}page-services{% endblock %}
+{% block main %}
+{{ m.page_head(site.name, ui.nav.services, page.hero.intro, [(ui.nav.services, '')]) }}
+
+<section class="cat-index">
+  <ol class="cat-rows" data-hover-preview>
+    {% for cat in categories %}
+    {% set first = (cat['items'] | selectattr('slug', 'in', built_services) | first) %}
+    {% set img = (c.services[first.slug].images[0] if first and c.services[first.slug].images else '') %}
+    <li class="cat-row" data-reveal style="--d: {{ loop.index0 * 60 }}ms">
+      <a href="{{ url('/services/' ~ cat.id ~ '/') }}" data-preview="{{ img | media }}">
+        <span class="cat-row__num">{{ '%02d' % loop.index }}</span>
+        <span class="cat-row__name">{{ cat.name }}</span>
+        <span class="cat-row__items">{{ cat['items'] | map(attribute='name') | join(' · ') }}</span>
+        <span class="cat-row__arrow" aria-hidden="true"></span>
+      </a>
+    </li>
+    {% endfor %}
+  </ol>
+  <div class="hover-preview" aria-hidden="true" data-preview-box><img alt=""></div>
+</section>
+
+{% with start = 'all', heading = '' %}{% include "partials/finder.html" %}{% endwith %}
+{{ m.cta_band(c.services['ultra-deep-lifting'].closing) }}
+{% endblock %}

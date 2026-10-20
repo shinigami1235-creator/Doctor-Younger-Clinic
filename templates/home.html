@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
 {% block title %}{{ page.meta.title }}{% endblock %}
 {% block description %}{{ page.meta.description }}{% endblock %}
 {% block body_class %}page-home{% endblock %}
@@ -16,7 +17,8 @@
 {% block main %}
 
 {# ---------- Hero ---------- #}
-<section class="hero">
+<section class="hero" data-hero>
+  <canvas class="hero__dust" aria-hidden="true" data-dust></canvas>
   <div class="hero__text">
     <p class="eyebrow hero__eyebrow" data-reveal>{{ site.tagline }}</p>
     <h1 class="hero__title">
@@ -27,19 +29,31 @@
     </h1>
     <p class="hero__intro" data-reveal>{{ page.hero.intro }}</p>
     <div class="hero__actions" data-reveal>
-      <a class="btn" href="{{ site.line_url }}" target="_blank" rel="noopener">{{ ui.book_now }}</a>
-      <a class="link-arrow" href="#services">{{ ui.nav.services }}</a>
+      <a class="btn" href="{{ site.line_url }}" target="_blank" rel="noopener" data-magnetic>{{ ui.book_now }}</a>
+      <a class="link-arrow" href="{{ url('/services/') }}">{{ ui.all_treatments }}</a>
     </div>
   </div>
-  <div class="hero__media">
-    <div class="arch arch--hero" data-parallax>
-      <img src="{{ page.hero.image }}" alt="{{ page.hero.image_alt }}" width="1400" height="933" fetchpriority="high">
-    </div>
-    <svg class="hero__orbit" viewBox="0 0 400 400" aria-hidden="true"><circle cx="200" cy="200" r="198" pathLength="1"/></svg>
+  <div class="hero__media" data-mouse-layer>
+    {{ m.frame(page.hero.image, page.hero.image_alt, '4/5', 'frame--hero', eager=true, pos='70% 30%') }}
+    <svg class="hero__badge" viewBox="0 0 200 200" aria-hidden="true">
+      <defs><path id="badge-path" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
+      <text><textPath href="#badge-path">ALWAYS YOUNGER · DOCTOR YOUNGER · ALWAYS YOUNGER · DOCTOR YOUNGER · </textPath></text>
+      <circle cx="100" cy="100" r="3.5"/>
+    </svg>
     <span class="hero__credit">{{ page.hero.credit }}</span>
   </div>
-  <a class="hero__scroll" href="#pillars" aria-label="Scroll"><i></i></a>
 </section>
+
+{# ---------- Treatment marquee ---------- #}
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    {% for _ in range(2) %}
+    {% for cat in categories %}{% for it in cat['items'] %}
+    <a href="{{ url(service_path(cat.id, it.slug)) }}" tabindex="-1">{{ it.name }}</a><i>✦</i>
+    {% endfor %}{% endfor %}
+    {% endfor %}
+  </div>
+</div>
 
 {# ---------- Three badges ---------- #}
 <section class="pillars" id="pillars">
@@ -51,50 +65,47 @@
   {% endfor %}
 </section>
 
-{# ---------- Services ---------- #}
-<section class="services" id="services">
-  <header class="section-head" data-reveal>
-    <h2 class="section-title">{{ page.services.heading }}</h2>
-  </header>
-  <ol class="cat-list">
-    {% for cat in categories %}
-    <li class="cat" data-reveal style="--d: {{ loop.index0 * 60 }}ms">
-      <details {% if loop.first %}open{% endif %}>
-        <summary>
-          <span class="cat__num">{{ '%02d' % loop.index }}</span>
-          <span class="cat__name">{{ cat.name }}</span>
-          <span class="cat__count">{{ cat['items'] | length }}</span>
-          <span class="cat__plus" aria-hidden="true"></span>
-        </summary>
-        <ul class="cat__items">
-          {% for item in cat['items'] %}
-          <li>
-            {% if item.slug in built_services %}
-            <a href="{{ url(service_path(cat.id, item.slug)) }}">{{ item.name }}</a>
-            {% else %}
-            <span>{{ item.name }}</span>
-            {% endif %}
-          </li>
-          {% endfor %}
-        </ul>
-      </details>
-    </li>
-    {% endfor %}
-  </ol>
+{# ---------- Numbers ---------- #}
+<section class="stats">
+  {% set treatments = built_services | length %}
+  {% for n, label in [(doctors|length, ui.stats_doctors), (treatments, ui.stats_treatments), (branches|length, ui.stats_branches), (product_order|length, ui.stats_products)] %}
+  <div class="stat" data-reveal style="--d: {{ loop.index0 * 90 }}ms">
+    <span class="stat__num" data-count="{{ n }}">{{ n }}</span>
+    <span class="stat__label">{{ label }}</span>
+  </div>
+  {% endfor %}
 </section>
 
+{# ---------- Treatment finder ---------- #}
+{% with start = concerns[0].id, heading = page.services.heading %}{% include "partials/finder.html" %}{% endwith %}
+<div class="center-link" data-reveal><a class="btn btn--ghost" href="{{ url('/services/') }}">{{ ui.all_treatments }}</a></div>
+
 {# ---------- Featured treatment ---------- #}
+{% set fslug = page.services.featured %}
+{% set fcat = cat_of[fslug] %}
+{% set featured = c.services[fslug] %}
 <section class="feature">
   <div class="feature__text" data-reveal>
-    <p class="eyebrow">{{ featured_cat.name }}</p>
+    <p class="eyebrow">{{ fcat.name }}</p>
     <h2 class="feature__title">{{ featured.name }}</h2>
     <p class="feature__tagline">{{ featured.tagline }}</p>
-    <p>{{ featured.intro }}</p>
-    <a class="link-arrow" href="{{ url(service_path(featured_cat.id, featured_slug)) }}">{{ featured.name }}</a>
+    <a class="link-arrow" href="{{ url(service_path(fcat.id, fslug)) }}">{{ ui.read_more }}</a>
   </div>
   <div class="feature__diagram">
     {% with depth = featured.depth %}{% include "partials/skin_diagram.html" %}{% endwith %}
   </div>
+</section>
+
+{# ---------- Products shelf ---------- #}
+<section class="shelf">
+  <header class="section-head section-head--split" data-reveal>
+    <h2 class="section-title">{{ ui.nav.products }}</h2>
+    <p class="section-intro">{{ ui.products_intro }}</p>
+  </header>
+  <div class="shelf__row" data-drag-scroll>
+    {% for slug in product_order %}{{ m.product_card(slug, loop.index0) }}{% endfor %}
+  </div>
+  <div class="center-link" data-reveal><a class="btn btn--ghost" href="{{ url('/products/') }}">{{ ui.nav.products }}</a></div>
 </section>
 
 {# ---------- Doctors ---------- #}
@@ -103,17 +114,8 @@
     <h2 class="section-title">{{ page.doctors.heading }}</h2>
     <p class="section-intro">{{ page.doctors.intro }}</p>
   </header>
-  <div class="doctor-rail" data-rail>
-    {% for d in doctors %}
-    <article class="doctor" data-reveal style="--d: {{ loop.index0 * 70 }}ms">
-      <div class="arch arch--doctor">
-        <img src="{{ d.photo | media }}" alt="{{ d.title[lang] }}{{ '' if lang == 'th' else ' ' }}{{ d.name[lang] }}" loading="lazy" width="400" height="500">
-      </div>
-      <p class="doctor__title{{ d.title[lang]|th }}">{{ d.title[lang] }}</p>
-      <h3 class="doctor__name">{{ d.name[lang] }}</h3>
-      {% if d.nickname[lang] %}<p class="doctor__nick">{{ d.nickname[lang] }}</p>{% endif %}
-    </article>
-    {% endfor %}
+  <div class="doctor-rail" data-drag-scroll>
+    {% for d in doctors %}{{ m.doctor_card(d, loop.index0) }}{% endfor %}
   </div>
   {% with fixed_branch = None %}{% include "partials/duty.html" %}{% endwith %}
 </section>
@@ -125,31 +127,47 @@
     <p class="section-intro">{{ page.beauty_talk.intro }}</p>
   </header>
   <div class="talk__grid">
-    {% for p in page.beauty_talk.people %}
-    <figure class="talk__person" data-reveal style="--d: {{ loop.index0 * 120 }}ms">
-      <div class="talk__img"><img src="{{ p.photo | media }}" alt="{{ p.name }}" loading="lazy"></div>
-      <figcaption><span class="eyebrow{{ p.nickname|th }}">{{ p.nickname }}</span><span class="talk__name">{{ p.name }}</span></figcaption>
-    </figure>
+    {% for slug, t in c.talk.items() %}
+    <a class="talk-card" href="{{ url('/beauty-talk/' ~ slug ~ '/') }}" data-reveal style="--d: {{ loop.index0 * 120 }}ms">
+      {{ m.frame(t.photo | media, t.name, '4/5', 'frame--talk', pos='center 20%') }}
+      <span class="talk-card__body">
+        <span class="eyebrow{{ t.nickname|th }}">{{ t.nickname }}</span>
+        <span class="talk-card__name">{{ t.name }}</span>
+        {% if t.qa %}<span class="talk-card__quote">“{{ t.qa[-1].a | truncate(150) }}”</span>{% endif %}
+      </span>
+    </a>
     {% endfor %}
   </div>
 </section>
 
 {# ---------- Reviews ---------- #}
 <section class="reviews" id="reviews">
-  <header class="section-head" data-reveal>
+  <header class="section-head section-head--split" data-reveal>
     <h2 class="section-title">{{ page.reviews.heading }}</h2>
     <p class="section-intro">{{ page.hero.intro }}</p>
   </header>
   <div class="review-grid">
-    {% for r in page.reviews['items'] %}
-    <article class="review" data-reveal style="--d: {{ loop.index0 * 100 }}ms">
-      <div class="review__img"><img src="{{ r.photo | media }}" alt="" loading="lazy"></div>
-      <h3 class="review__title">{{ r.title }}</h3>
-      <p class="review__by{{ r.by|th }}">{{ r.by }}</p>
-    </article>
+    {% for rid in review_order[:6] %}{{ m.review_card(rid, loop.index0) }}{% endfor %}
+  </div>
+  <div class="center-link" data-reveal><a class="btn btn--light" href="{{ url('/reviews/') }}">{{ ui.view_all }}</a></div>
+</section>
+
+{% if lang == 'th' %}
+{# ---------- Tips ---------- #}
+<section class="tips-teaser">
+  <header class="section-head" data-reveal><h2 class="section-title">{{ ui.nav.tips }}</h2></header>
+  <div class="tip-grid">
+    {% for tid in tip_order[:3] %}{% set t = c.tips[tid] %}
+    <a class="tip-card" href="{{ url('/tips/' ~ tid ~ '/') }}" data-reveal style="--d: {{ loop.index0 * 90 }}ms">
+      <span class="tip-card__img">{% if t.thumb or t.images %}<img src="{{ (t.images[0] if t.images else t.thumb) | media }}" alt="" loading="lazy">{% endif %}</span>
+      <span class="tip-card__date">{{ t.date }}</span>
+      <span class="tip-card__title">{{ t.title }}</span>
+    </a>
     {% endfor %}
   </div>
+  <div class="center-link" data-reveal><a class="btn btn--ghost" href="{{ url('/tips/') }}">{{ ui.view_all }}</a></div>
 </section>
+{% endif %}
 
 {# ---------- Branches ---------- #}
 <section class="branches" id="contact">
@@ -158,9 +176,7 @@
     <p class="section-intro">{{ page.contact.intro }}</p>
   </header>
   <div class="branch-grid">
-    {% for b in branches %}
-    {% include "partials/branch_card.html" %}
-    {% endfor %}
+    {% for b in branches %}{% include "partials/branch_card.html" %}{% endfor %}
   </div>
 </section>
 {% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block title %}{{ page.name }} | {{ site.name }}{% endblock %}
+{% block description %}{{ page.tagline }}{% endblock %}
+{% block body_class %}page-product{% endblock %}
+{% block main %}
+<section class="prod-hero">
+  <nav class="crumbs" aria-label="Breadcrumb" data-reveal>
+    <a href="{{ url('/') }}">{{ ui.nav.home }}</a><span>/</span><a href="{{ url('/products/') }}">{{ ui.nav.products }}</a>
+  </nav>
+  <div class="prod-hero__grid">
+    <div class="prod-hero__media" data-tilt-big>
+      <div class="prod-hero__glow" aria-hidden="true"></div>
+      <img src="{{ page.images[0] | media }}" alt="{{ page.name }}" fetchpriority="high">
+    </div>
+    <div class="prod-hero__text">
+      <p class="eyebrow" data-reveal>Doctor Younger</p>
+      <h1 class="prod-hero__title" data-split>{{ page.name }}</h1>
+      <p class="prod-hero__tagline" data-reveal>{{ page.tagline }}</p>
+      <dl class="prod-facts" data-reveal>
+        {% if page.size %}<div><dt>{{ ui.size }}</dt><dd>{{ page.size }}</dd></div>{% endif %}
+        {% if page.price %}<div><dt>{{ ui.price }}</dt><dd>{{ page.price }}</dd></div>{% endif %}
+      </dl>
+      {% if page.usage %}<div class="prod-usage" data-reveal><p class="eyebrow{{ ui.usage|th }}">{{ ui.usage }}</p><p>{{ page.usage }}</p></div>{% endif %}
+      <div class="hero__actions" data-reveal>
+        <a class="btn" href="{{ site.line_url }}" target="_blank" rel="noopener" data-magnetic>{{ ui.book_line }}</a>
+        <a class="link-arrow" href="{{ url('/products/' ~ next_slug ~ '/') }}">{{ ui.next }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="prod-body">
+  <div class="prose" data-prose>{{ page.body | media_html }}</div>
+</section>
+
+{% set rel = mentions.get(slug, []) %}
+{% if rel %}
+<section class="related related--reviews">
+  <header class="section-head" data-reveal><p class="eyebrow">{{ ui.reviews_mentioning }} {{ page.name }}</p></header>
+  <div class="review-grid review-grid--light">{% for rid in rel[:3] %}{{ m.review_card(rid, loop.index0) }}{% endfor %}</div>
+</section>
+{% endif %}
+
+<section class="shelf shelf--more">
+  <div class="shelf__row" data-drag-scroll>
+    {% for s in product_order if s != slug %}{{ m.product_card(s, loop.index0) }}{% endfor %}
+  </div>
+</section>
+{% endblock %}

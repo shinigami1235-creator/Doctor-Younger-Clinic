@@ -1,0 +1,26 @@
+{% import "partials/macros.html" as m with context %}
+{# Treatment finder: concern chips filter the treatment cards below them.
+   `start` is the concern selected on load ('all' shows every treatment). #}
+{% set concern_of = {} %}
+{% for con in concerns %}{% for t in con.treatments %}{% set _ = concern_of.update({t: (concern_of.get(t, []) + [con.id])}) %}{% endfor %}{% endfor %}
+<section class="finder" data-finder data-start="{{ start }}">
+  <header class="section-head" data-reveal>
+    <p class="eyebrow{{ ui.finder_title|th }}">{{ ui.finder_title }}</p>
+    {% if heading %}<h2 class="section-title">{{ heading }}</h2>{% endif %}
+  </header>
+  <div class="chips" role="tablist" aria-label="{{ ui.finder_title }}" data-reveal>
+    {% if start == 'all' %}<button type="button" class="chip" role="tab" data-concern="all">{{ ui.finder_all }}</button>{% endif %}
+    {% for con in concerns %}
+    <button type="button" class="chip" role="tab" data-concern="{{ con.id }}">{{ con.label[lang] }}<span class="chip__count">{{ con.treatments | length }}</span></button>
+    {% endfor %}
+  </div>
+  <div class="svc-grid" data-finder-grid>
+    {% set i = namespace(n=0) %}
+    {% for cat in categories %}{% for it in cat['items'] if it.slug in built_services %}
+    <div class="svc-grid__cell" data-concerns="{{ concern_of.get(it.slug, []) | join(' ') }}">
+      {{ m.service_card(it.slug, i.n) }}
+    </div>
+    {% set i.n = i.n + 1 %}
+    {% endfor %}{% endfor %}
+  </div>
+</section>

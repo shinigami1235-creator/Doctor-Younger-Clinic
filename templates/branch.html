@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
 {% block title %}{{ site.name }} {{ branch.name[lang] }} {{ branch.building[lang] }}{% if branch.id == 'sukhumvit-23' %} ({{ 'อโศก' if lang == 'th' else 'Asok' }}){% endif %}{% endblock %}
 {% block description %}{{ page.contact.intro }} {{ branch.address[lang] }}{% endblock %}
 {% block body_class %}page-branch{% endblock %}
@@ -44,10 +45,10 @@
   <div class="doctor-list">
     {% for d in doctors_here %}
     <article class="doctor doctor--row" data-reveal style="--d: {{ loop.index0 * 70 }}ms">
-      <div class="arch arch--doctor"><img src="{{ d.photo | media }}" alt="{{ d.title[lang] }}{{ '' if lang == 'th' else ' ' }}{{ d.name[lang] }}" loading="lazy" width="400" height="500"></div>
+      <a href="{{ url('/doctors/' ~ d.id ~ '/') }}">{{ m.frame(d.photo | media, d.title[lang] ~ ('' if lang == 'th' else ' ') ~ d.name[lang], '4/5', 'frame--doc', pos='center 18%') }}</a>
       <div>
         <p class="doctor__title{{ d.title[lang]|th }}">{{ d.title[lang] }}</p>
-        <h3 class="doctor__name">{{ d.name[lang] }}</h3>
+        <h3 class="doctor__name"><a href="{{ url('/doctors/' ~ d.id ~ '/') }}">{{ d.name[lang] }}</a></h3>
         {% if d.nickname[lang] %}<p class="doctor__nick">{{ d.nickname[lang] }}</p>{% endif %}
         <p class="eyebrow{{ ui.schedule|th }}">{{ ui.schedule }}</p>
         <ul class="doctor__shifts">

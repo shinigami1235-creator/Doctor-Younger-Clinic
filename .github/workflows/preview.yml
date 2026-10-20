@@ -15,6 +15,8 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
+      # Copy the clinic's photos into static/media so they load from the preview itself
+      - run: python tools/fetch_media.py
       - run: python build.py --mode preview
       - uses: peaceiris/actions-gh-pages@v4
         with:

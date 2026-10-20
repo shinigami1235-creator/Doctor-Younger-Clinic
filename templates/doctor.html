@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% set full = doctor.title[lang] ~ ('' if lang == 'th' else ' ') ~ doctor.name[lang] %}
+{% block title %}{{ full }}{% if doctor.nickname[lang] %} ({{ doctor.nickname[lang] }}){% endif %} | {{ site.name }}{% endblock %}
+{% block description %}{{ doctor.summary[lang] }}{% endblock %}
+{% block body_class %}page-doctor{% endblock %}
+{% block main %}
+<section class="doc-hero">
+  <nav class="crumbs" aria-label="Breadcrumb" data-reveal>
+    <a href="{{ url('/') }}">{{ ui.nav.home }}</a><span>/</span><a href="{{ url('/doctors/') }}">{{ ui.nav.doctors }}</a>
+  </nav>
+  <div class="doc-hero__grid">
+    <div class="doc-hero__media" data-mouse-layer>{{ m.frame(doctor.photo | media, full, '4/5', 'frame--doc-big', eager=true, pos='center 18%') }}</div>
+    <div class="doc-hero__text">
+      <p class="eyebrow{{ doctor.title[lang]|th }}" data-reveal>{{ doctor.title[lang] }}</p>
+      <h1 class="doc-hero__name" data-split>{{ doctor.name[lang] }}</h1>
+      {% if doctor.nickname[lang] %}<p class="doc-hero__nick" data-reveal>{{ doctor.nickname[lang] }}</p>{% endif %}
+      <p class="doc-hero__summary" data-reveal>{{ doctor.summary[lang] }}</p>
+
+      <div class="week" data-reveal>
+        <p class="eyebrow{{ ui.schedule|th }}">{{ ui.schedule }}</p>
+        <table class="week__table">
+          <thead><tr><th></th>{% for d in ui.weekdays %}<th scope="col">{{ d }}</th>{% endfor %}</tr></thead>
+          <tbody>
+          {% for b in branches %}{% set shifts = doctor.schedule | selectattr('branch', 'equalto', b.id) | list %}
+          {% if shifts %}
+          <tr>
+            <th scope="row"><a href="{{ url(branch_path(b.id)) }}">{{ b.name[lang] }}</a></th>
+            {% for key in ['mon','tue','wed','thu','fri','sat','sun'] %}
+            {% set on = [] %}{% for s in shifts if key in s.days %}{% set _ = on.append(s) %}{% endfor %}
+            <td>{% for s in on %}<span class="week__slot" title="{{ describe_shift(s, ui) }}">{{ s['from'] }}<br>{{ s['to'] }}{% if s.weeks or s.except_weeks %}<sup>*</sup>{% endif %}</span>{% endfor %}</td>
+            {% endfor %}
+          </tr>
+          {% endif %}
+          {% endfor %}
+          </tbody>
+        </table>
+        <ul class="week__notes">
+          {% for s in doctor.schedule if s.weeks or s.except_weeks %}<li>* {{ describe_shift(s, ui) }}</li>{% endfor %}
+        </ul>
+      </div>
+
+      <div class="hero__actions" data-reveal>
+        <a class="btn" href="{{ site.line_url }}" target="_blank" rel="noopener" data-magnetic>{{ ui.book_line }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if page.body %}
+<section class="doc-body">
+  <p class="eyebrow{{ ui.profile|th }}" data-reveal>{{ ui.profile }}</p>
+  <div class="prose prose--cv" data-prose>{{ page.body | media_html }}</div>
+</section>
+{% endif %}
+
+<section class="doc-others">
+  <div class="doctor-rail" data-drag-scroll>
+    {% for d in doctors if d.id != doctor.id %}{{ m.doctor_card(d, loop.index0) }}{% endfor %}
+  </div>
+</section>
+{% endblock %}

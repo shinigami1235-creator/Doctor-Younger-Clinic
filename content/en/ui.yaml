@@ -12,6 +12,9 @@ nav:
   services: SERVICES
   reviews: REVIEW
   contact: CONTACT US
+  products: PRODUCTS
+  tips: TIPS
+  news: NEWS & EVENT
 
 book_now: BOOK NOW
 register: REGISTER
@@ -56,3 +59,26 @@ cookie:
   accept: Allow all cookies
   decline: No
   policy: Privacy policy
+
+products_intro: A range of skincare products that care for your skin deeply and gently, and are good for skin health.
+usage: How to use
+size: Net size
+price: Price
+finder_title: Find a treatment by concern
+finder_all: All
+read_more: Read more
+all_treatments: All treatments
+related: Related treatments
+reviews_mentioning: Reviews that mention
+prev: Previous
+next: Next
+book_line: Book on LINE
+drag_hint: Drag or use the arrows to turn
+view_details: View details
+source: Source
+stats_doctors: Dermatologists
+stats_treatments: Treatments
+stats_branches: Branches
+stats_products: Products
+profile: Profile
+interview: Interview

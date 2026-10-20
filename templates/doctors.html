@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block title %}{{ ui.nav.doctors }} | {{ site.name }}{% endblock %}
+{% block description %}{{ page.doctors.intro }}{% endblock %}
+{% block body_class %}page-doctors{% endblock %}
+{% block main %}
+{{ m.page_head(site.name, ui.nav.doctors, page.doctors.intro, [(ui.nav.doctors, '')]) }}
+<section class="doc-grid">
+  {% for d in doctors %}{{ m.doctor_card(d, loop.index0) }}{% endfor %}
+</section>
+<section class="doctors doctors--plain">
+  {% with fixed_branch = None %}{% include "partials/duty.html" %}{% endwith %}
+</section>
+{% endblock %}
+{% block data %}{% include "partials/duty_data.html" %}{% endblock %}

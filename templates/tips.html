@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block title %}{{ ui.nav.tips }} | {{ site.name }}{% endblock %}
+{% block description %}{{ ui.nav.tips }}{% endblock %}
+{% block body_class %}page-tips{% endblock %}
+{% block main %}
+{{ m.page_head(site.name, ui.nav.tips, '', [(ui.nav.tips, '')]) }}
+<section class="tip-grid tip-grid--all">
+  {% for tid in tip_order %}{% set t = c.tips[tid] %}
+  <a class="tip-card" href="{{ url('/tips/' ~ tid ~ '/') }}" data-reveal style="--d: {{ (loop.index0 % 3) * 80 }}ms">
+    <span class="tip-card__img">{% if t.images or t.thumb %}<img src="{{ (t.images[0] if t.images else t.thumb) | media }}" alt="" loading="lazy">{% endif %}</span>
+    <span class="tip-card__date">{{ t.date }}</span>
+    <span class="tip-card__title">{{ t.title }}</span>
+  </a>
+  {% endfor %}
+</section>
+{% endblock %}

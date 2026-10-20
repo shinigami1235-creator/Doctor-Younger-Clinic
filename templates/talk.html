@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block title %}{{ ui.nav.beauty_talk }}: {{ page.name }} | {{ site.name }}{% endblock %}
+{% block description %}{{ page.qa[0].a if page.qa else '' }}{% endblock %}
+{% block body_class %}page-interview{% endblock %}
+{% block main %}
+<section class="interview">
+  <div class="interview__media" data-mouse-layer>{{ m.frame(page.photo | media, page.name, '3/4', 'frame--talk-big', eager=true, pos='center 20%') }}</div>
+  <div class="interview__text">
+    <nav class="crumbs" aria-label="Breadcrumb" data-reveal>
+      <a href="{{ url('/') }}">{{ ui.nav.home }}</a><span>/</span><a href="{{ url('/beauty-talk/') }}">{{ ui.nav.beauty_talk }}</a>
+    </nav>
+    <p class="eyebrow{{ page.nickname|th }}" data-reveal>{{ page.nickname }}</p>
+    <h1 class="interview__name" data-split>{{ page.name }}</h1>
+    <dl class="qa">
+      {% for t in page.qa %}
+      <div class="qa__item" data-reveal>
+        <dt><span class="qa__who">Doctor Younger</span>{{ t.q }}</dt>
+        <dd><span class="qa__who{{ page.nickname|th }}">{{ page.nickname }}</span>{{ t.a }}</dd>
+      </div>
+      {% endfor %}
+    </dl>
+    {% if page.images %}
+    <div class="svc-gallery">{% for img in page.images %}{{ m.frame(img | media, page.name, 'auto', 'frame--free') }}{% endfor %}</div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

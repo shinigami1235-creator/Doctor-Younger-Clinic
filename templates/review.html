@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block title %}{{ page.title }} | {{ site.name }}{% endblock %}
+{% block description %}{{ page.body | plain(150) }}{% endblock %}
+{% block body_class %}page-article{% endblock %}
+{% block main %}
+<article class="article">
+  <header class="article__head">
+    <nav class="crumbs" aria-label="Breadcrumb" data-reveal>
+      <a href="{{ url('/') }}">{{ ui.nav.home }}</a><span>/</span><a href="{{ url('/reviews/') }}">{{ ui.nav.reviews }}</a>
+    </nav>
+    <p class="eyebrow{{ page.by|th }}" data-reveal>{{ page.by }}</p>
+    <h1 class="article__title" data-split>{{ page.title }}</h1>
+  </header>
+  <div class="prose prose--article" data-prose>{{ page.body | media_html }}</div>
+</article>
+{% set idx = review_order.index(rid) %}
+<nav class="pager" aria-label="{{ ui.nav.reviews }}">
+  {% if idx > 0 %}{% set p = review_order[idx-1] %}<a class="pager__link pager__link--prev" href="{{ url('/reviews/' ~ p ~ '/') }}"><span class="eyebrow">{{ ui.prev }}</span><span class="pager__name">{{ c.reviews[p].title }}</span></a>{% else %}<span></span>{% endif %}
+  {% if idx + 1 < review_order|length %}{% set n = review_order[idx+1] %}<a class="pager__link pager__link--next" href="{{ url('/reviews/' ~ n ~ '/') }}"><span class="eyebrow">{{ ui.next }}</span><span class="pager__name">{{ c.reviews[n].title }}</span></a>{% endif %}
+</nav>
+{{ m.cta_band(c.services['ultra-deep-lifting'].closing) }}
+{% endblock %}

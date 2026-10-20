@@ -13,6 +13,9 @@ nav:
   services: SERVICES              # (current site)
   reviews: REVIEW                 # (current site)
   contact: CONTACT US             # (current site)
+  products: PRODUCTS              # (current site)
+  tips: TIPS                      # (current site)
+  news: NEWS & EVENT              # (current site)
 
 book_now: BOOK NOW                # (current site)
 register: REGISTER                # (current site)
@@ -58,3 +61,27 @@ cookie:
   accept: อนุญาตคุกกี้ทั้งหมด
   decline: ไม่
   policy: Privacy policy
+
+# Labels added in the October 2026 rebuild (new). CONFIRM with the clinic.
+products_intro: ผลิตภัณฑ์บำรุงผิวหลากหลายชนิดที่พร้อมปรนนิบัติผิวหน้าอย่างล้ำลึกและอ่อนโยน ดีกับสุขภาพผิว   # (current site)
+usage: วิธีใช้              # (current site)
+size: ปริมาณสุทธิ           # (current site)
+price: ราคา                # (current site)
+finder_title: ค้นหาทรีทเม้นท์ตามปัญหาผิว
+finder_all: ทั้งหมด
+read_more: อ่านต่อ
+all_treatments: ทรีทเม้นท์ทั้งหมด
+related: ทรีทเม้นท์ที่เกี่ยวข้อง
+reviews_mentioning: รีวิวที่กล่าวถึง
+prev: ก่อนหน้า
+next: ถัดไป
+book_line: นัดหมายผ่าน LINE
+drag_hint: ลากหรือกดลูกศรเพื่อหมุน
+view_details: ดูรายละเอียด
+source: ที่มา
+stats_doctors: แพทย์ผิวหนัง
+stats_treatments: ทรีทเม้นท์
+stats_branches: สาขา
+stats_products: ผลิตภัณฑ์
+profile: ประวัติแพทย์
+interview: สัมภาษณ์

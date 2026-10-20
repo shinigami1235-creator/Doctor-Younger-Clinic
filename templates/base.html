@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% block title %}{{ site.name }}{% endblock %}</title>
 <meta name="description" content="{% block description %}{% endblock %}">
-{% if preview %}
+{% if preview or noindex %}
 <meta name="robots" content="noindex, nofollow">
-{% else %}
+{% endif %}
+{% if not preview %}
 <meta name="google-site-verification" content="{{ site.google_site_verification }}">
 {% endif %}
 <link rel="canonical" href="{{ canonical }}">
 {% for l, href in alternates.items() %}
 <link rel="alternate" hreflang="{{ l }}" href="{{ href }}">
 {% endfor %}
-{% if alternates %}<link rel="alternate" hreflang="x-default" href="{{ alternates.th }}">{% endif %}
+{% if alternates.en %}<link rel="alternate" hreflang="x-default" href="{{ alternates.th }}">{% endif %}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{{ site.name }}">
 <meta property="og:title" content="{{ self.title() }}">
@@ -29,9 +30,18 @@
 </head>
 <body class="{% block body_class %}{% endblock %}">
 <a class="skip" href="#main">{{ ui.skip }}</a>
+<div class="progress" aria-hidden="true" data-progress></div>
+<div class="cursor" aria-hidden="true" data-cursor><span></span></div>
 
 {% block intro %}{% endblock %}
 
+{% set nav_items = [
+  ('/services/', ui.nav.services, 'services'),
+  ('/products/', ui.nav.products, 'products'),
+  ('/doctors/', ui.nav.doctors, 'doctors'),
+  ('/beauty-talk/', ui.nav.beauty_talk, 'beauty-talk'),
+  ('/reviews/', ui.nav.reviews, 'reviews'),
+] %}
 <header class="site-header" data-header>
   <div class="site-header__inner">
     <a class="wordmark" href="{{ url('/') }}" aria-label="{{ site.name }}">
@@ -39,13 +49,30 @@
       <span class="wordmark__top">DOCTOR</span><span class="wordmark__bottom">YOUNGER</span>
     </a>
     <nav class="nav" aria-label="Main" data-nav>
-      <ul>
-        <li><a href="{{ url('/') }}">{{ ui.nav.home }}</a></li>
-        <li><a href="{{ url('/') }}#services">{{ ui.nav.services }}</a></li>
-        <li><a href="{{ url('/') }}#doctors">{{ ui.nav.doctors }}</a></li>
-        <li><a href="{{ url('/') }}#beauty-talk">{{ ui.nav.beauty_talk }}</a></li>
-        <li><a href="{{ url('/') }}#reviews">{{ ui.nav.reviews }}</a></li>
-        <li><a href="{{ url(branch_path('sukhumvit-23')) }}">{{ ui.nav.contact }}</a></li>
+      <ul class="nav__list">
+        {% for href, label, key in nav_items %}
+        <li class="nav__item{% if key == 'services' %} has-mega{% endif %}">
+          <a href="{{ url(href) }}"{% if path.startswith(href) %} aria-current="page"{% endif %}>{{ label }}</a>
+          {% if key == 'services' %}
+          <div class="mega" data-mega>
+            <div class="mega__inner">
+              {% for cat in categories %}
+              <div class="mega__col">
+                <a class="mega__cat" href="{{ url('/services/' ~ cat.id ~ '/') }}">{{ cat.name }}</a>
+                <ul>
+                  {% for it in cat['items'] %}
+                  <li><a href="{{ url(service_path(cat.id, it.slug)) }}">{{ it.name }}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        </li>
+        {% endfor %}
+        {% if lang == 'th' %}<li class="nav__item"><a href="{{ url('/tips/') }}"{% if path.startswith('/tips/') %} aria-current="page"{% endif %}>{{ ui.nav.tips }}</a></li>{% endif %}
+        <li class="nav__item"><a href="{{ url(branch_path('sukhumvit-23')) }}"{% if path.startswith('/branches/') %} aria-current="page"{% endif %}>{{ ui.nav.contact }}</a></li>
       </ul>
       <div class="nav__meta">
         <span>{{ ui.call_center }} <a href="tel:{{ site.call_center_tel }}">{{ site.call_center }}</a></span>
@@ -54,7 +81,7 @@
     </nav>
     <div class="site-header__actions">
       <a class="lang" href="{{ switch_url }}" hreflang="{{ 'en' if lang == 'th' else 'th' }}">{{ ui.other_lang_name }}</a>
-      <a class="btn btn--small" href="{{ site.line_url }}" target="_blank" rel="noopener">{{ ui.book_now }}</a>
+      <a class="btn btn--small" href="{{ site.line_url }}" target="_blank" rel="noopener" data-magnetic>{{ ui.book_now }}</a>
       <button class="menu-toggle" type="button" aria-expanded="false" data-menu-toggle>
         <span class="menu-toggle__label" data-open="{{ ui.open_menu }}" data-close="{{ ui.close_menu }}">{{ ui.open_menu }}</span>
         <span class="menu-toggle__lines" aria-hidden="true"><i></i><i></i></span>
@@ -94,11 +121,25 @@
       </ul>
     </div>
   </div>
+  <nav class="site-footer__links" aria-label="Footer">
+    <a href="{{ url('/services/') }}">{{ ui.nav.services }}</a>
+    <a href="{{ url('/products/') }}">{{ ui.nav.products }}</a>
+    <a href="{{ url('/doctors/') }}">{{ ui.nav.doctors }}</a>
+    <a href="{{ url('/beauty-talk/') }}">{{ ui.nav.beauty_talk }}</a>
+    <a href="{{ url('/reviews/') }}">{{ ui.nav.reviews }}</a>
+    {% if lang == 'th' %}<a href="{{ url('/tips/') }}">{{ ui.nav.tips }}</a>{% endif %}
+    <a href="{{ url('/news/') }}">{{ ui.nav.news }}</a>
+  </nav>
   <div class="site-footer__bottom">
     <span>© {{ year }} {{ site.name }}</span>
     <a href="{{ site.legacy_media }}privacy-policy.php">{{ ui.cookie.policy }}</a>
   </div>
 </footer>
+
+<a class="line-float" href="{{ site.line_url }}" target="_blank" rel="noopener" aria-label="LINE {{ site.line_id }}" data-magnetic>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6 1.2-1.5 1.8-3 1.8-4.9 0-4.4-4.5-8-10-8z"/></svg>
+  <span>{{ ui.book_line }}</span>
+</a>
 
 <nav class="action-bar" aria-label="{{ ui.book_now }}">
   <a href="tel:{{ site.call_center_tel }}"><span class="action-bar__icon" aria-hidden="true">
@@ -120,5 +161,6 @@
 <script>window.DY = {ga4: {{ ('"' ~ site.ga4_id ~ '"') if not preview else 'null' }}};</script>
 {% block data %}{% endblock %}
 <script src="{{ paths.static('js/site.js') }}" defer></script>
+{% block scripts %}{% endblock %}
 </body>
 </html>

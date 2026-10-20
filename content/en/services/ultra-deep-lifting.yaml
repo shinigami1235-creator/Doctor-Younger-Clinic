@@ -1,37 +1,9 @@
-# English translation of content/th/services/ultra-deep-lifting.yaml.
-
-meta:
-  title: ULTRA DEEP LIFTING for Wrinkles and Sagging Skin | Doctor Younger Clinic Bangkok
-  description: No more worrying about a round, wide or full face, or sagging skin. ULTRA DEEP LIFTING lifts and firms the skin without surgery.
-
 name: ULTRA DEEP LIFTING
-tagline: Reduces wrinkles and sagging skin
-intro: No more worrying about a round, wide or full face, or even sagging skin. ULTRA DEEP LIFTING can solve these problems.
-
-depth: smas
-
-sections:
-  - heading: Results of ULTRA DEEP LIFTING
-    list:
-      - Lifts and firms the skin
-      - Reduces wrinkles across the face
-      - Contours the face to look slimmer
-      - Reduces facial fat
-  - heading: How ULTRA DEEP LIFTING works
-    text: ULTRA DEEP LIFTING uses high-frequency sound waves (FOCUSED ULTRASOUND) to deliver small amounts of energy into the deep layers of the skin, the layer beneath the skin, and the junction with the upper muscle layer (SMAS) to lift the skin (TISSUE LIFTING) and reduce wrinkles. During treatment the doctor sees the skin layers on the machine's screen, so each point is treated precisely and the sound waves are adjusted to suit the patient's skin. It also reduces facial fat. The skin is lifted and firmed, giving a slimmer face shape and a more youthful look without surgery.
-    diagram: true
-  - heading: When results show
-    text: ULTRA DEEP LIFTING stimulates the continuous production of new collagen, so sagging skin becomes visibly lifted, firmer and smoother from the first session, and results keep improving for another 3 months. It uses a specific frequency that does not harm the deep layers of the skin or affect the surrounding skin. Treatment depends on the diagnosis of the dermatologist at Doctor Younger Clinic.
-  - heading: ULTRA DEEP LIFTING is suitable for
-    list:
-      - Sagging skin under the chin with layered folds
-      - Lifting and firming the face
-      - Drooping upper eyelids and sagging lower eyelids
-      - Wrinkles
-      - Contouring a slimmer, well-shaped face
-
-closing: 'For treatment, contact Doctor Younger Clinic at any branch. Call 02-261-3697-8, or reach us on Facebook and LINE ID @Doctoryounger.'
-
+tagline: Helps reduce wrinkles and loose skin
+body: <p>Stop worrying about a round, wide or large face, or even loose skin. <strong>ULTRA DEEP LIFTING</strong> can solve these problems.</p><h3>Results of ULTRA DEEP LIFTING </h3><ul><li>Helps lift and firm the skin</li><li>Helps fade various wrinkles on the face</li><li>Helps reshape the face to look slimmer </li><li>Helps reduce fat on the face </li></ul><h3>How ULTRA DEEP LIFTING works</h3><p><strong>ULTRA DEEP LIFTING</strong> is a high-frequency sound wave technology (FOCUSED ULTRASOUND) that delivers small amounts of energy into the deep layers of the skin, the layer beneath the skin, and the junction of the upper muscle layer (SMAS) to lift the skin (TISSUE LIFTING) and fade wrinkles. During treatment, the doctor can see the skin on the machine's screen, so treatment can be precise, fading wrinkles while adjusting the sound waves to suit the patient's skin. It can also help reduce fat on the face, so the skin is lifted and the face is reshaped to be slimmer and look more youthful,
+  without surgery. </p><h3>When results begin to show</h3><p>The <strong>ULTRA DEEP LIFTING</strong> treatment process stimulates new collagen to form continuously, so loose skin becomes noticeably firmer, tighter and smoother from the very first session, and the results stay clearly visible for another 3 months. It uses a specific frequency that is not harmful to the deep layers of the skin and does not affect the surrounding skin. Treatment depends on the diagnosis of the dermatologist at Doctor Younger Clinic.</p><h3>ULTRA DEEP LIFTING is suitable for treating</h3><ul><li>Loose skin under the chin that hangs in layers</li><li>Lifting the face</li><li>Drooping eyelids and sagging skin on the lower eye rim</li><li>Wrinkles </li><li>Reshaping the face to be slim and well shaped</li></ul>
+closing: To book or ask for more information, contact Doctor Younger Clinic at any branch. Call 02-261-3697-8, or reach us on Facebook or LINE ID @Doctoryounger.
 images:
-  - upload/service/gallery/service_pic9_20170926100052.jpg
-  - upload/service/gallery/service_pic9_20171102161450.jpg
+- https://www.doctoryounger.com/upload/service/gallery/service_pic9_20170926100052.jpg
+- https://www.doctoryounger.com/upload/service/gallery/service_pic9_20171102161450.jpg
+depth: smas

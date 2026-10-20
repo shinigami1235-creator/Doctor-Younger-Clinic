@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block title %}{{ ui.nav.beauty_talk }} | {{ site.name }}{% endblock %}
+{% block description %}{{ page.beauty_talk.intro }}{% endblock %}
+{% block body_class %}page-talk{% endblock %}
+{% block main %}
+{{ m.page_head(site.name, ui.nav.beauty_talk, page.beauty_talk.intro, [(ui.nav.beauty_talk, '')]) }}
+<section class="talk">
+  <div class="talk__grid">
+    {% for slug, t in c.talk.items() %}
+    <a class="talk-card" href="{{ url('/beauty-talk/' ~ slug ~ '/') }}" data-reveal style="--d: {{ loop.index0 * 120 }}ms">
+      {{ m.frame(t.photo | media, t.name, '4/5', 'frame--talk', pos='center 20%') }}
+      <span class="talk-card__body">
+        <span class="eyebrow{{ t.nickname|th }}">{{ t.nickname }}</span>
+        <span class="talk-card__name">{{ t.name }}</span>
+        {% if t.qa %}<span class="talk-card__quote">“{{ t.qa[-1].a | truncate(150) }}”</span>{% endif %}
+      </span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

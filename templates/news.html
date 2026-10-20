@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block title %}{{ ui.nav.news }} | {{ site.name }}{% endblock %}
+{% block description %}{{ ui.nav.news }}{% endblock %}
+{% block body_class %}page-news{% endblock %}
+{% block main %}
+{{ m.page_head(site.name, ui.nav.news, '', [(ui.nav.news, '')]) }}
+<section class="news-list">
+  {% for nid, n in c.news.items() %}
+  <a class="news-row" href="{{ url('/news/' ~ nid ~ '/') }}" data-reveal style="--d: {{ loop.index0 * 80 }}ms" data-preview="{{ (n.images[0] if n.images else '') | media }}">
+    <span class="news-row__date">{{ n.date }}</span>
+    <span class="news-row__title">{{ n.title }}</span>
+    <span class="cat-row__arrow" aria-hidden="true"></span>
+  </a>
+  {% endfor %}
+</section>
+{% endblock %}

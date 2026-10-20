@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% import "partials/macros.html" as m with context %}
+{% block title %}{{ page.title }} | {{ site.name }}{% endblock %}
+{% block description %}{{ page.body | plain(150) }}{% endblock %}
+{% block body_class %}page-article{% endblock %}
+{% block main %}
+<div class="read-progress" aria-hidden="true" data-read-progress></div>
+<article class="article">
+  <header class="article__head">
+    <nav class="crumbs" aria-label="Breadcrumb" data-reveal>
+      <a href="{{ url('/') }}">{{ ui.nav.home }}</a><span>/</span><a href="{{ url('/tips/') }}">{{ ui.nav.tips }}</a>
+    </nav>
+    <p class="eyebrow" data-reveal>{{ page.date }}</p>
+    <h1 class="article__title" data-split>{{ page.title }}</h1>
+  </header>
+  <div class="prose prose--article" data-prose>{{ page.body | media_html }}</div>
+</article>
+{% set idx = tip_order.index(tid) %}
+<section class="related">
+  <div class="tip-grid">
+    {% for t2 in tip_order[idx+1:idx+4] %}{% set t = c.tips[t2] %}
+    <a class="tip-card" href="{{ url('/tips/' ~ t2 ~ '/') }}" data-reveal style="--d: {{ loop.index0 * 80 }}ms">
+      <span class="tip-card__img">{% if t.images or t.thumb %}<img src="{{ (t.images[0] if t.images else t.thumb) | media }}" alt="" loading="lazy">{% endif %}</span>
+      <span class="tip-card__date">{{ t.date }}</span>
+      <span class="tip-card__title">{{ t.title }}</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
