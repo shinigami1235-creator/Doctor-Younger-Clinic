@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% block title %}{{ page.meta.title }}{% endblock %}
+{% block description %}{{ page.meta.description }}{% endblock %}
+{% block body_class %}page-home{% endblock %}
+
+{% block intro %}
+<div class="intro" aria-hidden="true" data-intro>
+  <div class="intro__mark">
+    <span class="wordmark__top">DOCTOR</span><span class="wordmark__bottom">YOUNGER</span>
+    <i class="intro__line"></i>
+    <span class="intro__tag">{{ site.tagline }}</span>
+  </div>
+</div>
+{% endblock %}
+
+{% block main %}
+
+{# ---------- Hero ---------- #}
+<section class="hero">
+  <div class="hero__text">
+    <p class="eyebrow hero__eyebrow" data-reveal>{{ site.tagline }}</p>
+    <h1 class="hero__title">
+      {% for line in page.hero.lines %}
+      <span class="hero__line"><span style="--i: {{ loop.index0 }}">{{ line }}</span></span>
+      {% endfor %}
+      <span class="visually-hidden"> {{ site.name }}</span>
+    </h1>
+    <p class="hero__intro" data-reveal>{{ page.hero.intro }}</p>
+    <div class="hero__actions" data-reveal>
+      <a class="btn" href="{{ site.line_url }}" target="_blank" rel="noopener">{{ ui.book_now }}</a>
+      <a class="link-arrow" href="#services">{{ ui.nav.services }}</a>
+    </div>
+  </div>
+  <div class="hero__media">
+    <div class="arch arch--hero" data-parallax>
+      <img src="{{ page.hero.image }}" alt="{{ page.hero.image_alt }}" width="1400" height="933" fetchpriority="high">
+    </div>
+    <svg class="hero__orbit" viewBox="0 0 400 400" aria-hidden="true"><circle cx="200" cy="200" r="198" pathLength="1"/></svg>
+    <span class="hero__credit">{{ page.hero.credit }}</span>
+  </div>
+  <a class="hero__scroll" href="#pillars" aria-label="Scroll"><i></i></a>
+</section>
+
+{# ---------- Three badges ---------- #}
+<section class="pillars" id="pillars">
+  {% for p in page.pillars %}
+  <div class="pillar" data-reveal style="--d: {{ loop.index0 * 120 }}ms">
+    <span class="pillar__mark">{{ p.mark }}</span>
+    <p>{% if p.text is string %}{{ p.text }}{% else %}{{ p.text[0] }}<br>{{ p.text[1] }}{% endif %}</p>
+  </div>
+  {% endfor %}
+</section>
+
+{# ---------- Services ---------- #}
+<section class="services" id="services">
+  <header class="section-head" data-reveal>
+    <h2 class="section-title">{{ page.services.heading }}</h2>
+  </header>
+  <ol class="cat-list">
+    {% for cat in categories %}
+    <li class="cat" data-reveal style="--d: {{ loop.index0 * 60 }}ms">
+      <details {% if loop.first %}open{% endif %}>
+        <summary>
+          <span class="cat__num">{{ '%02d' % loop.index }}</span>
+          <span class="cat__name">{{ cat.name }}</span>
+          <span class="cat__count">{{ cat['items'] | length }}</span>
+          <span class="cat__plus" aria-hidden="true"></span>
+        </summary>
+        <ul class="cat__items">
+          {% for item in cat['items'] %}
+          <li>
+            {% if item.slug in built_services %}
+            <a href="{{ url(service_path(cat.id, item.slug)) }}">{{ item.name }}</a>
+            {% else %}
+            <span>{{ item.name }}</span>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </details>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+{# ---------- Featured treatment ---------- #}
+<section class="feature">
+  <div class="feature__text" data-reveal>
+    <p class="eyebrow">{{ featured_cat.name }}</p>
+    <h2 class="feature__title">{{ featured.name }}</h2>
+    <p class="feature__tagline">{{ featured.tagline }}</p>
+    <p>{{ featured.intro }}</p>
+    <a class="link-arrow" href="{{ url(service_path(featured_cat.id, featured_slug)) }}">{{ featured.name }}</a>
+  </div>
+  <div class="feature__diagram">
+    {% with depth = featured.depth %}{% include "partials/skin_diagram.html" %}{% endwith %}
+  </div>
+</section>
+
+{# ---------- Doctors ---------- #}
+<section class="doctors" id="doctors">
+  <header class="section-head section-head--split" data-reveal>
+    <h2 class="section-title">{{ page.doctors.heading }}</h2>
+    <p class="section-intro">{{ page.doctors.intro }}</p>
+  </header>
+  <div class="doctor-rail" data-rail>
+    {% for d in doctors %}
+    <article class="doctor" data-reveal style="--d: {{ loop.index0 * 70 }}ms">
+      <div class="arch arch--doctor">
+        <img src="{{ d.photo | media }}" alt="{{ d.title[lang] }}{{ '' if lang == 'th' else ' ' }}{{ d.name[lang] }}" loading="lazy" width="400" height="500">
+      </div>
+      <p class="doctor__title{{ d.title[lang]|th }}">{{ d.title[lang] }}</p>
+      <h3 class="doctor__name">{{ d.name[lang] }}</h3>
+      {% if d.nickname[lang] %}<p class="doctor__nick">{{ d.nickname[lang] }}</p>{% endif %}
+    </article>
+    {% endfor %}
+  </div>
+  {% with fixed_branch = None %}{% include "partials/duty.html" %}{% endwith %}
+</section>
+
+{# ---------- Beauty's Talk ---------- #}
+<section class="talk" id="beauty-talk">
+  <header class="section-head section-head--split" data-reveal>
+    <h2 class="section-title">{{ page.beauty_talk.heading }}</h2>
+    <p class="section-intro">{{ page.beauty_talk.intro }}</p>
+  </header>
+  <div class="talk__grid">
+    {% for p in page.beauty_talk.people %}
+    <figure class="talk__person" data-reveal style="--d: {{ loop.index0 * 120 }}ms">
+      <div class="talk__img"><img src="{{ p.photo | media }}" alt="{{ p.name }}" loading="lazy"></div>
+      <figcaption><span class="eyebrow{{ p.nickname|th }}">{{ p.nickname }}</span><span class="talk__name">{{ p.name }}</span></figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+</section>
+
+{# ---------- Reviews ---------- #}
+<section class="reviews" id="reviews">
+  <header class="section-head" data-reveal>
+    <h2 class="section-title">{{ page.reviews.heading }}</h2>
+    <p class="section-intro">{{ page.hero.intro }}</p>
+  </header>
+  <div class="review-grid">
+    {% for r in page.reviews['items'] %}
+    <article class="review" data-reveal style="--d: {{ loop.index0 * 100 }}ms">
+      <div class="review__img"><img src="{{ r.photo | media }}" alt="" loading="lazy"></div>
+      <h3 class="review__title">{{ r.title }}</h3>
+      <p class="review__by{{ r.by|th }}">{{ r.by }}</p>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+{# ---------- Branches ---------- #}
+<section class="branches" id="contact">
+  <header class="section-head section-head--split" data-reveal>
+    <h2 class="section-title">{{ page.contact.heading }}</h2>
+    <p class="section-intro">{{ page.contact.intro }}</p>
+  </header>
+  <div class="branch-grid">
+    {% for b in branches %}
+    {% include "partials/branch_card.html" %}
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
+
+{% block data %}{% include "partials/duty_data.html" %}{% endblock %}

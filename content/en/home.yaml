@@ -1,0 +1,46 @@
+# Homepage, English. Translated from content/th/home.yaml with the meaning kept.
+
+meta:
+  title: Doctor Younger Clinic, Skin and Laser Clinic in Bangkok | Sukhumvit 23 (Asok) and Thanya Park Srinakarin
+  description: An aesthetic clinic offering laser, Botox, filler, thread lifts and facial treatments for a slimmer, firmer, brighter face, with an experienced, skilled and specialist team of dermatologists.
+
+hero:
+  lines: [LOOK YOUNGER, FEEL YOUNGER, BE YOUNGER]
+  intro: Doctor Younger is a skin and laser clinic offering skin and body care, along with beauty and health consultations.
+  image: https://images.unsplash.com/photo-1589525231707-f2de2428f59c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=srgb&w=1400
+  image_alt: ""
+  credit: Photo by Thanh Duc PHAN on Unsplash
+
+pillars:
+  - mark: I
+    text: Safe and assured with carefully selected technology
+  - mark: II
+    text: Cared for by specialist doctors
+  - mark: III
+    text: Service to international standards
+
+services:
+  heading: SERVICES
+  featured: ultra-deep-lifting
+
+doctors:
+  heading: DOCTOR'S PROFILE
+  intro: Always committed to our clients' safety, Doctor Younger has built a team of skilled and experienced dermatologists so every client who comes for treatment can feel confident.
+
+beauty_talk:
+  heading: Beauty's Talk
+  intro: Hear what our presenters love about Doctor Younger Clinic. They also share their superstar beauty secrets for you to try.
+  people:
+    - {nickname: Khun Kai, name: Supranee Charoenphol, photo: upload/beauty/big/2.jpg}
+    - {nickname: Khun Yardthip, name: Yardthip Rajpal, photo: upload/beauty/big/1.jpg}
+
+reviews:
+  heading: YOUNGER REVIEWS
+  items:
+    - {title: I wanted to try Aramis Laser because everyone says it's good, by: Review by Rattanaporn, photo: upload/review/thumb/review20180207143201.jpg}
+    - {title: Sunscreen360 on the golf course, and I'm so happy!!!, by: Review by Tom Pawana, photo: upload/review/thumb/review20180207133002.jpg}
+    - {title: Tighter pores and fewer wrinkles with Aramis Laser, by: Review by Apple, photo: upload/review/thumb/review20171121132253.jpg}
+
+contact:
+  heading: CONTACT US
+  intro: Ask for directions, get in touch, or reserve a time for treatment at each Doctor Younger Clinic branch here.

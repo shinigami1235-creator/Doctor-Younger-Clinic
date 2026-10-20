@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}{{ site.name }} {{ branch.name[lang] }} {{ branch.building[lang] }}{% if branch.id == 'sukhumvit-23' %} ({{ 'อโศก' if lang == 'th' else 'Asok' }}){% endif %}{% endblock %}
+{% block description %}{{ page.contact.intro }} {{ branch.address[lang] }}{% endblock %}
+{% block body_class %}page-branch{% endblock %}
+
+{% block main %}
+<section class="branch-hero">
+  <nav class="crumbs" aria-label="Breadcrumb" data-reveal>
+    <a href="{{ url('/') }}">{{ ui.nav.home }}</a><span>/</span>
+    <a href="{{ url('/') }}#contact">{{ ui.nav.contact }}</a><span>/</span>
+    <span>{{ branch.name[lang] }}</span>
+  </nav>
+  <p class="eyebrow" data-reveal>{{ site.name }}</p>
+  <h1 class="branch-hero__title">
+    <span class="hero__line"><span style="--i:0">{{ branch.name[lang] }}</span></span>
+    <span class="hero__line branch-hero__building"><span style="--i:1">{{ branch.building[lang] }}</span></span>
+  </h1>
+  <p class="section-intro" data-reveal>{{ page.contact.intro }}</p>
+</section>
+
+<section class="branch-info">
+  <div class="branch-info__facts" data-reveal>
+    <dl>
+      <div><dt>{{ ui.address }}</dt><dd>{{ branch.address[lang] }}</dd></div>
+      <div><dt>{{ ui.phone_label }}</dt><dd><a href="tel:{{ branch.phone_tel }}">{{ branch.phone }}</a></dd></div>
+      <div><dt>{{ ui.mobile_label }}</dt><dd><a href="tel:{{ branch.mobile_tel }}">{{ branch.mobile }}</a></dd></div>
+      <div><dt>{{ ui.hours }}</dt><dd>{{ branch.hours[lang] }}</dd></div>
+      <div><dt>{{ ui.getting_there }}</dt><dd>{{ branch.transit[lang] }}</dd></div>
+    </dl>
+    <div class="hero__actions">
+      <a class="btn{{ ui.directions|th }}" href="{{ directions_link(branch) }}" target="_blank" rel="noopener">{{ ui.directions }}</a>
+      <a class="link-arrow{{ ui.map_large|th }}" href="{{ maps_link(branch) }}" target="_blank" rel="noopener">{{ ui.map_large }}</a>
+    </div>
+  </div>
+  <div class="branch-info__map" data-reveal>
+    <iframe title="{{ branch.name[lang] }}" src="{{ map_embed(branch) }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>
+
+<section class="doctors doctors--branch">
+  <header class="section-head" data-reveal>
+    <h2 class="section-title">{{ ui.doctors_here }}</h2>
+  </header>
+  <div class="doctor-list">
+    {% for d in doctors_here %}
+    <article class="doctor doctor--row" data-reveal style="--d: {{ loop.index0 * 70 }}ms">
+      <div class="arch arch--doctor"><img src="{{ d.photo | media }}" alt="{{ d.title[lang] }}{{ '' if lang == 'th' else ' ' }}{{ d.name[lang] }}" loading="lazy" width="400" height="500"></div>
+      <div>
+        <p class="doctor__title{{ d.title[lang]|th }}">{{ d.title[lang] }}</p>
+        <h3 class="doctor__name">{{ d.name[lang] }}</h3>
+        {% if d.nickname[lang] %}<p class="doctor__nick">{{ d.nickname[lang] }}</p>{% endif %}
+        <p class="eyebrow{{ ui.schedule|th }}">{{ ui.schedule }}</p>
+        <ul class="doctor__shifts">
+          {% for s in d.schedule if s.branch == branch.id %}<li>{{ describe_shift(s, ui) }}</li>{% endfor %}
+        </ul>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  {% with fixed_branch = branch.id %}{% include "partials/duty.html" %}{% endwith %}
+</section>
+
+<section class="branches branches--compact">
+  <header class="section-head" data-reveal><h2 class="section-title">{{ ui.other_branch }}</h2></header>
+  <div class="branch-grid branch-grid--single">
+    {% for b in branches if b.id != branch.id %}{% include "partials/branch_card.html" %}{% endfor %}
+  </div>
+</section>
+{% endblock %}
+
+{% block data %}{% include "partials/duty_data.html" %}{% endblock %}

@@ -1,0 +1,102 @@
+# Doctors, in the order the current site lists them.
+# Thai text is copied from doctor-profile.php and the detail pages.
+# English names are romanised from the Thai. CONFIRM spellings with each doctor.
+#
+# Schedule format, one line per shift:
+#   branch: id from branches.yaml
+#   days:   mon tue wed thu fri sat sun
+#   weeks:  optional, which weeks of the month (1 = days 1 to 7, 2 = days 8 to 14, ...)
+#   except_weeks: optional, weeks of the month when this shift does not run
+#   from / to: 24-hour time
+
+- id: wilai-thanasarnaksorn
+  legacy_id: 1
+  title: {th: แพทย์หญิง, en: Dr.}
+  name: {th: วิไล ธนสารอักษร, en: Wilai Thanasarnaksorn}
+  nickname: {th: "", en: ""}
+  photo: upload/profile/big/profile20170406100432.jpg
+  summary:
+    th: แพทย์หญิงวิไล ธนสารอักษร จบการศึกษาจาก คณะแพทยศาสตร์ โรงพยาบาลรามาธิบดีมหาวิทยาลัยมหิดล ทำงานในโรงพยาบาลรัฐและเอกชน มานานกว่า 10 ปี
+    en: Dr. Wilai Thanasarnaksorn graduated from the Faculty of Medicine, Ramathibodi Hospital, Mahidol University, and has worked in public and private hospitals for more than 10 years.
+  schedule:
+    - {branch: sukhumvit-23, days: [wed], from: "13:00", to: "16:00"}
+    - {branch: sukhumvit-23, days: [sat], weeks: [3], from: "13:00", to: "16:00"}
+    - {branch: thanya-park-srinakarin, days: [sat], except_weeks: [3], from: "13:00", to: "16:00"}
+
+- id: nopadol-amornpinyokiat
+  legacy_id: 3
+  title: {th: นายแพทย์, en: Dr.}
+  name: {th: นพดล อมรภิญโญเกียรติ, en: Nopadol Amornpinyokiat}
+  nickname: {th: คุณหมอบอย, en: Dr. Boy}
+  photo: upload/profile/big/profile20230517133141.jpg
+  summary:
+    th: นายแพทย์นพดล อมรภิญโญเกียรติ (คุณหมอบอย) แพทย์หนุ่มหล่อหน้าใส มากความสามารถกับดีกรีเกียรตินิยม จากคณะแพทยศาสตร์บัณฑิต จุฬาลงกรณ์มหาวิทยาลัย
+    en: Dr. Nopadol Amornpinyokiat (Dr. Boy) is a handsome young doctor with clear skin and many talents, who graduated with honours from the Faculty of Medicine, Chulalongkorn University.
+  schedule:
+    - {branch: sukhumvit-23, days: [sun, mon], from: "12:00", to: "17:00"}
+    - {branch: thanya-park-srinakarin, days: [tue], from: "13:00", to: "15:00"}
+
+- id: patcharaporn-wachiranuntasin
+  legacy_id: 5
+  title: {th: แพทย์หญิง, en: Dr.}
+  name: {th: พัชราภรณ์ วชิรนันทศิลป์, en: Patcharaporn Wachiranuntasin}
+  nickname: {th: คุณหมอบี, en: Dr. Bee}
+  photo: upload/profile/big/profile20230517132927.jpg
+  summary:
+    th: แพทย์หญิงพัชราภรณ์ วชิรนันทศิลป์ (คุณหมอบี) คุณหมอสาวน่ารักและใจดี มาพร้อมกับดีกรีแพทย์ศาสตร์บัณฑิต คณะแพทย์ศาสตร์ศิริราชพยาบาล
+    en: Dr. Patcharaporn Wachiranuntasin (Dr. Bee) is a lovely and kind young doctor with a Doctor of Medicine degree from the Faculty of Medicine Siriraj Hospital.
+  schedule:
+    - {branch: sukhumvit-23, days: [tue, thu, sat], from: "12:00", to: "18:00"}
+    - {branch: thanya-park-srinakarin, days: [mon, wed], from: "12:00", to: "18:00"}
+    - {branch: thanya-park-srinakarin, days: [fri], from: "12:00", to: "16:00"}
+
+- id: manika-napharat
+  legacy_id: 12
+  title: {th: แพทย์หญิง, en: Dr.}
+  name: {th: มานิกา นภารัตน์, en: Manika Napharat}
+  nickname: {th: คุณหมอปาล์ม, en: Dr. Palm}
+  photo: upload/profile/big/profile20230517144735.jpg
+  summary:
+    th: มานิกา นภารัตน์ (คุณหมอปาล์ม) คุณหมอน่ารัก ใจดีกับความสามารถและเทคนิคที่ไม่ธรรมดา มาพร้อมกับดีกรีแพทย์ศาสตร์บัณฑิต คณะแพทย์ศาสตร์รามาธิบดี
+    en: Dr. Manika Napharat (Dr. Palm) is a lovely, kind doctor with exceptional skill and technique, and a Doctor of Medicine degree from the Faculty of Medicine Ramathibodi Hospital.
+  schedule:
+    - {branch: sukhumvit-23, days: [fri], weeks: [1, 3], from: "12:00", to: "18:00"}
+    - {branch: thanya-park-srinakarin, days: [sat], from: "12:00", to: "18:00"}
+
+- id: nattawan-limcharoenwiriyakul
+  legacy_id: 11
+  title: {th: แพทย์หญิง, en: Dr.}
+  name: {th: ณัฐวรรณ ลิ้มเจริญวิริยกุล, en: Nattawan Limcharoenwiriyakul}
+  nickname: {th: คุณหมอมะปราง, en: Dr. Maprang}
+  photo: upload/profile/big/profile20230517143649.jpg
+  summary:
+    th: ณัฐวรรณ ลิ้มเจริญวิริยกุล (คุณหมอมะปราง)
+    en: Dr. Nattawan Limcharoenwiriyakul (Dr. Maprang)
+  schedule:
+    - {branch: sukhumvit-23, days: [sat], weeks: [1, 2, 4], from: "12:00", to: "15:00"}
+    - {branch: thanya-park-srinakarin, days: [sat], weeks: [3], from: "11:00", to: "15:00"}
+
+- id: puntharika-apinoraset
+  legacy_id: 10
+  title: {th: แพทย์หญิง, en: Dr.}
+  name: {th: ปุณฑริกา อภินรเศรษฐ์, en: Puntharika Apinoraset}
+  nickname: {th: คุณหมอพิ้งค์, en: Dr. Pink}
+  photo: upload/profile/big/profile20230517142720.jpg
+  summary:
+    th: ปุณฑริกา อภินรเศรษฐ์ (คุณหมอพิ้งค์)
+    en: Dr. Puntharika Apinoraset (Dr. Pink)
+  schedule:
+    - {branch: sukhumvit-23, days: [tue], from: "14:00", to: "18:00"}
+
+- id: urairak-sapsarn
+  legacy_id: 9
+  title: {th: แพทย์หญิง, en: Dr.}
+  name: {th: อุไรรักษ์ ทรัพย์สาร, en: Urairak Sapsarn}
+  nickname: {th: คุณหมอเตย, en: Dr. Toey}
+  photo: upload/profile/big/profile20230517135421.jpg
+  summary:
+    th: แพทย์หญิงอุไรรักษ์ ทรัพย์สาร (คุณหมอเตย)
+    en: Dr. Urairak Sapsarn (Dr. Toey)
+  schedule:
+    - {branch: sukhumvit-23, days: [tue, wed], from: "12:00", to: "18:00"}
+    - {branch: sukhumvit-23, days: [sun], from: "15:00", to: "18:00"}

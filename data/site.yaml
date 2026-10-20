@@ -1,0 +1,34 @@
+# Settings shared by every page.
+# Edit these values here and run build.py again; nothing in the templates needs to change.
+
+name: Doctor Younger Clinic
+short_name: Doctor Younger
+tagline: Always Younger
+
+# The live address of the finished site. Used for canonical tags, hreflang and the sitemap.
+production_url: https://www.doctoryounger.com
+
+# Call centre number shown in the header and at the end of every service page.
+call_center: "02-261-3697-8"
+call_center_tel: "+6622613697"
+
+line_id: "@DoctorYounger"
+line_url: http://line.me/ti/p/~@DoctorYounger
+
+# Facebook is left out until the clinic confirms its current page address.
+# The old link (facebook.com/DoctorYoungerFan) shows "This content isn't available".
+social:
+  instagram: https://www.instagram.com/doctor_younger/
+  youtube: https://www.youtube.com/channel/UCnWKohgDycbdWYrAnOvUvRQ
+  line: http://line.me/ti/p/~@DoctorYounger
+
+# Google Analytics 4 tag from the current site. It only loads after the visitor accepts cookies,
+# and never loads in preview builds.
+ga4_id: G-0PRF2YXPYW
+
+# Google Search Console verification token from the current site. Keep it or the clinic
+# loses its Search Console history.
+google_site_verification: WIUSxj9yyPtK4yEOqJygOJ1GkvxMVEUojYLygnF6zA4
+
+# Images still load from the current site until the clinic sends full-size files.
+legacy_media: https://www.doctoryounger.com/

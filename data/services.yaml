@@ -1,0 +1,62 @@
+# Service categories and treatments, in the order the current site lists them.
+# `legacy` is the old address on doctoryounger.com, used to write the 301 redirects.
+# A treatment with a file in content/<lang>/services/<slug>.yaml gets its own page.
+# Treatments without a content file are listed by name only until their text is added.
+
+- id: laser-rf
+  name: "LASER & RF"
+  legacy: "services-detail.php?category=1"
+  items:
+    - {slug: co2-laser, name: CO2 LASER, legacy: "services-detail.php?category=1&s=2"}
+    - {slug: fractional-laser, name: FRACTIONAL LASER, legacy: "services-detail.php?category=1&s=3"}
+    - {slug: aramis-laser, name: ARAMIS LASER, legacy: "services-detail.php?category=1&s=1"}
+    - {slug: pigment-laser, name: PIGMENT LASER, legacy: "services-detail.php?category=1&s=5"}
+    - {slug: active-bright, name: ACTIVE BRIGHT, legacy: "services-detail.php?category=1&s=7"}
+    - {slug: ultra-deep-lifting, name: ULTRA DEEP LIFTING, legacy: "services-detail.php?category=1&s=9"}
+    - {slug: aura-bright, name: AURA BRIGHT, legacy: "services-detail.php?category=1&s=4"}
+    - {slug: monopolar-rf, name: MONOPOLAR RF, legacy: "services-detail.php?category=1&s=6"}
+
+- id: facial-design
+  name: FACIAL DESIGN
+  legacy: "services-detail.php?category=2"
+  items:
+    - {slug: vital-lift, name: VITAL LIFT, legacy: "services-detail.php?category=2&s=51"}
+    - {slug: ha, name: HA, legacy: "services-detail.php?category=2&s=10"}
+    - {slug: v-touch, name: V-TOUCH, legacy: "services-detail.php?category=2&s=14"}
+    - {slug: diamond-toxin, name: DIAMOND TOXIN, legacy: "services-detail.php?category=2&s=11"}
+
+- id: facial-treatment
+  name: FACIAL TREATMENT
+  legacy: "services-detail.php?category=3"
+  items:
+    - {slug: acne-clear-light, name: ACNE CLEAR LIGHT, legacy: "services-detail.php?category=3&s=27"}
+    - {slug: phonophoresis, name: PHONOPHORESIS, legacy: "services-detail.php?category=3&s=25"}
+    - {slug: synergica, name: SYNERGICA, legacy: "services-detail.php?category=3&s=19"}
+    - {slug: blue-mate, name: BLUE MATE, legacy: "services-detail.php?category=3&s=20"}
+    - {slug: dermalift, name: DERMALIFT, legacy: "services-detail.php?category=3&s=16"}
+    - {slug: grey-mate, name: GREY MATE, legacy: "services-detail.php?category=3&s=23"}
+    - {slug: cry-o-lift, name: CRY-O LIFT, legacy: "services-detail.php?category=3&s=17"}
+    - {slug: dermalift-and-mask, name: "DERMALIFT & MASK", legacy: "services-detail.php?category=3&s=53"}
+    - {slug: ruby-mate, name: RUBY MATE, legacy: "services-detail.php?category=3&s=18"}
+    - {slug: oxy-plus, name: OXY PLUS, legacy: "services-detail.php?category=3&s=21"}
+    - {slug: iontophoresis, name: IONTOPHORESIS, legacy: "services-detail.php?category=3&s=22"}
+    - {slug: new-a-peel, name: NEW A PEEL, legacy: "services-detail.php?category=3&s=26"}
+    - {slug: peeling-treatment, name: PEELING TREATMENT, legacy: "services-detail.php?category=3&s=24"}
+
+- id: body-treatment
+  name: BODY TREATMENT
+  legacy: "services-detail.php?category=4"
+  items:
+    - {slug: endermologie, name: "ENDERMOLOGIE®", legacy: "services-detail.php?category=4&s=28"}
+
+- id: hair-removal
+  name: HAIR REMOVAL
+  legacy: "services-detail.php?category=5"
+  items:
+    - {slug: tks-laser, name: TKS LASER, legacy: "services-detail.php?category=5&s=31"}
+
+- id: others
+  name: OTHERS
+  legacy: "services-detail.php?category=6"
+  items:
+    - {slug: vita-bright, name: VITA BRIGHT, legacy: "services-detail.php?category=6&s=54"}

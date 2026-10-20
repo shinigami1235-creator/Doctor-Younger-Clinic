@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}404 | {{ site.name }}{% endblock %}
+{% block description %}{% endblock %}
+{% block body_class %}page-404{% endblock %}
+{% block main %}
+<section class="branch-hero">
+  <p class="eyebrow">404</p>
+  <h1 class="branch-hero__title"><span class="hero__line"><span style="--i:0">{{ site.tagline }}</span></span></h1>
+  <div class="hero__actions"><a class="btn{{ ui.back_home|th }}" href="{{ url('/') }}">{{ ui.back_home }}</a></div>
+</section>
+{% endblock %}

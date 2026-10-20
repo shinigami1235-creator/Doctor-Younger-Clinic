@@ -1,0 +1,60 @@
+# Interface labels for the Thai site.
+# Labels marked (current site) are copied from doctoryounger.com.
+# Labels marked (new) were written for the rebuild. CONFIRM them with the clinic.
+
+lang_name: ไทย
+other_lang_name: English
+
+nav:
+  home: HOME                      # (current site)
+  about: About us                 # (current site)
+  doctors: DOCTOR'S PROFILE       # (current site)
+  beauty_talk: Beauty's Talk      # (current site)
+  services: SERVICES              # (current site)
+  reviews: REVIEW                 # (current site)
+  contact: CONTACT US             # (current site)
+
+book_now: BOOK NOW                # (current site)
+register: REGISTER                # (current site)
+call_center: Call center          # (current site)
+view_all: ดูทั้งหมด                # (current site)
+back_home: ย้อนกลับหน้าแรก         # (current site)
+map_large: ดูแผนที่ขนาดใหญ่         # (current site)
+phone_label: โทร.                  # (current site)
+mobile_label: Mobile phone        # (current site)
+category: Category                # (current site)
+hours_header: 10.00 - 20.00 Mon - SUN   # (current site)
+
+call: โทร                          # (new)
+line: LINE                        # (new)
+directions: ดูเส้นทาง               # (new)
+branches: สาขา                     # (new)
+open_menu: เมนู                    # (new)
+close_menu: ปิด                    # (new)
+skip: ข้ามไปที่เนื้อหา               # (new)
+duty_title: แพทย์ออกตรวจ            # (new)
+duty_none: ไม่มีแพทย์ออกตรวจในวันนี้   # (new)
+duty_weeks: สัปดาห์ที่              # (new)
+duty_except: ยกเว้นสัปดาห์ที่         # (new)
+schedule: ตารางออกตรวจ              # (current site)
+hours: เวลาทำการ                    # (new)
+address: ที่อยู่                      # (new)
+getting_there: การเดินทาง            # (new)
+other_branch: สาขาอื่น              # (new)
+doctors_here: แพทย์ประจำสาขา         # (new)
+skin_layers_title: ระดับชั้นผิวที่รักษา  # (new)
+skin_layers:                      # (new)
+  epidermis: หนังกำพร้า
+  dermis: หนังแท้
+  fat: ชั้นไขมันใต้ผิวหนัง
+  smas: SMAS
+  muscle: กล้ามเนื้อ
+weekdays: [จันทร์, อังคาร, พุธ, พฤหัส, ศุกร์, เสาร์, อาทิตย์]   # (new) Monday first
+time_suffix: น.
+
+cookie:
+  # (current site) wording from the cookie banner on doctoryounger.com
+  text: เมื่อคลิก “อนุญาตคุกกี้ทั้งหมด” หมายความว่าผู้ใช้งานยอมรับที่จะเปิดการใช้งานคุกกี้เพื่อวัตถุประสงค์ต่างๆ ดังต่อไปนี้ เพื่อให้เว็บไซต์สามารถทำงานได้อย่างถูกต้องและเต็มประสิทธิภาพ เพื่อเปิดใช้คุณสมบัติของโซเชียลมีเดีย และเพื่อวิเคราะห์การเข้าใช้งานเพื่อนำข้อมูลไปใช้ในการทำการตลาดและการโฆษณา รวมถึงการแบ่งปันข้อมูลการใช้งานกับพาร์ทเนอร์โซเชียลมีเดีย
+  accept: อนุญาตคุกกี้ทั้งหมด
+  decline: ไม่
+  policy: Privacy policy

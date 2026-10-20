@@ -1,0 +1,58 @@
+# Interface labels for the English site.
+# The menu and button labels are the English labels already used on doctoryounger.com.
+
+lang_name: English
+other_lang_name: ไทย
+
+nav:
+  home: HOME
+  about: About us
+  doctors: DOCTOR'S PROFILE
+  beauty_talk: Beauty's Talk
+  services: SERVICES
+  reviews: REVIEW
+  contact: CONTACT US
+
+book_now: BOOK NOW
+register: REGISTER
+call_center: Call center
+view_all: View all
+back_home: Back to home
+map_large: View larger map
+phone_label: Tel.
+mobile_label: Mobile phone
+category: Category
+hours_header: 10.00 - 20.00 Mon - SUN
+
+call: Call
+line: LINE
+directions: Directions
+branches: Branches
+open_menu: Menu
+close_menu: Close
+skip: Skip to content
+duty_title: Doctors on duty
+duty_none: No doctor is scheduled on this day
+duty_weeks: week
+duty_except: except week
+schedule: Schedule
+hours: Opening hours
+address: Address
+getting_there: Getting there
+other_branch: Other branch
+doctors_here: Doctors at this branch
+skin_layers_title: Skin layers treated
+skin_layers:
+  epidermis: Epidermis
+  dermis: Dermis
+  fat: Subcutaneous fat
+  smas: SMAS
+  muscle: Muscle
+weekdays: [Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+time_suffix: ""
+
+cookie:
+  text: By clicking "Allow all cookies", you agree to enable cookies for the following purposes, so the website works correctly and at full performance, to enable social media features, and to analyse site usage for marketing and advertising, including sharing usage data with social media partners.
+  accept: Allow all cookies
+  decline: No
+  policy: Privacy policy

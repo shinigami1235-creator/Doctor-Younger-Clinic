@@ -1,0 +1,71 @@
+# One entry per branch. The same values feed the branch page, the footer, the
+# structured data Google reads, and the "doctor on duty" widget.
+# Keep each value identical to the branch's Google Business Profile.
+
+- id: sukhumvit-23
+  name:
+    th: สาขาสุขุมวิท 23
+    en: Sukhumvit 23
+  # The building name goes in titles and headings, which separates this branch
+  # from J Young Clinic Asok in Google results.
+  building:
+    th: อาคารจัสมินซิตี้ ชั้น 18
+    en: Jasmine City Building, 18th floor
+  address:
+    th: อาคารจัสมินซิตี้ ชั้น 18 ซอยประสานมิตร (สุขุมวิท 23) ถ.สุขุมวิท แขวงคลองเตยเหนือ เขตวัฒนา กรุงเทพฯ 10110
+    en: 18th floor, Jasmine City Building, Soi Prasanmit (Sukhumvit 23), Sukhumvit Road, Khlong Toei Nuea, Watthana, Bangkok 10110
+  postal:
+    street: อาคารจัสมินซิตี้ ชั้น 18 ซอยประสานมิตร (สุขุมวิท 23) ถ.สุขุมวิท
+    locality: แขวงคลองเตยเหนือ เขตวัฒนา
+    region: กรุงเทพมหานคร
+    code: "10110"
+  # CONFIRM: the site, Instagram and the header use three different numbers for this branch.
+  phone: "02-665-7057-8"
+  phone_tel: "+6626657057"
+  mobile: "081-4245008"
+  mobile_tel: "+66814245008"
+  hours:
+    th: เปิดทุกวัน 10.00 - 20.00 น.
+    en: Open daily, 10:00 to 20:00
+  opens: "10:00"
+  closes: "20:00"
+  # Pin on Jasmine City Building from Google Maps. CONFIRM with the clinic.
+  lat: 13.7358556
+  lng: 100.5630025
+  transit:
+    th: ใกล้ BTS อโศก และ MRT สุขุมวิท
+    en: Near BTS Asok and MRT Sukhumvit
+  legacy_map: upload/contact/map/thumb/contact20170405222112-300.jpg
+
+- id: thanya-park-srinakarin
+  name:
+    th: สาขาธัญญาพาร์ค ศรีนครินทร์
+    en: Thanya Park Srinakarin
+  building:
+    th: ธัญญาพาร์ค อาคาร C ชั้น 2
+    en: Thanya Park, Building C, 2nd floor
+  address:
+    th: ธัญญาพาร์ค ศรีนครินทร์ อาคาร C ชั้น 2 ถนนศรีนครินทร์ แขวงสวนหลวง เขตสวนหลวง กรุงเทพฯ 10250
+    en: 2nd floor, Building C, Thanya Park, Srinakarin Road, Suan Luang, Bangkok 10250
+  postal:
+    street: ธัญญาพาร์ค ศรีนครินทร์ อาคาร C ชั้น 2 ถนนศรีนครินทร์
+    locality: แขวงสวนหลวง เขตสวนหลวง
+    region: กรุงเทพมหานคร
+    code: "10250"
+  phone: "02-108-6168-9"
+  phone_tel: "+6621086168"
+  mobile: "081-2058322"
+  mobile_tel: "+66812058322"
+  # CONFIRM: Google lists this branch as 10:30 to 19:30.
+  hours:
+    th: เปิดทุกวัน 10.00 - 20.00 น.
+    en: Open daily, 10:00 to 20:00
+  opens: "10:00"
+  closes: "20:00"
+  # Pin from the branch's existing Google Business Profile.
+  lat: 13.7257301
+  lng: 100.6426439
+  transit:
+    th: ถนนศรีนครินทร์ ธัญญาพาร์ค อาคาร C
+    en: Thanya Park, Building C, Srinakarin Road
+  legacy_map: upload/contact/map/thumb/contact20170405221943-300.jpg

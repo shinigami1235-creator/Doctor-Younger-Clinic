@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}{{ page.meta.title }}{% endblock %}
+{% block description %}{{ page.meta.description }}{% endblock %}
+{% block body_class %}page-service{% endblock %}
+
+{% block main %}
+<section class="svc-hero">
+  <nav class="crumbs" aria-label="Breadcrumb" data-reveal>
+    <a href="{{ url('/') }}">{{ ui.nav.home }}</a><span>/</span>
+    <a href="{{ url('/') }}#services">{{ ui.nav.services }}</a><span>/</span>
+    <span>{{ category.name }}</span>
+  </nav>
+  <div class="svc-hero__grid">
+    <div class="svc-hero__text">
+      <p class="eyebrow" data-reveal>{{ category.name }}</p>
+      <h1 class="svc-hero__title">
+        {% for word in page.name.split(' ') %}<span class="hero__line"><span style="--i: {{ loop.index0 }}">{{ word }}</span></span>{% endfor %}
+      </h1>
+      <p class="svc-hero__tagline" data-reveal>{{ page.tagline }}</p>
+      <p class="svc-hero__intro" data-reveal>{{ page.intro }}</p>
+      <div class="hero__actions" data-reveal>
+        <a class="btn" href="{{ site.line_url }}" target="_blank" rel="noopener">{{ ui.book_now }}</a>
+        <a class="link-arrow" href="tel:{{ site.call_center_tel }}">{{ site.call_center }}</a>
+      </div>
+    </div>
+    <div class="svc-hero__media">
+      {% if page.images %}
+      <div class="arch arch--svc" data-parallax><img src="{{ page.images[0] | media }}" alt="{{ page.name }}" width="800" height="1000"></div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<div class="svc-body">
+  <aside class="svc-nav" aria-label="{{ ui.category }}">
+    <p class="eyebrow">{{ ui.category }}</p>
+    {% for cat in categories %}
+    <details {% if cat.id == category.id %}open{% endif %}>
+      <summary>{{ cat.name }}</summary>
+      <ul>
+        {% for it in cat['items'] %}
+        <li>
+          {% if it.slug == item.slug %}<span aria-current="page">{{ it.name }}</span>
+          {% elif it.slug in built_services %}<a href="{{ url(service_path(cat.id, it.slug)) }}">{{ it.name }}</a>
+          {% else %}<span class="is-muted">{{ it.name }}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </details>
+    {% endfor %}
+  </aside>
+
+  <article class="svc-content">
+    {% for s in page.sections %}
+    <section class="svc-section{% if s.diagram %} svc-section--diagram{% endif %}" data-reveal>
+      <span class="svc-section__num">{{ '%02d' % loop.index }}</span>
+      <h2>{{ s.heading }}</h2>
+      {% if s.list %}
+      <ul class="tick-list">{% for li in s.list %}<li>{{ li }}</li>{% endfor %}</ul>
+      {% endif %}
+      {% if s.text %}<p>{{ s.text }}</p>{% endif %}
+      {% if s.diagram %}{% with depth = page.depth %}{% include "partials/skin_diagram.html" %}{% endwith %}{% endif %}
+    </section>
+    {% endfor %}
+
+    {% if page.images | length > 1 %}
+    <div class="svc-gallery" data-reveal>
+      {% for img in page.images[1:] %}<img src="{{ img | media }}" alt="{{ page.name }}" loading="lazy">{% endfor %}
+    </div>
+    {% endif %}
+
+    <section class="svc-closing" data-reveal>
+      <p>{{ page.closing }}</p>
+      <div class="hero__actions">
+        <a class="btn" href="{{ site.line_url }}" target="_blank" rel="noopener">LINE {{ site.line_id }}</a>
+        <a class="btn btn--ghost" href="tel:{{ site.call_center_tel }}">{{ site.call_center }}</a>
+      </div>
+    </section>
+  </article>
+</div>
+
+<section class="branches branches--compact">
+  <div class="branch-grid">
+    {% for b in branches %}{% include "partials/branch_card.html" %}{% endfor %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,44 @@
+{# Skin layer diagram. `depth` is one of: epidermis, dermis, fat, smas, muscle.
+   The beam animates down to the centre of that layer when the diagram scrolls into view. #}
+{% set layers = [
+  ('epidermis', 0, 26),
+  ('dermis', 26, 112),
+  ('fat', 112, 196),
+  ('smas', 196, 222),
+  ('muscle', 222, 300),
+] %}
+{% set target = (layers | selectattr(0, 'equalto', depth) | first) %}
+{% set ty = ((target[1] + target[2]) / 2) | round | int %}
+<figure class="skin" data-reveal data-skin>
+  <figcaption class="eyebrow{{ ui.skin_layers_title|th }}">{{ ui.skin_layers_title }}</figcaption>
+  <svg viewBox="0 0 560 320" role="img" aria-label="{{ ui.skin_layers_title }}: {{ ui.skin_layers[depth] }}">
+    <defs>
+      <linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#B69E59" stop-opacity="0"/>
+        <stop offset="1" stop-color="#B69E59"/>
+      </linearGradient>
+      <pattern id="fat" width="22" height="22" patternUnits="userSpaceOnUse">
+        <circle cx="11" cy="11" r="9" fill="none" stroke="#D9C9A3" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <g transform="translate(0,20)">
+      <rect class="skin__l skin__l--epidermis" x="0" y="0" width="380" height="26"/>
+      <rect class="skin__l skin__l--dermis" x="0" y="26" width="380" height="86"/>
+      <rect class="skin__l skin__l--fat" x="0" y="112" width="380" height="84"/>
+      <rect x="0" y="112" width="380" height="84" fill="url(#fat)"/>
+      <rect class="skin__l skin__l--smas" x="0" y="196" width="380" height="26"/>
+      <rect class="skin__l skin__l--muscle" x="0" y="222" width="380" height="78"/>
+      {% for key, top, bottom in layers %}
+      <g class="skin__label{% if key == depth %} is-target{% endif %}">
+        <line x1="380" x2="400" y1="{{ (top + bottom) / 2 }}" y2="{{ (top + bottom) / 2 }}"/>
+        <text x="410" y="{{ (top + bottom) / 2 + 5 }}">{{ ui.skin_layers[key] }}</text>
+      </g>
+      {% endfor %}
+      <rect class="skin__probe" x="150" y="-20" width="80" height="14" rx="7"/>
+      <path class="skin__beam" d="M160 -6 L190 {{ ty }} L220 -6" fill="url(#beam)" opacity=".55"/>
+      <line class="skin__beam-line" x1="190" y1="-6" x2="190" y2="{{ ty }}" pathLength="1"/>
+      <circle class="skin__focus" cx="190" cy="{{ ty }}" r="7"/>
+      <circle class="skin__pulse" cx="190" cy="{{ ty }}" r="7"/>
+    </g>
+  </svg>
+</figure>

@@ -1,0 +1,21 @@
+{# "Doctors on duty" widget. The list is filled by site.js from the schedule data below.
+   `fixed_branch` locks the widget to one branch (used on branch pages). #}
+<section class="duty" data-duty {% if fixed_branch %}data-branch="{{ fixed_branch }}"{% endif %} data-reveal>
+  <div class="duty__head">
+    <h3 class="duty__title">{{ ui.duty_title }}</h3>
+    {% if not fixed_branch %}
+    <div class="segmented" role="tablist" aria-label="{{ ui.branches }}">
+      {% for b in branches %}
+      <button type="button" role="tab" data-duty-branch="{{ b.id }}" aria-selected="{{ 'true' if loop.first else 'false' }}">{{ b.name[lang] }}</button>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  <div class="duty__days" role="tablist" aria-label="{{ ui.schedule }}" data-duty-days>
+    {% for d in ui.weekdays %}
+    <button type="button" role="tab" data-duty-day="{{ loop.index0 }}">{{ d }}</button>
+    {% endfor %}
+  </div>
+  <ul class="duty__list" data-duty-list aria-live="polite"></ul>
+  <p class="duty__empty" data-duty-empty hidden>{{ ui.duty_none }}</p>
+</section>

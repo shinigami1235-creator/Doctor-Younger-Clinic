@@ -1,0 +1,14 @@
+<article class="branch-card" data-reveal style="--d: {{ (loop.index0 if loop is defined else 0) * 120 }}ms">
+  <p class="eyebrow{{ b.building[lang]|th }}">{{ b.building[lang] }}</p>
+  <h3 class="branch-card__name"><a href="{{ url(branch_path(b.id)) }}">{{ b.name[lang] }}</a></h3>
+  <p class="branch-card__addr">{{ b.address[lang] }}</p>
+  <dl class="branch-card__facts">
+    <div><dt>{{ ui.phone_label }}</dt><dd><a href="tel:{{ b.phone_tel }}">{{ b.phone }}</a></dd></div>
+    <div><dt>{{ ui.mobile_label }}</dt><dd><a href="tel:{{ b.mobile_tel }}">{{ b.mobile }}</a></dd></div>
+    <div><dt>{{ ui.hours }}</dt><dd>{{ b.hours[lang] }}</dd></div>
+  </dl>
+  <div class="branch-card__actions">
+    <a class="btn btn--small{{ ui.directions|th }}" href="{{ directions_link(b) }}" target="_blank" rel="noopener">{{ ui.directions }}</a>
+    <a class="link-arrow{{ b.name[lang]|th }}" href="{{ url(branch_path(b.id)) }}">{{ b.name[lang] }}</a>
+  </div>
+</article>

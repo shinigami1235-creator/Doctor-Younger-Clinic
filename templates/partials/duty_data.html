@@ -1,0 +1,6 @@
+{# Schedule data for the duty widget, written once per page. #}
+<script type="application/json" id="duty-data">{{ {
+  'weekdays': ui.weekdays,
+  'suffix': ui.time_suffix,
+  'doctors': doctors_for(lang),
+} | tojson }}</script>

@@ -1,0 +1,57 @@
+# Homepage, Thai. Every line of copy comes from the current site or the clinic's Instagram.
+# The source of each block is noted so the clinic can check it.
+
+meta:
+  # (new) page title written for Google
+  title: Doctor Younger Clinic คลินิกผิวหนังและเลเซอร์ | สุขุมวิท 23 (อโศก) และธัญญาพาร์ค ศรีนครินทร์
+  # (current site) meta description
+  description: คลีนิกเสริมความงาม ทั้งเลเซอร์ โบท็อกซ์ ฟิลเลอร์ ร้อยไหม และทรีทเม้นท์บำรุงผิวหน้า เพื่อผิวหน้าเรียว กระชับ ขาวกระจ่างใส ด้วยทีมแพทย์ผิวหนังที่มีประสบการณ์ เทคนิค และความเชี่ยวชาญ
+
+hero:
+  # (Instagram) campaign line
+  lines: [LOOK YOUNGER, FEEL YOUNGER, BE YOUNGER]
+  # (current site) homepage text
+  intro: Doctor Younger คลินิกผิวหนังและเลเซอร์ ที่ให้บริการดูแลผิวพรรณและเรือนร่าง ตลอดจนให้คำปรึกษาด้านความงามและสุขภาพ
+  # Unsplash, complementary only. Replace with a photo of the clinic when the clinic sends one.
+  image: https://images.unsplash.com/photo-1589525231707-f2de2428f59c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=srgb&w=1400
+  image_alt: ""
+  credit: Photo by Thanh Duc PHAN on Unsplash
+
+# (current site) footer badges
+pillars:
+  - mark: I
+    text: [มั่นใจปลอดภัยด้วย, เทคโนโลยีที่คัดสรรแล้ว]
+  - mark: II
+    text: [ดูแลโดยแพทย์, ผู้เชี่ยวชาญ]
+  - mark: III
+    text: [บริการด้วยมาตรฐาน, ระดับสากล]
+
+services:
+  heading: SERVICES
+  featured: ultra-deep-lifting
+
+doctors:
+  heading: DOCTOR'S PROFILE
+  # (current site) doctor-profile.php
+  intro: ด้วยการยึดมั่นและคำนึงถึงความปลอดภัยของลูกค้าเสมอมา ด็อกเตอร์ ยังเกอร์ จึงได้เตรียมทีมแพทย์ผิวหนังที่มีเทคนิคและประสบการณ์ เพื่อสร้างความมั่นใจให้กับลูกค้าที่มารับบริการ
+
+beauty_talk:
+  heading: Beauty's Talk
+  # (current site) beauty-talk.php
+  intro: ลองมาฟังคำบอกเล่าถึงความประทับใจที่พรีเซ็นเตอร์สาวสวยมีต่อ Doctor Younger Clinic กันค่ะ นอกจากนี้ พวกเธอยังได้เผยเคล็ดลับความงามของซุปเปอร์สตาร์ให้คุณได้ไปทดลองใช้ดูบ้างอีกด้วยนะคะ
+  people:
+    - {nickname: คุณไก่, name: สุปราณี เจริญผล, photo: upload/beauty/big/2.jpg}
+    - {nickname: คุณหยาดทิพย์, name: หยาดทิพย์ ราชปาล, photo: upload/beauty/big/1.jpg}
+
+reviews:
+  heading: YOUNGER REVIEWS
+  # (current site) homepage review strip
+  items:
+    - {title: อยากลอง Aramis Laser เพราะเค้าบอกกันว่ามันดี, by: รีวิวจากคุณRattanaporn, photo: upload/review/thumb/review20180207143201.jpg}
+    - {title: Sunscreen360 ใช้ออกรอบตอนตีกอล์ฟ แล้วแอปปี้มาก!!!, by: รีวิวจากคุณต้อม ภาวนา, photo: upload/review/thumb/review20180207133002.jpg}
+    - {title: กระชับรูขุมขน และลดริ้วรอยด้วย Aramis Laser, by: รีวิวจากคุณApple, photo: upload/review/thumb/review20171121132253.jpg}
+
+contact:
+  heading: CONTACT US
+  # (current site) contact-us.php
+  intro: สอบถามเส้นทางหรือติดต่อ สำรองเวลาเพื่อเข้ารับบริการของ Doctor Younger Clinic แต่ละสาขาได้ที่นี่
