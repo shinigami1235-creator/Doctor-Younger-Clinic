@@ -148,7 +148,7 @@ html[lang="th"] .btn { letter-spacing: .12em; }
 .mega__cat { display: block; font-family: var(--serif); font-size: 22px; color: var(--espresso); text-decoration: none; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
 .mega__col li a { display: block; font-size: 14px; padding: 4px 0; text-decoration: none; letter-spacing: .04em; color: var(--ink-soft); transition: color .3s, transform .3s var(--ease-out); }
 .mega__col li a:hover { color: var(--bronze-deep); transform: translateX(6px); }
-.site-header__actions { display: flex; align-items: center; gap: 18px; }
+.site-header__actions { display: flex; align-items: center; gap: 18px; margin-left: auto; }
 .lang { font-size: 14px; letter-spacing: .1em; text-decoration: none; border-bottom: 1px solid var(--bronze-soft); padding-bottom: 2px; }
 .menu-toggle { display: none; background: none; border: 0; cursor: pointer; align-items: center; gap: 10px; padding: 8px 0; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; }
 .menu-toggle__lines { display: grid; gap: 6px; width: 28px; }
@@ -160,10 +160,13 @@ html[lang="th"] .btn { letter-spacing: .12em; }
   :root { --header-h: 78px; }
   .menu-toggle { display: inline-flex; }
   .site-header__actions .btn { display: none; }
-  .nav { position: fixed; inset: 0; z-index: -1; background: var(--ivory); flex-direction: column; justify-content: center; align-items: flex-start; padding: calc(var(--header-h) + 24px) var(--gutter) 120px; clip-path: inset(0 0 100% 0); transition: clip-path .8s var(--ease-out); overflow-y: auto; }
+  .nav { position: fixed; inset: 0; height: 100dvh; z-index: -1; background: var(--ivory); flex-direction: column; justify-content: flex-start; align-items: flex-start; padding: calc(var(--header-h) + 28px) var(--gutter) 140px; clip-path: inset(0 0 100% 0); transition: clip-path .8s var(--ease-out); overflow-y: auto; overscroll-behavior: contain; }
+  /* While the menu is open the header drops its blur and slide, which would otherwise trap the fixed menu inside the header bar */
+  body.menu-open .site-header { backdrop-filter: none; transform: none; background: var(--ivory); box-shadow: none; }
+  body.menu-open .action-bar, body.menu-open .line-float, body.menu-open .cookie { display: none; }
   .nav.is-open { clip-path: inset(0); }
   .nav__list { flex-direction: column; gap: 4px; }
-  .nav__item > a { font-family: var(--serif); font-size: clamp(32px, 8vw, 48px); letter-spacing: .02em; text-transform: none; padding: 4px 0; }
+  .nav__item > a { font-family: var(--serif); font-size: clamp(28px, 7vw, 40px); line-height: 1.2; letter-spacing: .02em; text-transform: none; padding: 8px 0; }
   .nav__item > a::after { display: none; }
   .mega { display: none; }
   .nav__meta { display: grid; gap: 4px; margin-top: 40px; font-size: 16px; color: var(--ink-soft); }
@@ -502,8 +505,8 @@ html[lang="th"] .stat__label { letter-spacing: .02em; font-size: 18px; text-tran
 .prose p { margin: 0 0 1.1em; }
 .prose strong { font-weight: 500; color: var(--espresso); }
 .prose ul, .prose ol { margin: 0 0 1.4em; padding: 0; display: grid; gap: 12px; }
-.prose ul li { display: grid; grid-template-columns: 30px 1fr; align-items: baseline; }
-.prose ul li::before { content: ""; width: 16px; height: 1px; background: var(--bronze); transform: translateY(-6px); }
+.prose ul li { position: relative; padding-left: 30px; }
+.prose ul li::before { content: ""; position: absolute; left: 0; top: .9em; width: 16px; height: 1px; background: var(--bronze); }
 .prose ol { list-style: decimal; padding-left: 1.4em; }
 .prose img { margin: 34px 0; width: 100%; height: auto; }
 .prose a { color: var(--bronze-deep); }
