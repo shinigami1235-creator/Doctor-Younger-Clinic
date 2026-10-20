@@ -22,7 +22,11 @@ Upload the contents of `dist/` to the web server. The preview build is marked `n
 | `data/branches.yaml` | Address, phone, hours and map pin for each branch |
 | `data/doctors.yaml` | Doctors with their weekly schedule at each branch |
 | `data/services.yaml` | Service categories and treatments, with their old addresses |
-| `content/th/`, `content/en/` | Page text in each language, one file per page |
+| `data/concerns.yaml` | Skin concerns for the treatment finder and which treatments belong to each |
+| `content/th/`, `content/en/` | Page text in each language: `services/`, `products/`, `doctors/`, `reviews/`, `beauty-talk/`, `news/`, plus `tips/` in Thai only |
+| `raw/` | The old site's text as saved on 20 October 2026, kept as the source of the import |
+| `tools/import_legacy.py` | One-off script that turned `raw/` into the Thai content files |
+| `tools/fetch_media.py` | Copies the clinic's photos from the old site into `static/media/` |
 | `templates/` | Jinja2 HTML templates |
 | `static/` | CSS, JavaScript and self-hosted fonts |
 | `dist/` | The finished site. Created by `build.py`, never edited by hand |
@@ -39,7 +43,9 @@ Upload the contents of `dist/` to the web server. The preview build is marked `n
 
 `weeks` limits a shift to certain weeks of the month and `except_weeks` skips weeks. The "Doctors on duty" panel and the branch pages read from this file.
 
-**Add a treatment page.** Copy `content/th/services/ultra-deep-lifting.yaml` to a new file named after the treatment's `slug` in `data/services.yaml`, replace the text, and do the same in `content/en/services/`. A treatment gets its own page once it has a file in both languages. Until then it shows as a name in the menu without a link.
+**Add a treatment page.** Add the treatment to `data/services.yaml`, then copy any file in `content/th/services/` to a new file named after its `slug`, replace the text, and do the same in `content/en/services/`. A treatment gets its own page once it has a file in both languages. `body` is HTML, and `depth` (epidermis, dermis, fat, smas or muscle) adds the skin layer diagram.
+
+**Add it to the treatment finder.** List its slug under each matching concern in `data/concerns.yaml`.
 
 **Add a doctor.** Add an entry to `data/doctors.yaml` and build again.
 
@@ -49,9 +55,13 @@ Upload the contents of `dist/` to the web server. The preview build is marked `n
 - `sitemap.xml` lists every page with its Thai and English versions.
 - `.htaccess` and `redirects.csv` send every old `.php` address to its new page with a 301 redirect so the old pages pass their ranking on. `.htaccess` works on Apache. On another server, copy the rules from `redirects.csv`.
 
+## Tips
+
+Every one of the 85 Tips articles credits another publisher (Sanook, Kapook, Mthai and others). They are built in Thai only, kept out of the sitemap and marked `noindex`, since Google ranks copied articles poorly and can mark the whole site down for them. Replace them with the clinic's own articles before removing the `noindex`.
+
 ## Images
 
-Photos still load from the current doctoryounger.com while the clinic gathers full-size files. Once they arrive, put them in `static/img/` and change the paths in the YAML files. The homepage photo comes from Unsplash and should be replaced with a photo of the clinic.
+Run `python tools/fetch_media.py` before `build.py` to copy every photo from the old site into `static/media/`. The preview workflow does this on GitHub. Any photo not copied still loads from doctoryounger.com, except in the 3D product showroom, which needs local copies since browsers block WebGL from reading photos hosted on another site. The homepage photo comes from Unsplash and should be replaced with a photo of the clinic.
 
 ## Backend later
 
