@@ -6,6 +6,10 @@ on:
     branches: [main]
 permissions:
   contents: write
+# A newer push cancels a build still running, so an older build can never publish over a newer one
+concurrency:
+  group: preview
+  cancel-in-progress: true
 jobs:
   build:
     runs-on: ubuntu-latest
