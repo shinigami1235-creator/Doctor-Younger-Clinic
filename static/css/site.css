@@ -19,6 +19,7 @@
 
 /* ---------- Tokens ---------- */
 :root {
+  color-scheme: only light;
   --ivory: #FAF8F4;
   --paper: #FFFFFF;
   --sand: #EFEAE1;
@@ -248,11 +249,13 @@ section { position: relative; }
 }
 /* ---------- Treatment finder and cards ---------- */
 .finder { padding: 130px 0 0; }
-.chips { max-width: var(--max); margin: 0 auto 44px; padding: 0 var(--gutter); display: flex; flex-wrap: wrap; gap: 10px; }
-.chip { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: var(--pill); border: 1px solid var(--line); background: var(--paper); cursor: pointer; font-size: 16px; transition: background .4s, color .4s, border-color .4s, transform .4s var(--ease-out), box-shadow .4s; }
+/* Concern chips sit in an even grid so every chip is the same width: 5 across on desktop, 2 across on phones */
+.chips { max-width: var(--max); margin: 0 auto 48px; padding: 0 var(--gutter); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 12px; }
+@media (max-width: 1000px) { .chips { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }
+.chip { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 58px; padding: 10px 22px; text-align: left; line-height: 1.35; border-radius: 20px; border: 1px solid var(--line); background: var(--paper); cursor: pointer; font-size: 16px; transition: background .4s, color .4s, border-color .4s, transform .4s var(--ease-out), box-shadow .4s; }
 .chip:hover { border-color: var(--bronze); transform: translateY(-2px); box-shadow: var(--shadow); }
 .chip[aria-selected="true"] { background: var(--dark); color: var(--paper); border-color: transparent; box-shadow: var(--shadow); }
-.chip__count { font-size: 14px; color: var(--ink-soft); }
+.chip__count { flex: none; font-size: 14px; color: var(--ink-soft); }
 .chip[aria-selected="true"] .chip__count { color: var(--bronze); }
 .svc-grid { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 24px; }
 .svc-grid__cell { transition: transform .5s var(--ease-out); }
