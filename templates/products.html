@@ -37,7 +37,7 @@
 {% block data %}
 <script type="application/json" id="showroom-items">[
 {% for slug in product_order %}{% set p = c.products[slug] %}
-{{ {'name': p.name, 'short': p.short or p.tagline, 'size': p.size or '', 'price': p.price or '', 'url': url('/products/' ~ slug ~ '/'), 'img': p.images[0] | media} | tojson }}{% if not loop.last %},{% endif %}
+{{ {'name': p.name, 'short': p.short or p.tagline, 'size': p.size or '', 'price': p.price or '', 'url': url('/products/' ~ slug ~ '/'), 'img': paths.static('img/products/' ~ slug ~ '.png')} | tojson }}{% if not loop.last %},{% endif %}
 {% endfor %}
 ]</script>
 {% endblock %}

@@ -1,6 +1,7 @@
 /* Product showroom: the clinic's products stand on pedestals in a ring that turns.
    The product facing the viewer is lit and its details show in the card beside it.
    Drag, swipe, the arrow buttons or the keyboard arrows turn the ring. It turns on its own every 8 seconds when left alone.
+   Each product is a cutout PNG from static/img/products (made by tools/make_cutouts.py), shown at full strength.
    If WebGL or a product photo cannot load, the section hides and the product grid below stays. */
 import * as THREE from "three";
 
@@ -38,6 +39,8 @@ function start() {
   const N = items.length;
   const STEP = (Math.PI * 2) / N;
   const RADIUS = 4.4;
+  const PHOTO = 2.1;                    // size of each product cutout
+  const PHOTO_Y = 0.42 + 0.42 * PHOTO;  // pedestal top (0.42) plus the empty space below the product in each photo
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
@@ -49,8 +52,8 @@ function start() {
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
-  camera.position.set(0, 2.6, 14);
-  camera.lookAt(0, 1.0, 0);
+  camera.position.set(0, 2.8, 14);
+  camera.lookAt(0, 1.2, 0);
 
   scene.add(new THREE.HemisphereLight(0xfff8ee, 0xd9c9a3, 1.15));
   const key = new THREE.DirectionalLight(0xffffff, 1.4);
@@ -73,7 +76,6 @@ function start() {
   const ring = new THREE.Group();
   scene.add(ring);
 
-  const vignette = radialTexture(60, 126, [[0, "#ffffff"], [1, "#000000"]]);
   const shadowTex = radialTexture(0, 128, [[0, "rgba(42,34,29,0.35)"], [1, "rgba(42,34,29,0)"]]);
   const pedestalMat = new THREE.MeshStandardMaterial({ color: 0xf7f4ee, roughness: 0.55, metalness: 0.05 });
   const rimMat = new THREE.MeshStandardMaterial({ color: 0xb69e59, roughness: 0.3, metalness: 0.8 });
@@ -96,12 +98,12 @@ function start() {
     rim.rotation.x = Math.PI / 2;
     rim.position.y = 0.42;
 
-    const mat = new THREE.MeshBasicMaterial({ transparent: true, alphaMap: vignette, opacity: 1, depthWrite: false });
-    const photo = new THREE.Mesh(new THREE.PlaneGeometry(1.7, 1.7), mat);
-    photo.position.y = 1.1;   // photo bottom rests on the pedestal top
+    const mat = new THREE.MeshBasicMaterial({ transparent: true, depthWrite: false, toneMapped: false });
+    const photo = new THREE.Mesh(new THREE.PlaneGeometry(PHOTO, PHOTO), mat);
+    photo.position.y = PHOTO_Y;   // the product's base rests on the pedestal top
     loader.load(item.img, (tex) => {
       tex.colorSpace = THREE.SRGBColorSpace;
-      tex.anisotropy = 4;
+      tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
       mat.map = tex;
       mat.needsUpdate = true;
     }, undefined, () => { if (!failed) { failed = true; fallback(); } });
@@ -231,9 +233,9 @@ function start() {
       g.getWorldPosition(world);
       p.lookAt(camPos.x, p.getWorldPosition(new THREE.Vector3()).y, camPos.z);
       const front = (world.z + RADIUS) / (2 * RADIUS);       // 0 at the back, 1 at the front
-      const s = 0.7 + 0.45 * Math.pow(front, 3);
+      // Products further back are smaller, never faded
+      const s = 0.7 + 0.55 * Math.pow(front, 2);
       g.scale.setScalar(s);
-      p.material.opacity = 0.35 + 0.65 * front;
     });
     renderer.render(scene, camera);
   }

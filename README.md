@@ -27,6 +27,7 @@ Upload the contents of `dist/` to the web server. The preview build is marked `n
 | `raw/` | The old site's text as saved on 20 October 2026, kept as the source of the import |
 | `tools/import_legacy.py` | One-off script that turned `raw/` into the Thai content files |
 | `tools/fetch_media.py` | Copies the clinic's photos from the old site into `static/media/` |
+| `tools/make_cutouts.py` | Cuts the white background out of each product photo for the 3D showroom, saved to `static/img/products/` |
 | `templates/` | Jinja2 HTML templates |
 | `static/` | CSS, JavaScript and self-hosted fonts |
 | `dist/` | The finished site. Created by `build.py`, never edited by hand |
@@ -61,7 +62,7 @@ Every one of the 85 Tips articles credits another publisher (Sanook, Kapook, Mth
 
 ## Images
 
-Run `python tools/fetch_media.py` before `build.py` to copy every photo from the old site into `static/media/`. The preview workflow does this on GitHub. Any photo not copied still loads from doctoryounger.com, except in the 3D product showroom, which needs local copies since browsers block WebGL from reading photos hosted on another site. The homepage photo comes from Unsplash and should be replaced with a photo of the clinic.
+Run `python tools/fetch_media.py` before `build.py` to copy every photo from the old site into `static/media/`. The preview workflow does this on GitHub. Any photo not copied still loads from doctoryounger.com. The 3D product showroom uses its own cutouts in `static/img/products/`, which are kept in the repo since browsers block WebGL from reading photos hosted on another site. When a product photo changes, run `python tools/fetch_media.py` and then `python tools/make_cutouts.py --media static/media`, and commit the new PNG. The homepage photo comes from Unsplash and should be replaced with a photo of the clinic.
 
 ## Backend later
 
