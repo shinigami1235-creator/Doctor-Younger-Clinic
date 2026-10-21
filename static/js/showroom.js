@@ -1,6 +1,6 @@
 /* Product showroom: the clinic's products stand on pedestals in a ring that turns.
    The product facing the viewer is lit and its details show in the card beside it.
-   Drag, swipe, the arrow buttons or the keyboard arrows turn the ring.
+   Drag, swipe, the arrow buttons or the keyboard arrows turn the ring. It turns on its own every 8 seconds when left alone.
    If WebGL or a product photo cannot load, the section hides and the product grid below stays. */
 import * as THREE from "three";
 
@@ -75,7 +75,7 @@ function start() {
 
   const vignette = radialTexture(60, 126, [[0, "#ffffff"], [1, "#000000"]]);
   const shadowTex = radialTexture(0, 128, [[0, "rgba(42,34,29,0.35)"], [1, "rgba(42,34,29,0)"]]);
-  const pedestalMat = new THREE.MeshStandardMaterial({ color: 0xf4ede2, roughness: 0.55, metalness: 0.05 });
+  const pedestalMat = new THREE.MeshStandardMaterial({ color: 0xf7f4ee, roughness: 0.55, metalness: 0.05 });
   const rimMat = new THREE.MeshStandardMaterial({ color: 0xb69e59, roughness: 0.3, metalness: 0.8 });
   const loader = new THREE.TextureLoader();
   loader.setCrossOrigin("anonymous");
@@ -219,9 +219,9 @@ function start() {
   function frame(t) {
     requestAnimationFrame(frame);
     if (!visible) return;
-    // Auto-advance after 6 seconds without input
-    if (!reduceMotion && !dragging && t - lastInteract > 6000) { go(current + 1, false); lastInteract = t; }
-    angle += (target - angle) * (reduceMotion ? 1 : 0.075);
+    // Turn to the next product after 8 seconds without input
+    if (!reduceMotion && !dragging && t - lastInteract > 8000) { go(current + 1, false); lastInteract = t; }
+    angle += (target - angle) * (reduceMotion ? 1 : 0.05);
     ring.rotation.y = angle;
     camera.getWorldPosition(camPos);
     slots.forEach((g) => {
@@ -234,7 +234,6 @@ function start() {
       const s = 0.7 + 0.45 * Math.pow(front, 3);
       g.scale.setScalar(s);
       p.material.opacity = 0.35 + 0.65 * front;
-      p.position.y = 1.1 + (front > 0.98 ? Math.sin(t / 700) * 0.05 : 0);
     });
     renderer.render(scene, camera);
   }

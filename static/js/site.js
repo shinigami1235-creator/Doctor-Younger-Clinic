@@ -4,57 +4,28 @@
   "use strict";
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
   // Browser storage can be blocked (private mode, strict settings), so every access is guarded.
   var store = {
     get: function (k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } },
-    set: function (k, v) { try { window.localStorage.setItem(k, v); } catch (e) { /* ignore */ } },
-    sget: function (k) { try { return window.sessionStorage.getItem(k); } catch (e) { return null; } },
-    sset: function (k, v) { try { window.sessionStorage.setItem(k, v); } catch (e) { /* ignore */ } }
+    set: function (k, v) { try { window.localStorage.setItem(k, v); } catch (e) { /* ignore */ } }
   };
 
-  /* ---------- Intro: first page view of a visit only ---------- */
-  var intro = $("[data-intro]");
-  if (intro) {
-    if (reduceMotion || store.sget("dy-intro")) {
-      intro.classList.add("is-skipped");
-    } else {
-      store.sset("dy-intro", "1");
-      document.documentElement.style.setProperty("--intro-delay", "1900ms");
-      setTimeout(function () { intro.classList.add("is-skipped"); }, 2700);
-    }
-  }
   requestAnimationFrame(function () { setTimeout(function () { document.body.classList.add("is-loaded"); }, 60); });
 
-  /* ---------- Split headings into words for the rise-in ---------- */
-  $$("[data-split]").forEach(function (el) {
-    var words = el.textContent.trim().split(/\s+/);
-    el.setAttribute("aria-label", el.textContent.trim());
-    el.innerHTML = words.map(function (w, i) {
-      return '<span class="w" aria-hidden="true"><span style="--i:' + i + '">' + w.replace(/[<>&]/g, "") + "</span></span>";
-    }).join(" ");
-    el.setAttribute("data-reveal-split", "");
-  });
-
-  /* ---------- Header, scroll progress, floating buttons ---------- */
+  /* ---------- Header and floating buttons ---------- */
   var header = $("[data-header]");
-  var progress = $("[data-progress]");
-  var readBar = $("[data-read-progress]");
   var bar = $(".action-bar");
   var lineFloat = $(".line-float");
   var lastY = window.scrollY;
   function onScroll() {
     var y = window.scrollY;
-    var max = document.documentElement.scrollHeight - window.innerHeight;
     if (header) {
       header.classList.toggle("is-solid", y > 40);
       header.classList.toggle("is-hidden", y > 400 && y > lastY && !document.body.classList.contains("menu-open"));
     }
-    if (progress) progress.style.transform = "scaleX(" + (max > 0 ? y / max : 0) + ")";
-    if (readBar) readBar.style.transform = "scaleX(" + (max > 0 ? y / max : 0) + ")";
     if (bar) bar.classList.toggle("is-shown", y > 300);
     if (lineFloat) lineFloat.classList.toggle("is-shown", y > 500);
     lastY = y;
@@ -78,8 +49,8 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
   }
 
-  /* ---------- Reveal on scroll (text, frames, split headings, diagrams) ---------- */
-  var revealables = $$("[data-reveal], [data-frame], [data-split], [data-skin]");
+  /* ---------- Reveal on scroll: one soft fade per block, and the skin diagram ---------- */
+  var revealables = $$("[data-reveal], [data-frame], [data-skin]");
   if ("IntersectionObserver" in window && !reduceMotion) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
@@ -89,94 +60,6 @@
     revealables.forEach(function (el) { io.observe(el); });
   } else {
     revealables.forEach(function (el) { el.classList.add("is-in"); });
-  }
-
-  /* ---------- Count-up numbers ---------- */
-  var counters = $$("[data-count]");
-  if (counters.length && "IntersectionObserver" in window && !reduceMotion) {
-    var co = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        var el = en.target, target = Number(el.dataset.count), t0 = performance.now();
-        var tick = function (t) {
-          var p = Math.min(1, (t - t0) / 1600), e = 1 - Math.pow(1 - p, 4);
-          el.textContent = Math.round(target * e);
-          if (p < 1) requestAnimationFrame(tick);
-        };
-        el.textContent = "0";
-        requestAnimationFrame(tick);
-        co.unobserve(el);
-      });
-    }, { threshold: 0.6 });
-    counters.forEach(function (el) { co.observe(el); });
-  }
-
-  /* ---------- Mouse-follow layers, magnetic buttons, tilt (mouse only) ---------- */
-  if (finePointer && !reduceMotion) {
-    $$("[data-mouse-layer]").forEach(function (layer) {
-      var host = layer.closest("section") || document.body;
-      host.addEventListener("mousemove", function (e) {
-        var r = host.getBoundingClientRect();
-        var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
-        layer.style.transform = "translate3d(" + (x * -18).toFixed(1) + "px," + (y * -14).toFixed(1) + "px,0)";
-      });
-      host.addEventListener("mouseleave", function () { layer.style.transform = ""; });
-      layer.style.transition = "transform .8s cubic-bezier(.16,1,.3,1)";
-    });
-
-    $$("[data-magnetic]").forEach(function (el) {
-      el.addEventListener("mousemove", function (e) {
-        var r = el.getBoundingClientRect();
-        var x = e.clientX - r.left - r.width / 2, y = e.clientY - r.top - r.height / 2;
-        el.style.transform = "translate(" + (x * 0.25).toFixed(1) + "px," + (y * 0.35).toFixed(1) + "px)";
-      });
-      el.addEventListener("mouseleave", function () { el.style.transform = ""; });
-    });
-
-    $$("[data-tilt], [data-tilt-big]").forEach(function (el) {
-      var amp = el.hasAttribute("data-tilt-big") ? 10 : 6;
-      el.addEventListener("mousemove", function (e) {
-        var r = el.getBoundingClientRect();
-        var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
-        el.style.transform = "perspective(900px) rotateY(" + (x * amp).toFixed(2) + "deg) rotateX(" + (-y * amp).toFixed(2) + "deg)";
-      });
-      el.addEventListener("mouseleave", function () { el.style.transform = ""; });
-      el.style.transition = "transform .5s cubic-bezier(.16,1,.3,1)";
-    });
-
-    /* Custom cursor ring that grows over links */
-    var cursor = $("[data-cursor]");
-    if (cursor) {
-      var cx = 0, cy = 0, tx = 0, ty = 0;
-      document.addEventListener("mousemove", function (e) {
-        tx = e.clientX; ty = e.clientY;
-        document.body.classList.add("has-cursor");
-        cursor.classList.toggle("is-link", !!e.target.closest("a, button, summary, [data-drag-scroll]"));
-      });
-      document.addEventListener("mouseleave", function () { document.body.classList.remove("has-cursor"); });
-      (function loop() {
-        cx += (tx - cx) * 0.2; cy += (ty - cy) * 0.2;
-        cursor.style.transform = "translate(" + cx + "px," + cy + "px)";
-        requestAnimationFrame(loop);
-      })();
-    }
-
-    /* Floating picture that follows the cursor over list rows */
-    $$("[data-hover-preview], .news-list").forEach(function (list) {
-      var box = list.querySelector("[data-preview-box]");
-      if (!box) { box = document.createElement("div"); box.className = "hover-preview"; box.innerHTML = '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">'; list.appendChild(box); }
-      var img = box.querySelector("img");
-      list.addEventListener("mousemove", function (e) {
-        box.style.left = e.clientX + 24 + "px"; box.style.top = e.clientY + "px";
-      });
-      $$("[data-preview]", list).forEach(function (row) {
-        row.addEventListener("mouseenter", function () {
-          if (!row.dataset.preview) return;
-          img.src = row.dataset.preview; box.classList.add("is-on");
-        });
-        row.addEventListener("mouseleave", function () { box.classList.remove("is-on"); });
-      });
-    });
   }
 
   /* ---------- Drag to scroll rows ---------- */
@@ -223,48 +106,13 @@
           c.style.transition = "none";
           requestAnimationFrame(function () { c.style.transition = ""; c.style.transform = ""; });
         } else {
-          c.animate([{ opacity: 0, transform: "translateY(24px) scale(.97)" }, { opacity: 1, transform: "none" }],
-                    { duration: 600, delay: i * 30, easing: "cubic-bezier(.16,1,.3,1)", fill: "backwards" });
+          c.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 400, easing: "ease", fill: "backwards" });
         }
       });
     }
     chips.forEach(function (c) { c.addEventListener("click", function () { select(c.dataset.concern, true); }); });
     select(finder.dataset.start || "all", false);
   });
-
-  /* ---------- Gold dust behind the hero ---------- */
-  var dust = $("[data-dust]");
-  if (dust && !reduceMotion && dust.getContext) {
-    var ctx = dust.getContext("2d"), parts = [], w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var size = function () {
-      w = dust.clientWidth; h = dust.clientHeight;
-      dust.width = w * dpr; dust.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    };
-    size(); window.addEventListener("resize", size);
-    for (var i = 0; i < 60; i++) {
-      parts.push({ x: Math.random(), y: Math.random(), r: Math.random() * 1.8 + 0.4, s: Math.random() * 0.00025 + 0.00008, p: Math.random() * Math.PI * 2 });
-    }
-    var mx = 0.5, my = 0.5;
-    dust.parentElement.addEventListener("mousemove", function (e) {
-      var r = dust.getBoundingClientRect(); mx = (e.clientX - r.left) / r.width; my = (e.clientY - r.top) / r.height;
-    });
-    var visible = true;
-    if ("IntersectionObserver" in window) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }).observe(dust);
-    (function draw(t) {
-      if (visible) {
-        ctx.clearRect(0, 0, w, h);
-        parts.forEach(function (q) {
-          q.y -= q.s * 16; if (q.y < -0.02) { q.y = 1.02; q.x = Math.random(); }
-          var x = (q.x + (mx - 0.5) * 0.03 * q.r) * w + Math.sin(t / 2000 + q.p) * 8;
-          var y = (q.y + (my - 0.5) * 0.03 * q.r) * h;
-          var a = 0.25 + 0.35 * Math.sin(t / 900 + q.p) ** 2;
-          ctx.beginPath(); ctx.arc(x, y, q.r, 0, Math.PI * 2);
-          ctx.fillStyle = "rgba(182,158,89," + a.toFixed(3) + ")"; ctx.fill();
-        });
-      }
-      requestAnimationFrame(draw);
-    })(0);
-  }
 
   /* ---------- Doctors on duty ---------- */
   var dataEl = $("#duty-data");
@@ -303,7 +151,6 @@
       rows.forEach(function (row, i) {
         var li = document.createElement("li");
         li.className = "duty__item";
-        li.style.animationDelay = (i * 70) + "ms";
         var a = document.createElement("a"); a.href = row.doc.url;
         var img = document.createElement("img"); img.src = row.doc.photo; img.alt = ""; img.loading = "lazy";
         var text = document.createElement("div");
