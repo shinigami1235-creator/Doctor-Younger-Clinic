@@ -576,6 +576,7 @@ section { position: relative; }
 @media (max-width: 800px) { .branch-grid { grid-template-columns: 1fr; } .branch-card__facts div { grid-template-columns: 1fr; gap: 2px; } }
 .branch-hero { max-width: var(--max); margin: 0 auto; padding: calc(var(--header-h) + 48px) var(--gutter) 80px; }
 .branch-hero__title { font-size: clamp(46px, 7vw, 104px); line-height: 1; margin-bottom: 30px; }
+.branch-hero__line { display: block; }
 .branch-hero__building > span { font-style: italic; color: var(--bronze-deep); font-size: .5em; }
 .branch-info { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter) 120px; display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(32px, 5vw, 80px); align-items: stretch; }
 .branch-info dl { margin: 0; display: grid; }
