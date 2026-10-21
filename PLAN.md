@@ -5,6 +5,7 @@ This is the plan for rebuilding doctoryounger.com, which was built in 2017. Thai
 ## Decisions (20 October 2026)
 
 - Design direction: Quiet luxury, with the skin layer diagram on laser and RF pages.
+- 21 October 2026: people who know the doctor describe her brand as simple yet timeless elegance, so the design was pared back. Soft white page, near-black text, bronze only for thin lines, square buttons, labels in normal case. The intro splash, gold dust, rotating badge, marquee, count-up numbers, custom cursor, magnetic buttons, tilt and word-by-word headings were removed. Motion is now one soft fade per block, plus the skin diagram, the treatment finder and a slower product showroom.
 - Logo: the Instagram serif wordmark. A vector file is still needed from the clinic.
 - Promotion and Q&A are empty and hidden. Products, Reviews, News and Tips load their lists by script on the old site, which the first crawl missed; they are now imported in full (9 products, 21 reviews, 3 news posts, 85 Tips articles).
 - Thai text is kept as written except misspelled English words, which are corrected.
@@ -141,12 +142,13 @@ The 2017 logo and the Instagram wordmark differ. The site needs the current one 
 
 ### Motion
 
-- Logo intro on the first visit only: the wordmark fades in and a gold line draws under it, under 1.5 seconds, skipped on return visits.
-- Hero: slow push-in on a photo or short loop of the clinic interior. Needs footage from the clinic.
-- Headings reveal line by line as they scroll in. Thai line breaks are handled with word segmentation so Thai words never split.
-- Treatment cards lift and show the one-line benefit on hover.
-- Skin layer diagram animates the beam down to the depth of each device.
-- Doctor cards turn to show the schedule.
+Motion follows the simple, timeless direction set on 21 October 2026.
+
+- Each block fades in once as it scrolls into view. The hero lines fade in one after another on load, which is the only staged moment.
+- The skin layer diagram draws the beam down to the depth of each device.
+- The treatment finder slides cards to their new places when a concern is picked.
+- The product showroom turns on its own every 8 seconds and stops while someone is using it.
+- Hovers change a colour or a border, nothing moves.
 - Every animation switches off when the visitor's device asks for reduced motion.
 
 ## 5. Features to add
