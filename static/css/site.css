@@ -191,10 +191,8 @@ html[lang="th"] .btn { letter-spacing: .01em; }
 /* Blocks fade, rise and come into focus as they arrive. --d staggers items in a row. */
 [data-reveal] { opacity: 0; transform: translateY(26px); filter: blur(6px); transition: opacity 1s ease var(--d, 0ms), transform 1.2s var(--ease-out) var(--d, 0ms), filter 1s ease var(--d, 0ms); }
 [data-reveal].is-in { opacity: 1; transform: none; filter: none; }
-/* The hero lines arrive one after another on load */
-.hero__line { display: block; }
-.hero__line > span { display: inline-block; opacity: 0; transform: translateY(22px); filter: blur(8px); transition: opacity 1.2s ease, transform 1.4s var(--ease-out), filter 1.2s ease; transition-delay: calc(var(--i) * 160ms); }
-.is-loaded .hero__line > span { opacity: 1; transform: none; filter: none; }
+/* Button row used under page titles (service, product, doctor, branch and 404 pages) */
+.hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 28px; margin-top: 36px; }
 
 /* ---------- Frame: rounded photo with an offset bronze outline ---------- */
 .frame { position: relative; isolation: isolate; }
@@ -204,23 +202,39 @@ html[lang="th"] .btn { letter-spacing: .01em; }
 a:hover .frame::before, .frame:hover::before { transform: translate(20px, 20px); border-color: var(--bronze); }
 .frame--free img { aspect-ratio: auto; }
 
-/* ---------- Hero ---------- */
-.hero { position: relative; min-height: 100svh; max-width: var(--max); margin: 0 auto; padding: calc(var(--header-h) + 40px) var(--gutter) 80px; display: grid; grid-template-columns: 1.08fr .92fr; gap: clamp(32px, 5vw, 90px); align-items: center; }
-/* A soft champagne glow sits behind the hero photo */
-.hero::before { content: ""; position: absolute; right: 2%; top: 12%; width: min(62vw, 760px); aspect-ratio: 1; background: var(--glow); pointer-events: none; }
-.hero__text, .hero__media { position: relative; z-index: 1; }
-.hero__title { font-size: clamp(44px, 5.2vw, 84px); letter-spacing: .01em; line-height: 1.08; margin-bottom: 32px; }
-@media (min-width: 901px) { .hero__line { white-space: nowrap; } }
-.hero__intro { max-width: 30em; font-size: var(--fs-lead); color: var(--ink-soft); line-height: 1.7; }
-.hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 28px; margin-top: 36px; }
-.hero__media { justify-self: center; width: min(100%, 500px); }
-.frame--hero img { aspect-ratio: 4 / 5.2; }
-.hero__credit { position: absolute; right: -16px; bottom: -44px; font-size: 12px; color: var(--ink-soft); opacity: .7; }
+/* ---------- Hero ----------
+   The slogan is the hero. Each line carries a rounded photo capsule that opens out on load.
+   Lines alternate: first left, second right, third left with an indent. */
+.hero { position: relative; min-height: 100svh; max-width: var(--max); margin: 0 auto; padding: calc(var(--header-h) + 40px) var(--gutter) 56px; display: flex; flex-direction: column; justify-content: center; }
+.hero::before { content: ""; position: absolute; left: 50%; top: 45%; width: min(80vw, 900px); aspect-ratio: 1; transform: translate(-50%, -50%); background: var(--glow); pointer-events: none; }
+.hero__title { position: relative; font-size: clamp(48px, 7.4vw, 112px); line-height: 1.02; letter-spacing: .005em; margin: 0 0 clamp(40px, 6vw, 80px); }
+.hero__line { display: flex; align-items: center; gap: .28em; white-space: nowrap; }
+.hero__line--2 { justify-content: flex-end; }
+.hero__line--3 { padding-left: 8%; }
+.hero__words { display: inline-block; opacity: 0; transform: translateY(24px); filter: blur(8px); transition: opacity 1.2s ease, transform 1.4s var(--ease-out), filter 1.2s ease; transition-delay: calc(var(--i) * 160ms); }
+.hero__pill { flex: none; display: inline-block; width: 0; height: .74em; border-radius: var(--pill); overflow: hidden; box-shadow: var(--shadow); transition: width 1.4s var(--ease-out); transition-delay: calc(var(--i) * 160ms + 500ms); }
+.hero__pill img { width: 2.1em; max-width: none; height: 100%; object-fit: cover; }
+.is-loaded .hero__words { opacity: 1; transform: none; filter: none; }
+.is-loaded .hero__title .hero__pill { width: 2.1em; }
+.hero__strip { display: none; }
+.hero__foot { position: relative; display: grid; grid-template-columns: minmax(0, 34em) auto; justify-content: space-between; align-items: end; gap: 32px; padding-top: 28px; border-top: 1px solid var(--bronze-soft); }
+.hero__intro { margin: 0; font-size: var(--fs-lead); color: var(--ink-soft); line-height: 1.7; }
+.hero__next { display: inline-flex; align-items: center; gap: 16px; font-size: 16px; text-decoration: none; color: var(--espresso); }
+.hero__next-ring { width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--bronze-soft); background: var(--paper); box-shadow: var(--shadow); font-size: 20px; transition: background .5s, transform .6s var(--ease-out), border-color .5s; }
+.hero__next:hover .hero__next-ring { background: var(--gold); border-color: transparent; transform: translateY(4px); }
+.hero__credit { grid-column: 1 / -1; font-size: 12px; color: var(--ink-soft); opacity: .7; }
 @media (max-width: 900px) {
-  .hero { grid-template-columns: 1fr; min-height: auto; padding-top: calc(var(--header-h) + 24px); }
-  .hero__media { order: -1; width: min(80%, 380px); }
-  .hero__title { font-size: clamp(40px, 11vw, 64px); }
+  .hero { min-height: auto; padding-top: calc(var(--header-h) + 32px); }
+  .hero__title { font-size: clamp(36px, 10.4vw, 72px); margin-bottom: 28px; }
+  .hero__title .hero__pill { display: none; }
+  .hero__line--2 { justify-content: flex-start; padding-left: 8%; }
+  .hero__line--3 { padding-left: 0; }
+  .hero__strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 32px; }
+  .hero__strip .hero__pill { width: 100%; height: auto; aspect-ratio: 2 / 1; }
+  .hero__strip .hero__pill img { width: 100%; }
+  .hero__foot { grid-template-columns: 1fr; gap: 24px; }
 }
+@media (max-width: 380px) { .hero__line--2 { padding-left: 6%; } }
 
 /* ---------- Sections ---------- */
 section { position: relative; }
@@ -628,13 +642,14 @@ section { position: relative; }
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  [data-reveal], .hero__line > span, .frame img { opacity: 1; transform: none; filter: none; }
+  [data-reveal], .hero__words, .frame img { opacity: 1; transform: none; filter: none; }
+  .hero__title .hero__pill { width: 2.1em; }
   .skin__beam { opacity: .55; } .skin__beam-line { stroke-dashoffset: 0; } .skin__focus { transform: scale(1); }
   html { scroll-behavior: auto; }
 }
 
 /* Grid children may not grow past their column, so wide tables and long words scroll inside them */
-.hero > *, .feature > *, .doc-hero__grid > *, .svc-hero__grid > *, .prod-hero__grid > *, .interview > *,
+.hero__foot > *, .feature > *, .doc-hero__grid > *, .svc-hero__grid > *, .prod-hero__grid > *, .interview > *,
 .showroom > *, .branch-info > *, .svc-body > *, .section-head--split > * { min-width: 0; }
 .prose { overflow-wrap: anywhere; }
 .pager > *, .doctor--row > * { min-width: 0; }

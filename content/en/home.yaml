@@ -10,6 +10,12 @@ hero:
   image: https://images.unsplash.com/photo-1589525231707-f2de2428f59c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=srgb&w=1400
   image_alt: ""
   credit: Photo by Thanh Duc PHAN on Unsplash
+  # (current site, service galleries) small rounded photos set inside the headline, one per line:
+  # the Unsplash portrait above, then two treatment photos from the clinic's own service pages
+  photos:
+    - https://images.unsplash.com/photo-1589525231707-f2de2428f59c?ixlib=rb-4.1.0&q=80&fm=jpg&crop=entropy&cs=srgb&w=700
+    - https://www.doctoryounger.com/upload/service/gallery/service_pic16_20170410114431.jpg
+    - https://www.doctoryounger.com/upload/service/gallery/service_pic5_20180208103156.jpg
 
 pillars:
   - mark: I

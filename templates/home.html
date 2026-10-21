@@ -6,24 +6,27 @@
 
 {% block main %}
 
-{# ---------- Hero ---------- #}
+{# ---------- Hero ----------
+   The clinic's three-line slogan set large, each line carrying a small rounded photo.
+   Lines alternate left and right. Booking lives in the header and the LINE button, so the hero has no button. #}
 <section class="hero" data-hero>
-  <div class="hero__text">
-    <p class="eyebrow hero__eyebrow" data-reveal>{{ site.tagline }}</p>
-    <h1 class="hero__title">
-      {% for line in page.hero.lines %}
-      <span class="hero__line"><span style="--i: {{ loop.index0 }}">{{ line }}</span></span>
-      {% endfor %}
-      <span class="visually-hidden"> {{ site.name }}</span>
-    </h1>
-    <p class="hero__intro" data-reveal>{{ page.hero.intro }}</p>
-    <div class="hero__actions" data-reveal>
-      <a class="btn" href="{{ site.line_url }}" target="_blank" rel="noopener">{{ ui.book_now }}</a>
-      <a class="link-arrow" href="{{ url('/services/') }}">{{ ui.all_treatments }}</a>
-    </div>
+  <h1 class="hero__title">
+    {% for line in page.hero.lines %}
+    <span class="hero__line hero__line--{{ loop.index }}" style="--i: {{ loop.index0 }}">
+      {% if loop.index == 2 %}<span class="hero__pill" aria-hidden="true"><img src="{{ page.hero.photos[1] | media }}" alt="" fetchpriority="high"></span>{% endif %}
+      <span class="hero__words">{{ line }}</span>
+      {% if loop.index != 2 %}<span class="hero__pill" aria-hidden="true"><img src="{{ page.hero.photos[loop.index0] | media }}" alt="" {% if loop.first %}fetchpriority="high" style="object-position: 70% 30%"{% else %}loading="lazy"{% endif %}></span>{% endif %}
+    </span>
+    {% endfor %}
+    <span class="visually-hidden"> {{ site.name }}</span>
+  </h1>
+  {# On phones the three photos sit in a row under the slogan instead #}
+  <div class="hero__strip" aria-hidden="true">
+    {% for src in page.hero.photos %}<span class="hero__pill"><img src="{{ src | media }}" alt="" loading="lazy"{% if loop.first %} style="object-position: 70% 30%"{% endif %}></span>{% endfor %}
   </div>
-  <div class="hero__media">
-    {{ m.frame(page.hero.image, page.hero.image_alt, '4/5', 'frame--hero', eager=true, pos='70% 30%') }}
+  <div class="hero__foot" data-reveal>
+    <p class="hero__intro">{{ page.hero.intro }}</p>
+    <a class="hero__next" href="{{ url('/services/') }}"><span class="hero__next-ring" aria-hidden="true">↓</span>{{ ui.all_treatments }}</a>
     <span class="hero__credit">{{ page.hero.credit }}</span>
   </div>
 </section>
