@@ -496,6 +496,8 @@ section { position: relative; }
 .svc-closing, .cta-band { background: radial-gradient(60% 120% at 100% 0%, rgba(196, 171, 102, .3), rgba(196, 171, 102, 0) 60%), var(--dark); color: var(--sand); padding: clamp(32px, 5vw, 64px); border-radius: var(--r-lg); box-shadow: var(--shadow-lift); }
 .svc-closing p, .cta-band__text { font-family: var(--serif); font-size: clamp(22px, 2.4vw, 30px); color: var(--paper); line-height: 1.5; margin: 0 0 26px; }
 .cta-band { width: min(100% - var(--gutter) * 2, var(--max) - var(--gutter) * 2); margin: 0 auto 120px; }
+/* On the services page the booking band follows the treatment cards directly, so it needs its own space above */
+.finder + .cta-band { margin-top: 110px; }
 .cta-band__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 28px; }
 .related { padding: 0 0 110px; }
 .related--reviews { padding-top: 20px; }
