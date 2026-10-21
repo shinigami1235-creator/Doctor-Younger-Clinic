@@ -14,14 +14,14 @@
   <div class="svc-hero__grid">
     <div class="svc-hero__text">
       <p class="eyebrow" data-reveal>{{ category.name }}</p>
-      <h1 class="svc-hero__title" data-split>{{ page.name }}</h1>
+      <h1 class="svc-hero__title">{{ page.name }}</h1>
       <p class="svc-hero__tagline" data-reveal>{{ page.tagline }}</p>
       <div class="hero__actions" data-reveal>
-        <a class="btn" href="{{ site.line_url }}" target="_blank" rel="noopener" data-magnetic>{{ ui.book_now }}</a>
+        <a class="btn" href="{{ site.line_url }}" target="_blank" rel="noopener">{{ ui.book_now }}</a>
         <a class="link-arrow" href="tel:{{ site.call_center_tel }}">{{ site.call_center }}</a>
       </div>
     </div>
-    <div class="svc-hero__media" data-mouse-layer>
+    <div class="svc-hero__media">
       {% if page.images %}
       {{ m.frame(page.images[0] | media, page.name, '4/5', 'frame--svc', eager=true) }}
       {% elif page.depth %}
@@ -64,7 +64,7 @@
     <section class="svc-closing" data-reveal>
       <p>{{ page.closing }}</p>
       <div class="hero__actions">
-        <a class="btn btn--light" href="{{ site.line_url }}" target="_blank" rel="noopener" data-magnetic>LINE {{ site.line_id }}</a>
+        <a class="btn btn--light" href="{{ site.line_url }}" target="_blank" rel="noopener">LINE {{ site.line_id }}</a>
         <a class="link-arrow link-arrow--light" href="tel:{{ site.call_center_tel }}">{{ site.call_center }}</a>
       </div>
     </section>

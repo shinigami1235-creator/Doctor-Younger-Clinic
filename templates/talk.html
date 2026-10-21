@@ -5,13 +5,13 @@
 {% block body_class %}page-interview{% endblock %}
 {% block main %}
 <section class="interview">
-  <div class="interview__media" data-mouse-layer>{{ m.frame(page.photo | media, page.name, '3/4', 'frame--talk-big', eager=true, pos='center 20%') }}</div>
+  <div class="interview__media">{{ m.frame(page.photo | media, page.name, '3/4', 'frame--talk-big', eager=true, pos='center 20%') }}</div>
   <div class="interview__text">
     <nav class="crumbs" aria-label="Breadcrumb" data-reveal>
       <a href="{{ url('/') }}">{{ ui.nav.home }}</a><span>/</span><a href="{{ url('/beauty-talk/') }}">{{ ui.nav.beauty_talk }}</a>
     </nav>
     <p class="eyebrow{{ page.nickname|th }}" data-reveal>{{ page.nickname }}</p>
-    <h1 class="interview__name" data-split>{{ page.name }}</h1>
+    <h1 class="interview__name">{{ page.name }}</h1>
     <dl class="qa">
       {% for t in page.qa %}
       <div class="qa__item" data-reveal>

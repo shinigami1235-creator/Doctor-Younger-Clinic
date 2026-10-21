@@ -10,10 +10,10 @@
     <a href="{{ url('/') }}">{{ ui.nav.home }}</a><span>/</span><a href="{{ url('/doctors/') }}">{{ ui.nav.doctors }}</a>
   </nav>
   <div class="doc-hero__grid">
-    <div class="doc-hero__media" data-mouse-layer>{{ m.frame(doctor.photo | media, full, '4/5', 'frame--doc-big', eager=true, pos='center 18%') }}</div>
+    <div class="doc-hero__media">{{ m.frame(doctor.photo | media, full, '4/5', 'frame--doc-big', eager=true, pos='center 18%') }}</div>
     <div class="doc-hero__text">
       <p class="eyebrow{{ doctor.title[lang]|th }}" data-reveal>{{ doctor.title[lang] }}</p>
-      <h1 class="doc-hero__name" data-split>{{ doctor.name[lang] }}</h1>
+      <h1 class="doc-hero__name">{{ doctor.name[lang] }}</h1>
       {% if doctor.nickname[lang] %}<p class="doc-hero__nick" data-reveal>{{ doctor.nickname[lang] }}</p>{% endif %}
       <p class="doc-hero__summary" data-reveal>{{ doctor.summary[lang] }}</p>
 
@@ -41,7 +41,7 @@
       </div>
 
       <div class="hero__actions" data-reveal>
-        <a class="btn" href="{{ site.line_url }}" target="_blank" rel="noopener" data-magnetic>{{ ui.book_line }}</a>
+        <a class="btn" href="{{ site.line_url }}" target="_blank" rel="noopener">{{ ui.book_line }}</a>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 {# Shared building blocks. Import with {% import "partials/macros.html" as m with context %} #}
 
-{# Page title block used at the top of inner pages #}
+{# Page title block used at the top of inner pages. The eyebrow argument is kept for older calls but no longer shown. #}
 {% macro page_head(eyebrow, title, intro='', crumbs=[]) %}
 <section class="page-head">
   {% if crumbs %}
@@ -9,13 +9,12 @@
     {% for label, href in crumbs %}<span>/</span>{% if href %}<a href="{{ href }}">{{ label }}</a>{% else %}<span>{{ label }}</span>{% endif %}{% endfor %}
   </nav>
   {% endif %}
-  {% if eyebrow %}<p class="eyebrow{{ eyebrow|th }}" data-reveal>{{ eyebrow }}</p>{% endif %}
-  <h1 class="page-head__title" data-split>{{ title }}</h1>
+  <h1 class="page-head__title">{{ title }}</h1>
   {% if intro %}<p class="page-head__intro" data-reveal>{{ intro }}</p>{% endif %}
 </section>
 {% endmacro %}
 
-{# Picture with the offset bronze frame and wipe reveal #}
+{# Picture with the offset bronze frame #}
 {% macro frame(src, alt='', ratio='4/5', cls='', eager=false, pos='center') %}
 <div class="frame {{ cls }}" style="--ratio: {{ ratio }}" data-frame>
   <img src="{{ src }}" alt="{{ alt }}" {% if not eager %}loading="lazy"{% else %}fetchpriority="high"{% endif %} style="object-position: {{ pos }}">
@@ -26,11 +25,10 @@
 {% macro service_card(slug, i=0) %}
 {% set cat = cat_of[slug] %}
 {% set s = c.services[slug] %}
-<a class="svc-card" href="{{ url(service_path(cat.id, slug)) }}" data-reveal style="--d: {{ (i % 6) * 60 }}ms" data-tilt>
+<a class="svc-card" href="{{ url(service_path(cat.id, slug)) }}" data-reveal style="--d: {{ (i % 6) * 60 }}ms">
   <span class="svc-card__cat">{{ cat.name }}</span>
   <span class="svc-card__name">{{ s.name }}</span>
   <span class="svc-card__tag">{{ s.tagline }}</span>
-  {% if s.images %}<span class="svc-card__img"><img src="{{ s.images[0] | media }}" alt="" loading="lazy"></span>{% endif %}
   <span class="svc-card__arrow" aria-hidden="true"></span>
 </a>
 {% endmacro %}
@@ -58,7 +56,7 @@
 {# Product card #}
 {% macro product_card(slug, i=0) %}
 {% set p = c.products[slug] %}
-<a class="prod-card" href="{{ url('/products/' ~ slug ~ '/') }}" data-reveal style="--d: {{ (i % 3) * 80 }}ms" data-tilt>
+<a class="prod-card" href="{{ url('/products/' ~ slug ~ '/') }}" data-reveal style="--d: {{ (i % 3) * 80 }}ms">
   <span class="prod-card__img"><img src="{{ p.images[0] | media }}" alt="{{ p.name }}" loading="lazy"></span>
   <span class="prod-card__name">{{ p.name }}</span>
   {% if p.price %}<span class="prod-card__price">{{ p.price }}</span>{% endif %}
@@ -70,7 +68,7 @@
 <section class="cta-band" data-reveal>
   <p class="cta-band__text">{{ text }}</p>
   <div class="cta-band__actions">
-    <a class="btn btn--light" href="{{ site.line_url }}" target="_blank" rel="noopener" data-magnetic>{{ ui.book_line }}</a>
+    <a class="btn btn--light" href="{{ site.line_url }}" target="_blank" rel="noopener">{{ ui.book_line }}</a>
     <a class="link-arrow link-arrow--light" href="tel:{{ site.call_center_tel }}">{{ site.call_center }}</a>
   </div>
 </section>

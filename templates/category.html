@@ -6,17 +6,15 @@
 {% block main %}
 {{ m.page_head(ui.nav.services, category.name, '', [(ui.nav.services, url('/services/')), (category.name, '')]) }}
 
-<section class="cat-list-big" data-hover-preview>
+<section class="cat-list-big">
   {% for it in category['items'] if it.slug in built_services %}
   {% set s = c.services[it.slug] %}
-  <a class="cat-big" href="{{ url(service_path(category.id, it.slug)) }}" data-preview="{{ (s.images[0] if s.images else '') | media }}" data-reveal style="--d: {{ (loop.index0 % 6) * 60 }}ms">
-    <span class="cat-big__num">{{ '%02d' % loop.index }}</span>
+  <a class="cat-big" href="{{ url(service_path(category.id, it.slug)) }}" data-reveal style="--d: {{ (loop.index0 % 6) * 60 }}ms">
     <span class="cat-big__name">{{ s.name }}</span>
     <span class="cat-big__tag">{{ s.tagline }}</span>
     <span class="cat-big__arrow" aria-hidden="true"></span>
   </a>
   {% endfor %}
-  <div class="hover-preview" aria-hidden="true" data-preview-box><img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt=""></div>
 </section>
 
 <nav class="cat-switch" aria-label="{{ ui.category }}">

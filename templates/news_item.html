@@ -10,7 +10,7 @@
       <a href="{{ url('/') }}">{{ ui.nav.home }}</a><span>/</span><a href="{{ url('/news/') }}">{{ ui.nav.news }}</a>
     </nav>
     <p class="eyebrow" data-reveal>{{ page.date }}</p>
-    <h1 class="article__title" data-split>{{ page.title }}</h1>
+    <h1 class="article__title">{{ page.title }}</h1>
   </header>
   <div class="prose prose--article prose--gallery" data-prose>{{ page.body | media_html }}</div>
 </article>

@@ -4,14 +4,13 @@
 {% block description %}{{ page.body | plain(150) }}{% endblock %}
 {% block body_class %}page-article{% endblock %}
 {% block main %}
-<div class="read-progress" aria-hidden="true" data-read-progress></div>
 <article class="article">
   <header class="article__head">
     <nav class="crumbs" aria-label="Breadcrumb" data-reveal>
       <a href="{{ url('/') }}">{{ ui.nav.home }}</a><span>/</span><a href="{{ url('/tips/') }}">{{ ui.nav.tips }}</a>
     </nav>
     <p class="eyebrow" data-reveal>{{ page.date }}</p>
-    <h1 class="article__title" data-split>{{ page.title }}</h1>
+    <h1 class="article__title">{{ page.title }}</h1>
   </header>
   <div class="prose prose--article" data-prose>{{ page.body | media_html }}</div>
 </article>

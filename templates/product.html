@@ -9,13 +9,12 @@
     <a href="{{ url('/') }}">{{ ui.nav.home }}</a><span>/</span><a href="{{ url('/products/') }}">{{ ui.nav.products }}</a>
   </nav>
   <div class="prod-hero__grid">
-    <div class="prod-hero__media" data-tilt-big>
-      <div class="prod-hero__glow" aria-hidden="true"></div>
+    <div class="prod-hero__media">
       <img src="{{ page.images[0] | media }}" alt="{{ page.name }}" fetchpriority="high">
     </div>
     <div class="prod-hero__text">
       <p class="eyebrow" data-reveal>Doctor Younger</p>
-      <h1 class="prod-hero__title" data-split>{{ page.name }}</h1>
+      <h1 class="prod-hero__title">{{ page.name }}</h1>
       <p class="prod-hero__tagline" data-reveal>{{ page.tagline }}</p>
       <dl class="prod-facts" data-reveal>
         {% if page.size %}<div><dt>{{ ui.size }}</dt><dd>{{ page.size }}</dd></div>{% endif %}
@@ -23,7 +22,7 @@
       </dl>
       {% if page.usage %}<div class="prod-usage" data-reveal><p class="eyebrow{{ ui.usage|th }}">{{ ui.usage }}</p><p>{{ page.usage }}</p></div>{% endif %}
       <div class="hero__actions" data-reveal>
-        <a class="btn" href="{{ site.line_url }}" target="_blank" rel="noopener" data-magnetic>{{ ui.book_line }}</a>
+        <a class="btn" href="{{ site.line_url }}" target="_blank" rel="noopener">{{ ui.book_line }}</a>
         <a class="link-arrow" href="{{ url('/products/' ~ next_slug ~ '/') }}">{{ ui.next }}</a>
       </div>
     </div>
